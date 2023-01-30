@@ -12,17 +12,29 @@ interface Sum {
 }
 
 function Start({ username, onLogOut }: StartProps): JSX.Element {
+  const [response, setResponse] = useState<string>("Good luck!");
+  const [isCorrect, setIsCorrect] = useState<boolean>();
   const [sum, setSum] = useState<Sum>({
     first: 0,
     second: 0,
   });
 
+  // let progressClass = "game-main__progress";
+
   const onAnswerHandler = (answer: number): void => {
     if (sum.first + sum.second === answer) {
-      console.log("Well done, that is correct!");
+      setResponse("Correct! 😎");
+      setIsCorrect(true);
     } else {
-      console.log("Not quite!");
+      setResponse("Try again! 💥");
+      setIsCorrect(false);
     }
+
+    // if (isCorrect) {
+    //   progressClass = "game-main__progress--correct";
+    // } else {
+    //   progressClass = "game-main__progress--incorrect";
+    // }
 
     generateSum();
   };
@@ -56,7 +68,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
           <QuizWindow sum={sum} onAnswer={onAnswerHandler} />
         </section>
         <section className="game-main__progress">
-          <p>Progress...</p>
+          <p>{response}</p>
           <p>Highscore</p>
         </section>
       </main>
