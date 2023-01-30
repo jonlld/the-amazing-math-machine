@@ -1,15 +1,30 @@
-import { Fragment } from "react";
+import React, { useRef } from "react";
 
+// INTERFACE
 interface LoginProps {
-  onLogIn: () => void;
+  onLogIn: (name: string) => void;
 }
 
+// COMPONENT
 function Login({ onLogIn }: LoginProps): JSX.Element {
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  const onSubmitHandler = (e: React.SyntheticEvent): void => {
+    e.preventDefault();
+
+    console.log("submitted");
+    console.log(nameInputRef.current?.value);
+  };
+
   return (
-    <Fragment>
-      <h1>Please Click To Login! </h1>
-      <button onClick={onLogIn}>Login</button>
-    </Fragment>
+    <main>
+      <h1>Please enter your name to start!</h1>
+      <form className="login-form" onSubmit={onSubmitHandler}>
+        <label>Name</label>
+        <input ref={nameInputRef} type="text" placeholder="name here"></input>
+        <button>Login</button>
+      </form>
+    </main>
   );
 }
 
