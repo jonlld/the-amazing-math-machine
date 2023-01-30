@@ -21,8 +21,6 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     second: 0,
   });
 
-  // let progressClass = "game-main__progress";
-
   const onAnswerHandler = (answer: number): void => {
     if (sum.first + sum.second === answer) {
       setMessage("Correct!");
@@ -36,12 +34,6 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
       setScore((prev) => prev - 5);
     }
 
-    // if (isCorrect) {
-    //   progressClass = "game-main__progress--correct";
-    // } else {
-    //   progressClass = "game-main__progress--incorrect";
-    // }
-
     generateSum();
   };
 
@@ -54,7 +46,6 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     });
   };
 
-  // runs on load
   useEffect(() => {
     generateSum();
   }, []);

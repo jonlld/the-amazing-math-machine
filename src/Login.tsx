@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
 
-// INTERFACE
 interface LoginProps {
   onLogIn: (name: string) => void;
 }
 
-// COMPONENT
 function Login({ onLogIn }: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
 
@@ -17,7 +15,6 @@ function Login({ onLogIn }: LoginProps): JSX.Element {
       onLogIn(nameInputRef.current.value);
     } else {
       // TODO
-      // to add error behaviour
       console.log("Please enter a name!");
     }
   };
@@ -31,7 +28,7 @@ function Login({ onLogIn }: LoginProps): JSX.Element {
           ref={nameInputRef}
           id="user"
           type="text"
-          // placeholder="name here"
+          placeholder="name here"
           autoFocus
         ></input>
         <button>Login</button>
