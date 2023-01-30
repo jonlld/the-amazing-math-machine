@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import Welcome from "./Welcome";
 
 function App(): JSX.Element {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const logIn = (): void => {
+    console.log("logging in");
+    setIsLoggedIn(true);
+  };
+
   const user = "Test User";
 
   return (
     <div>
-      {!isLoggedIn && <Welcome isLoggedIn={isLoggedIn} username={user} />}
+      <Welcome isLoggedIn={isLoggedIn} onLogIn={logIn} username={user} />
     </div>
   );
 }
