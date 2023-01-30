@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Welcome from "./Welcome";
+import { useState, Fragment } from "react";
+import Login from "./Login";
 
 function App(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -12,9 +12,10 @@ function App(): JSX.Element {
   const user = "Test User";
 
   return (
-    <div>
-      <Welcome isLoggedIn={isLoggedIn} onLogIn={logIn} username={user} />
-    </div>
+    <Fragment>
+      {!isLoggedIn && <Login onLogIn={logIn} />}
+      {/* {isLoggedIn && <Start username={user} />} */}
+    </Fragment>
   );
 }
 
