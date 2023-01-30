@@ -91,6 +91,20 @@ input {
 
 .incorrect {
   background-color: rgb(208, 94, 113);
+  animation-name: incorrect-pulse;
+  animation-duration: 2s;
+}
+
+@keyframes incorrect-pulse {
+  0% {
+    background-color: rgb(208, 94, 113);
+  }
+  50% {
+    background-color: rgb(148, 68, 82);
+  }
+  100% {
+    background-color: rgb(208, 94, 113);
+  }
 }
 
 .correct {
