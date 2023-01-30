@@ -1,11 +1,22 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import QuizWindow from "./QuizWindow";
 
 interface StartProps {
   username: string;
   onLogOut: () => void;
 }
 
+interface Sum {
+  first: number;
+  second: number;
+}
+
 function Start({ username, onLogOut }: StartProps): JSX.Element {
+  const [sum, setSum] = useState<Sum>({
+    first: 5,
+    second: 50,
+  });
+
   return (
     <Fragment>
       <header className="game-header">
@@ -18,10 +29,11 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
       </header>
       <main className="game-main">
         <section className="game-main__sums">
-          <p>This is the sums section</p>
+          <QuizWindow sum={sum} />
         </section>
         <section className="game-main__progress">
-          <p>This is the progress section</p>
+          <p>Progress...</p>
+          <p>Highscore</p>
         </section>
       </main>
     </Fragment>
