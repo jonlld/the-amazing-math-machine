@@ -1,3 +1,6 @@
+/* font import */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 /* universal reset */
 * {
   box-sizing: border-box;
@@ -5,14 +8,58 @@
   padding: 0;
 }
 
-/* .login-container {
-  max-width: 400px;
-  margin: 50px auto;
-} */
+body {
+  font-family: "Press Start 2P", cursive;
+  color: #fff;
+  background-color: #222;
+}
 
 label,
-input,
-button {
+input {
   width: 100%;
   display: inline-block;
+}
+
+/* GAME SCREEN */
+
+.game-header {
+  padding: 32px;
+  height: 25vh;
+  color: #eee;
+}
+
+.game-header__button {
+  border: none;
+  background-color: #eee;
+  color: #222;
+  font-size: 16px;
+  padding: 16px;
+  font-family: inherit;
+  margin-top: 24px;
+}
+
+.game-header__button:hover {
+  background-color: #ccc;
+}
+
+.game-main {
+  height: 75vh;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game-main__sums {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  width: 50%;
+}
+
+.game-main__progress {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  width: 50%;
 }
