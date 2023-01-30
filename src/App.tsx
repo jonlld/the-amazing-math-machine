@@ -19,8 +19,11 @@ function App(): JSX.Element {
 
   return (
     <Fragment>
-      {!isLoggedIn && <Login onLogIn={logIn} />}
-      {isLoggedIn && <Start onLogOut={logOut} username={user} />}
+      {isLoggedIn ? (
+        <Start onLogOut={logOut} username={user} />
+      ) : (
+        <Login onLogIn={logIn} />
+      )}
     </Fragment>
   );
 }
