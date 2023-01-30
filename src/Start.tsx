@@ -17,6 +17,14 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     second: 0,
   });
 
+  const onGuessHandler = (guess: number): void => {
+    if (sum.first + sum.second === guess) {
+      console.log("Well done, that is correct!");
+    } else {
+      console.log("Not quite!");
+    }
+  };
+
   // runs once after component executed
   useEffect(() => {
     const first = Math.floor(Math.random() * 50 + 1);
@@ -39,7 +47,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
       </header>
       <main className="game-main">
         <section className="game-main__sums">
-          <QuizWindow sum={sum} />
+          <QuizWindow sum={sum} onGuess={onGuessHandler} />
         </section>
         <section className="game-main__progress">
           <p>Progress...</p>
