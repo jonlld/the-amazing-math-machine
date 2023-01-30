@@ -17,6 +17,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     second: 0,
   });
 
+  // runs once after component executed
   useEffect(() => {
     const first = Math.floor(Math.random() * 50 + 1);
     const second = Math.floor(Math.random() * 50 + 1);

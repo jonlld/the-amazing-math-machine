@@ -52,9 +52,28 @@ input {
 
 .game-main__sums {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 8px;
   width: 50%;
+}
+
+.quiz__sum {
+  font-size: 32px;
+  width: 60%;
+  margin-bottom: 16px;
+}
+
+.quiz__input {
+  font-family: inherit;
+  font-size: inherit;
+  text-align: center;
+  display: block;
+  /* height: 32px; */
+  width: 30%;
+  padding: 16px;
+  margin-bottom: 3rem;
 }
 
 .game-main__progress {
