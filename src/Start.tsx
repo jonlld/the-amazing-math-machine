@@ -13,7 +13,7 @@ interface Sum {
 }
 
 function Start({ username, onLogOut }: StartProps): JSX.Element {
-  const [response, setResponse] = useState<string>("Good luck!");
+  const [message, setMessage] = useState<string>("Good luck!");
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [sum, setSum] = useState<Sum>({
     first: 0,
@@ -24,10 +24,10 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
 
   const onAnswerHandler = (answer: number): void => {
     if (sum.first + sum.second === answer) {
-      setResponse("Correct!");
+      setMessage("Correct!");
       setIsCorrect(true);
     } else {
-      setResponse("Try again!");
+      setMessage("Try again!");
       setIsCorrect(false);
     }
 
@@ -66,7 +66,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
       </header>
       <main className="game-main">
         <QuizWindow sum={sum} onAnswer={onAnswerHandler} />
-        <Progress res={response} isCorrect={isCorrect} />
+        <Progress message={message} isCorrect={isCorrect} />
       </main>
     </Fragment>
   );

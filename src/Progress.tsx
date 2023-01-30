@@ -1,16 +1,20 @@
 interface Props {
-  res: string;
+  message: string;
   isCorrect: boolean;
 }
 
-function Progress({ res, isCorrect }: Props): JSX.Element {
-  const classes = `game-main__progress  game-main__progress${
-    isCorrect ? "--correct" : "--incorrect"
-  }`;
+function Progress({ message, isCorrect }: Props): JSX.Element {
+  let classes = "";
+
+  if (message !== "Good luck!") {
+    classes = `game-main__progress ${isCorrect ? "correct" : "incorrect"}`;
+  } else {
+    classes = "game-main__progress";
+  }
 
   return (
     <section className={classes}>
-      <p>{res}</p>
+      <p>{message}</p>
     </section>
   );
 }

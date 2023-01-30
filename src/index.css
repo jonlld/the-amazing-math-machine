@@ -23,6 +23,7 @@ input {
 /* GAME SCREEN */
 
 .game-header {
+  font-size: 12px;
   padding: 32px;
   height: 25vh;
   color: #eee;
@@ -32,7 +33,7 @@ input {
   border: none;
   background-color: #eee;
   color: #222;
-  font-size: 16px;
+  font-size: 12px;
   padding: 16px;
   font-family: inherit;
   margin-top: 24px;
@@ -57,6 +58,8 @@ input {
   justify-content: center;
   padding: 8px;
   width: 50%;
+  height: 100%;
+  background-color: rgb(98, 98, 98);
 }
 
 .quiz__sum {
@@ -87,10 +90,10 @@ input {
   width: 50%;
 }
 
-.game-main__progress--incorrect {
+.incorrect {
   background-color: rgb(208, 94, 113);
 }
 
-.game-main__progress--correct {
-  background-color: rgb(192, 221, 149);
+.correct {
+  background-color: rgb(166, 192, 127);
 }
