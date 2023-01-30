@@ -81,8 +81,7 @@ input {
 
 .game-main__progress {
   height: 100%;
-  font-size: 32px;
-  display: flex;
+  font-size: 24px;
   gap: 42px;
   align-items: center;
   justify-content: center;
@@ -96,4 +95,11 @@ input {
 
 .correct {
   background-color: rgb(166, 192, 127);
+}
+
+.progress--container {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
