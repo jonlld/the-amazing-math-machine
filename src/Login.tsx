@@ -26,17 +26,15 @@ function Login({ onLogIn }: LoginProps): JSX.Element {
     <main>
       <h1>Please enter your name to start!</h1>
       <form onSubmit={onSubmitHandler}>
-        <ul>
-          <li className="login-form">
-            <label>Name</label>
-            <input
-              ref={nameInputRef}
-              type="text"
-              placeholder="name here"
-            ></input>
-            <button>Login</button>
-          </li>
-        </ul>
+        <label htmlFor="user">Username: </label>
+        <input
+          ref={nameInputRef}
+          id="user"
+          type="text"
+          // placeholder="name here"
+          autoFocus
+        ></input>
+        <button>Login</button>
       </form>
     </main>
   );

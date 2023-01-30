@@ -8,8 +8,11 @@
 /* .login-container {
   max-width: 400px;
   margin: 50px auto;
-}
-
-.login-form {
-  display: flex;
 } */
+
+label,
+input,
+button {
+  width: 100%;
+  display: inline-block;
+}
