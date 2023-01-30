@@ -17,8 +17,6 @@ function App(): JSX.Element {
     setIsLoggedIn(false);
   };
 
-  // TODO
-  // Make wrapper to format & center whole app
   return (
     <Fragment>
       {isLoggedIn ? (

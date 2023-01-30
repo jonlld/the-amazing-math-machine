@@ -9,7 +9,7 @@ interface LoginProps {
 function Login({ onLogIn }: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
 
-  const onSubmitHandler = (e: React.SyntheticEvent): void => {
+  const onSubmitHandler = (e: React.FormEvent): void => {
     e.preventDefault();
 
     if (nameInputRef.current?.value) {

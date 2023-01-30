@@ -59,7 +59,9 @@ input {
 
 .game-main__progress {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
   padding: 8px;
   width: 50%;
 }
