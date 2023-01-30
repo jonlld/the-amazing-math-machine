@@ -23,16 +23,22 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     } else {
       console.log("Not quite!");
     }
+
+    generateSum();
   };
 
-  // runs once after component executed
-  useEffect(() => {
+  const generateSum = (): void => {
     const first = Math.floor(Math.random() * 50 + 1);
     const second = Math.floor(Math.random() * 50 + 1);
 
     setSum((prev) => {
       return { ...prev, first, second };
     });
+  };
+
+  // runs once after component executed
+  useEffect(() => {
+    generateSum();
   }, []);
 
   return (
