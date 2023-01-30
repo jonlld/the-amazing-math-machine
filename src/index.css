@@ -77,9 +77,10 @@ input {
 }
 
 .game-main__progress {
+  font-size: 32px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 42px;
   align-items: center;
   padding: 8px;
   width: 50%;

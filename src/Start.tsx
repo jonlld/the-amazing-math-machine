@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import QuizWindow from "./QuizWindow";
+import Progress from "./Progress";
 
 interface StartProps {
   username: string;
@@ -23,10 +24,10 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
 
   const onAnswerHandler = (answer: number): void => {
     if (sum.first + sum.second === answer) {
-      setResponse("Correct! 😎");
+      setResponse("Correct!");
       setIsCorrect(true);
     } else {
-      setResponse("Try again! 💥");
+      setResponse("Try again!");
       setIsCorrect(false);
     }
 
@@ -64,13 +65,8 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
         </button>
       </header>
       <main className="game-main">
-        <section className="game-main__sums">
-          <QuizWindow sum={sum} onAnswer={onAnswerHandler} />
-        </section>
-        <section className="game-main__progress">
-          <p>{response}</p>
-          <p>Highscore</p>
-        </section>
+        <QuizWindow sum={sum} onAnswer={onAnswerHandler} />
+        <Progress res={response} />
       </main>
     </Fragment>
   );

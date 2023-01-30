@@ -16,7 +16,7 @@ function QuizWindow({ sum, onAnswer }: QuizProps): JSX.Element {
   };
 
   return (
-    <Fragment>
+    <section className="game-main__sums">
       <p className="quiz__sum">
         {sum.first} + {sum.second} = ?
       </p>
@@ -27,7 +27,7 @@ function QuizWindow({ sum, onAnswer }: QuizProps): JSX.Element {
         onKeyDown={handleKeyDown}
         autoFocus
       />
-    </Fragment>
+    </section>
   );
 }
 
