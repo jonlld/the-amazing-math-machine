@@ -1,10 +1,16 @@
 interface Props {
-  message: string;
+  isPlaying: boolean;
   isCorrect: boolean;
+  message: string;
   score: number;
 }
 
-function Progress({ message, isCorrect, score }: Props): JSX.Element {
+function Progress({
+  isPlaying,
+  message,
+  isCorrect,
+  score,
+}: Props): JSX.Element {
   let classes = "";
 
   if (message !== "Good luck!") {
@@ -19,7 +25,7 @@ function Progress({ message, isCorrect, score }: Props): JSX.Element {
         <p>{message}</p>
       </div>
       <div className="progress--container">
-        <p>{score ? `Your current score is ${score}!` : ``}</p>
+        <p>{isPlaying || score ? `Your current score is ${score}!` : ``}</p>
       </div>
     </section>
   );
