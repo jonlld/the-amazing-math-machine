@@ -49,7 +49,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     });
   };
 
-  // runs once after component executed
+  // runs on load
   useEffect(() => {
     generateSum();
   }, []);

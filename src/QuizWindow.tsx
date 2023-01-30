@@ -5,7 +5,10 @@ interface QuizProps {
   onAnswer: (guess: number) => void;
 }
 
-function QuizWindow({ sum, onAnswer }: QuizProps): JSX.Element {
+function QuizWindow({
+  sum: { first, second },
+  onAnswer,
+}: QuizProps): JSX.Element {
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent): void => {
@@ -18,7 +21,7 @@ function QuizWindow({ sum, onAnswer }: QuizProps): JSX.Element {
   return (
     <section className="game-main__sums">
       <p className="quiz__sum">
-        {sum.first} + {sum.second} = ?
+        {first} + {second} = ?
       </p>
       <input
         ref={answerRef}
