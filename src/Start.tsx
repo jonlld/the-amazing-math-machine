@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import QuizWindow from "./QuizWindow";
 
 interface StartProps {
@@ -13,9 +13,18 @@ interface Sum {
 
 function Start({ username, onLogOut }: StartProps): JSX.Element {
   const [sum, setSum] = useState<Sum>({
-    first: 5,
-    second: 50,
+    first: 0,
+    second: 0,
   });
+
+  useEffect(() => {
+    const first = Math.floor(Math.random() * 50 + 1);
+    const second = Math.floor(Math.random() * 50 + 1);
+
+    setSum((prev) => {
+      return { ...prev, first, second };
+    });
+  }, []);
 
   return (
     <Fragment>
