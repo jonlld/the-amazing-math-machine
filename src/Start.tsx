@@ -60,7 +60,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     <Fragment>
       <header className="game-header">
         <h1 className="game-header__welcome">
-          Welcome To The Amazing Math Machine, {username}!
+          Welcome To The <span>Amazing Math Machine</span>, {username}!
         </h1>
         <button className="game-header__button" onClick={onLogOut}>
           Logout

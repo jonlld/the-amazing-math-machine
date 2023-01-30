@@ -20,6 +20,10 @@ input {
   display: inline-block;
 }
 
+span {
+  color: rgb(254, 242, 117);
+}
+
 /* GAME SCREEN */
 
 .game-header {
