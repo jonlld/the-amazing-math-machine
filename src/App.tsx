@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from "react";
+import Welcome from "./Welcome";
 
-function App() {
+function App(): JSX.Element {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const user = "Test User";
+
   return (
     <div>
-      <h1>Amazing Math Machine</h1>
+      {!isLoggedIn && <Welcome isLoggedIn={isLoggedIn} username={user} />}
     </div>
   );
 }

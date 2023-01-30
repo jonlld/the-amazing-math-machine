@@ -1,4 +1,4 @@
-# Amazing Math
+# The Amazing Math Machine
 
 A family game to practice math skills! Built with React & Typescript.
 
