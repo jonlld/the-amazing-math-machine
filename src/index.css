@@ -1,4 +1,4 @@
-/* font import */
+/* Font = Press Start 2P */
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 /* universal reset */
@@ -77,19 +77,20 @@ input {
 }
 
 .game-main__progress {
+  height: 100%;
   font-size: 32px;
   display: flex;
-  flex-direction: column;
   gap: 42px;
   align-items: center;
+  justify-content: center;
   padding: 8px;
   width: 50%;
 }
 
-/* .game-main__progress--incorrect {
+.game-main__progress--incorrect {
   background-color: rgb(208, 94, 113);
 }
 
 .game-main__progress--correct {
   background-color: rgb(192, 221, 149);
-} */
+}
