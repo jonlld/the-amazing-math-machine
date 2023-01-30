@@ -2,16 +2,16 @@ import React, { Fragment, useRef } from "react";
 
 interface QuizProps {
   sum: { first: number; second: number };
-  onGuess: (guess: number) => void;
+  onAnswer: (guess: number) => void;
 }
 
-function QuizWindow({ sum, onGuess }: QuizProps): JSX.Element {
-  const guessRef = useRef<HTMLInputElement>(null);
+function QuizWindow({ sum, onAnswer }: QuizProps): JSX.Element {
+  const answerRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent): void => {
     if (e.key === "Enter") {
-      onGuess(parseInt(guessRef.current!.value));
-      guessRef.current!.value = "";
+      onAnswer(parseInt(answerRef.current!.value));
+      answerRef.current!.value = "";
     }
   };
 
@@ -21,7 +21,7 @@ function QuizWindow({ sum, onGuess }: QuizProps): JSX.Element {
         {sum.first} + {sum.second} = ?
       </p>
       <input
-        ref={guessRef}
+        ref={answerRef}
         type="text"
         className="quiz__input"
         onKeyDown={handleKeyDown}

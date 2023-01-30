@@ -17,8 +17,8 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     second: 0,
   });
 
-  const onGuessHandler = (guess: number): void => {
-    if (sum.first + sum.second === guess) {
+  const onAnswerHandler = (answer: number): void => {
+    if (sum.first + sum.second === answer) {
       console.log("Well done, that is correct!");
     } else {
       console.log("Not quite!");
@@ -47,7 +47,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
       </header>
       <main className="game-main">
         <section className="game-main__sums">
-          <QuizWindow sum={sum} onGuess={onGuessHandler} />
+          <QuizWindow sum={sum} onAnswer={onAnswerHandler} />
         </section>
         <section className="game-main__progress">
           <p>Progress...</p>
