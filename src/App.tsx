@@ -7,7 +7,7 @@ function App(): JSX.Element {
   const [username, setUsername] = useState<string>("test user");
 
   const logIn = (name: string): void => {
-    console.log("logging in");
+    setUsername(name);
     setIsLoggedIn(true);
   };
 
@@ -16,6 +16,8 @@ function App(): JSX.Element {
     setIsLoggedIn(false);
   };
 
+  // TODO
+  // Make wrapper to format & center whole app
   return (
     <Fragment>
       {isLoggedIn ? (

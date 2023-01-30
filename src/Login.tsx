@@ -12,17 +12,31 @@ function Login({ onLogIn }: LoginProps): JSX.Element {
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
-    console.log("submitted");
-    console.log(nameInputRef.current?.value);
+    if (nameInputRef.current?.value) {
+      // set username
+      onLogIn(nameInputRef.current.value);
+    } else {
+      // TODO
+      // to add error behaviour
+      console.log("Please enter a name!");
+    }
   };
 
   return (
     <main>
       <h1>Please enter your name to start!</h1>
-      <form className="login-form" onSubmit={onSubmitHandler}>
-        <label>Name</label>
-        <input ref={nameInputRef} type="text" placeholder="name here"></input>
-        <button>Login</button>
+      <form onSubmit={onSubmitHandler}>
+        <ul>
+          <li className="login-form">
+            <label>Name</label>
+            <input
+              ref={nameInputRef}
+              type="text"
+              placeholder="name here"
+            ></input>
+            <button>Login</button>
+          </li>
+        </ul>
       </form>
     </main>
   );
