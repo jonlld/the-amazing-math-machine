@@ -4,8 +4,9 @@ import Start from "./Start";
 
 function App(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("test user");
 
-  const logIn = (): void => {
+  const logIn = (name: string): void => {
     console.log("logging in");
     setIsLoggedIn(true);
   };
@@ -15,12 +16,10 @@ function App(): JSX.Element {
     setIsLoggedIn(false);
   };
 
-  const user = "Test User";
-
   return (
     <Fragment>
       {isLoggedIn ? (
-        <Start onLogOut={logOut} username={user} />
+        <Start onLogOut={logOut} username={username} />
       ) : (
         <Login onLogIn={logIn} />
       )}
