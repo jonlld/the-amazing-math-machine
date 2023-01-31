@@ -17,36 +17,43 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
   const startContainerRef = useRef<HTMLElement>(null);
 
   // State
-  const [message, setMessage] = useState<string>("Good luck!");
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
   const [sum, setSum] = useState<Sum>({
     first: 0,
     second: 0,
   });
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
+  // change to three strikes rule
+  const [strikes, setStrikes] = useState<number>(0);
+  const [message, setMessage] = useState<string>("Good luck!");
 
-  // Handle sum answer
+  // Handle Answer Fn
   const onAnswerHandler = (answer: number): void => {
     // Start game
     setIsPlaying(true);
 
-    // Handle correct & incorrect
+    // Handle correct
     if (sum.first + sum.second === answer) {
       setMessage("Correct!");
       setIsCorrect(true);
       setScore((prev) => prev + 10);
-    } else {
-      setMessage("Try again!");
+    }
+
+    // Handle incorrect
+    else {
+      if (strikes < 3) {
+        setStrikes((p) => (p += 1));
+      }
+
       setIsCorrect(false);
-      if (score !== 0) setScore((prev) => prev - 5);
     }
 
     // Populate next sum
     generateSum();
   };
 
-  // Helper fn to generate and return a sum
+  // Generate Sum Helper
   const generateSum = (): void => {
     const first = Math.floor(Math.random() * 50 + 1);
     const second = Math.floor(Math.random() * 50 + 1);
@@ -61,7 +68,18 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     generateSum();
   }, []);
 
-  // Load fade-in transition
+  // Update message once state update is processed
+  useEffect(() => {
+    if (strikes !== 0) {
+      setMessage(`${strikes}/3 Strikes!`);
+    }
+    if (strikes === 3) {
+      setMessage("Game Over!");
+      setIsPlaying(false);
+    }
+  }, [strikes]);
+
+  // For CSS Transition
   useEffect(() => {
     setTimeout(() => {
       startContainerRef.current?.classList.remove("hidden");
