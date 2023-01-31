@@ -20,15 +20,15 @@ function QuizWindow({
 
   return (
     <section className="game-main__sums">
-      <div className="quiz--container">
+      <div className="quiz--container sum">
         <p className="quiz__sum">
-          {first} + {second} = ?
+          {first} + {second}
         </p>
       </div>
       <div className="quiz--container">
         <input
           ref={answerRef}
-          type="text"
+          type="number"
           className="quiz__input"
           onKeyDown={handleKeyDown}
           autoFocus

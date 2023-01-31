@@ -95,13 +95,14 @@ span {
 }
 
 .quiz__sum {
-  font-size: 52px;
+  font-size: 58px;
   margin-bottom: 16px;
 }
 
 .quiz__input,
 .login-input {
   font-family: inherit;
+  font-weight: bold;
   font-size: 42px;
   /* border: none; */
   border: 2px solid rgb(254, 242, 117);
@@ -158,6 +159,10 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.quiz--container.sum {
+  background-color: #222;
 }
 
 .scores {

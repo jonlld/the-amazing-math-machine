@@ -10,8 +10,10 @@
 
   2. Game screen! (center)
 
-  - Choose game mode to start (addition, subtraction, multiplication etc. / zen mode, time mode / ramp difficulty) TODO
-  - ? Choose how many stages (1 stage is 10 sums) TODO 
+  - Choose game mode to start TODO
+    - sum type (addition, subtraction)
+    - difficulty
+    - zen or normal (each sum is timed, ramping difficulty, bonus points)
 
   3. Game! (slides to side, with progress on right? nav on top with name and logout)
 
