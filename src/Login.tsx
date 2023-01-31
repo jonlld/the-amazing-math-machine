@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface LoginProps {
   onLogIn: (name: string) => void;
@@ -6,32 +6,43 @@ interface LoginProps {
 
 function Login({ onLogIn }: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
 
   const onSubmitHandler = (e: React.FormEvent): void => {
     e.preventDefault();
 
     if (nameInputRef.current?.value) {
-      // set username
       onLogIn(nameInputRef.current.value);
     } else {
-      // TODO
       console.log("Please enter a name!");
     }
   };
 
+  useEffect(() => {
+    // to animate fade-in
+    setTimeout(() => {
+      containerRef.current?.classList.remove("hidden");
+    }, 0);
+  }, []);
+
   return (
-    <main>
-      <h1>Please enter your name to start!</h1>
+    <main ref={containerRef} className="login-container hidden">
+      <h1 className="login-title">
+        Please enter <span>your name</span> to start!
+      </h1>
       <form onSubmit={onSubmitHandler}>
-        <label htmlFor="user">Username: </label>
+        <label className="login-label" htmlFor="user">
+          <span>Username:</span>
+        </label>
         <input
+          className="login-input"
           ref={nameInputRef}
           id="user"
           type="text"
-          placeholder="name here"
+          // placeholder="name here"
           autoFocus
         ></input>
-        <button>Login</button>
+        <button className="login-button">Login</button>
       </form>
     </main>
   );
