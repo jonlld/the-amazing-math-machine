@@ -17,6 +17,7 @@ body {
 
 label,
 input {
+  caret-color: #000;
   width: 100%;
   display: inline-block;
 }
@@ -48,6 +49,7 @@ span {
 }
 
 .game-header {
+  background-color: rgb(154, 154, 154);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -86,10 +88,6 @@ span {
 }
 
 .game-main__sums {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 8px;
   width: 50%;
   height: 100%;
