@@ -112,7 +112,7 @@ span {
   /* margin-bottom: 3rem; */
   /* border-radius: 8px; */
   /* focus transition */
-  transition: all 1s;
+  transition: all 2s ease-out;
 }
 
 .quiz__input:focus {
