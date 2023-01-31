@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useRef } from "react";
 import QuizWindow from "./QuizWindow";
 import Progress from "./Progress";
 
@@ -13,6 +13,10 @@ interface Sum {
 }
 
 function Start({ username, onLogOut }: StartProps): JSX.Element {
+  // Refs
+  const startContainerRef = useRef<HTMLElement>(null);
+
+  // State
   const [message, setMessage] = useState<string>("Good luck!");
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
@@ -22,27 +26,27 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     second: 0,
   });
 
+  // Handle sum answer
   const onAnswerHandler = (answer: number): void => {
+    // Start game
     setIsPlaying(true);
 
+    // Handle correct & incorrect
     if (sum.first + sum.second === answer) {
       setMessage("Correct!");
       setIsCorrect(true);
-      // increment score
-      // TODO multiplier
       setScore((prev) => prev + 10);
     } else {
       setMessage("Try again!");
       setIsCorrect(false);
-
-      if (score !== 0) {
-        setScore((prev) => prev - 5);
-      }
+      if (score !== 0) setScore((prev) => prev - 5);
     }
 
+    // Populate next sum
     generateSum();
   };
 
+  // Helper fn to generate and return a sum
   const generateSum = (): void => {
     const first = Math.floor(Math.random() * 50 + 1);
     const second = Math.floor(Math.random() * 50 + 1);
@@ -52,12 +56,20 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
     });
   };
 
+  // Load initial sum
   useEffect(() => {
     generateSum();
   }, []);
 
+  // Load fade-in transition
+  useEffect(() => {
+    setTimeout(() => {
+      startContainerRef.current?.classList.remove("hidden");
+    }, 0);
+  }, []);
+
   return (
-    <Fragment>
+    <section ref={startContainerRef} className="start-container hidden">
       <header className="game-header">
         <h1 className="game-header__welcome">
           Welcome To The <span>Amazing Math Machine</span>, {username}!
@@ -75,7 +87,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
           score={score}
         />
       </main>
-    </Fragment>
+    </section>
   );
 }
 

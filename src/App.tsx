@@ -3,8 +3,7 @@ import Login from "./Login";
 import Start from "./Start";
 
 function App(): JSX.Element {
-  // temp true
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("test user");
 
   const logIn = (name: string): void => {

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 interface Props {
   isPlaying: boolean;
   isCorrect: boolean;
@@ -7,16 +9,16 @@ interface Props {
 
 function Progress({
   isPlaying,
-  message,
   isCorrect,
+  message,
   score,
 }: Props): JSX.Element {
   let classes = "";
 
-  if (message !== "Good luck!") {
-    classes = `game-main__progress ${isCorrect ? "correct" : "incorrect"}`;
-  } else {
+  if (message === "Good luck!") {
     classes = "game-main__progress";
+  } else {
+    classes = `game-main__progress ${isCorrect ? "correct" : "incorrect"}`;
   }
 
   return (

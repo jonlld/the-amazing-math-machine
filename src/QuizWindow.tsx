@@ -20,16 +20,20 @@ function QuizWindow({
 
   return (
     <section className="game-main__sums">
-      <p className="quiz__sum">
-        {first} + {second} = ?
-      </p>
-      <input
-        ref={answerRef}
-        type="text"
-        className="quiz__input"
-        onKeyDown={handleKeyDown}
-        autoFocus
-      />
+      <div className="quiz--container">
+        <p className="quiz__sum">
+          {first} + {second} = ?
+        </p>
+      </div>
+      <div className="quiz--container">
+        <input
+          ref={answerRef}
+          type="text"
+          className="quiz__input"
+          onKeyDown={handleKeyDown}
+          autoFocus
+        />
+      </div>
     </section>
   );
 }
