@@ -5,7 +5,7 @@ interface QuizProps {
   onAnswer: (guess: number) => void;
 }
 
-function QuizWindow({
+function SumWindow({
   sum: { first, second },
   onAnswer,
 }: QuizProps): JSX.Element {
@@ -38,4 +38,4 @@ function QuizWindow({
   );
 }
 
-export default QuizWindow;
+export default SumWindow;

@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState, useRef } from "react";
-import QuizWindow from "./QuizWindow";
-import Progress from "./Progress";
+import SumWindow from "../Game/SumWindow";
+import ScoreWindow from "../Game/ScoreWindow";
 
 interface StartProps {
   username: string;
@@ -13,7 +13,7 @@ interface Sum {
   second: number;
 }
 
-function Start({ username, onLogOut, highscore }: StartProps): JSX.Element {
+function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
   // Refs
   const startContainerRef = useRef<HTMLElement>(null);
 
@@ -98,8 +98,8 @@ function Start({ username, onLogOut, highscore }: StartProps): JSX.Element {
         </button>
       </header>
       <main className="game-main">
-        <QuizWindow sum={sum} onAnswer={onAnswerHandler} />
-        <Progress
+        <SumWindow sum={sum} onAnswer={onAnswerHandler} />
+        <ScoreWindow
           isPlaying={isPlaying}
           message={message}
           isCorrect={isCorrect}
@@ -111,4 +111,4 @@ function Start({ username, onLogOut, highscore }: StartProps): JSX.Element {
   );
 }
 
-export default Start;
+export default Game;

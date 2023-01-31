@@ -12,16 +12,18 @@
 
   - Choose game mode to start TODO
     - sum type (addition, subtraction)
-    - difficulty
-    - zen or normal (each sum is timed, ramping difficulty, bonus points)
+    - game type
+      - zen
+      - normal (each sum is timed, ramping difficulty, bonus points)
+      - rush (how many sums in 60 seconds - separate leaderboard)
 
-  3. Game! (slides to side, with progress on right? nav on top with name and logout)
+  3. Game!
 
-  - Answer the sums DONE
-  - Progress counter? TODO
+  - Display sum with input, and check answers DONE
   - Add scores for correct answer DONE
-  - Add strike for incorrect answer DONE
+  - Add strike (max 3) for incorrect answer DONE
   - Add gameover state / screen once 3 strikes TODO
+  - Progress / level tracker? TODO
 
   4. Other
 
@@ -29,6 +31,7 @@
   - 'About' page / modal
   - Make it pretty, use icons, colors, animations TODO
   - Refactor
+  - Make responsive (number boxes for touch input)
 
 
   * Bonus ideas
@@ -54,7 +57,7 @@
 
 import { useState, Fragment, useEffect } from "react";
 import Login from "./Login";
-import Start from "./Start";
+import Game from "./Game/Game";
 
 interface UserData {
   username: string;
@@ -132,7 +135,7 @@ function App(): JSX.Element {
   return (
     <Fragment>
       {isLoggedIn ? (
-        <Start onLogOut={logOut} username={username} highscore={highscore} />
+        <Game onLogOut={logOut} username={username} highscore={highscore} />
       ) : (
         <Login onLogIn={logIn} />
       )}

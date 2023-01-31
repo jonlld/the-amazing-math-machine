@@ -8,7 +8,7 @@ interface Props {
   highscore: number;
 }
 
-function Progress({
+function ScoreWindow({
   isPlaying,
   isCorrect,
   message,
@@ -29,11 +29,11 @@ function Progress({
         <p>{message}</p>
       </div>
       <div className="progress--container scores">
-        <p>{isPlaying || score ? `Your current score is ${score}!` : ``}</p>
+        <p>{isPlaying || score ? `Your score is ${score}!` : ``}</p>
         <p>{highscore ? `Your highscore is ${highscore}!` : ``}</p>
       </div>
     </section>
   );
 }
 
-export default Progress;
+export default ScoreWindow;
