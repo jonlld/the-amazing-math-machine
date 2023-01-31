@@ -28,9 +28,9 @@ function Progress({
       <div className="progress--container">
         <p>{message}</p>
       </div>
-      <div className="progress--container">
+      <div className="progress--container scores">
         <p>{isPlaying || score ? `Your current score is ${score}!` : ``}</p>
-        <p>{isPlaying || highscore ? `Your highscore is ${highscore}!` : ``}</p>
+        <p>{highscore ? `Your highscore is ${highscore}!` : ``}</p>
       </div>
     </section>
   );
