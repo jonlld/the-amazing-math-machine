@@ -48,6 +48,10 @@ span {
 }
 
 .game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
   font-size: 12px;
   padding: 32px;
   height: 25vh;
@@ -62,6 +66,9 @@ span {
   font-size: 12px;
   padding: 16px;
   font-family: inherit;
+}
+
+.login-button {
   margin-top: 24px;
 }
 
@@ -90,7 +97,7 @@ span {
 }
 
 .quiz__sum {
-  font-size: 42px;
+  font-size: 52px;
   margin-bottom: 16px;
 }
 
