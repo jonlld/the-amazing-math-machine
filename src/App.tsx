@@ -35,7 +35,7 @@ function App(): JSX.Element {
 
       // If no data, add user
       if (localStorage.getItem("userdata") === null) {
-        console.log("no data exists, adding to storage");
+        console.log("No data exists, adding first user!");
         localStorage.setItem(
           "userdata",
           JSON.stringify([
@@ -49,9 +49,9 @@ function App(): JSX.Element {
 
       // If data, check users
       else {
-        console.log("data exists, retrieving data");
+        console.log("Data exists, checking data...");
         const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
-        console.log("retrieved data:");
+        console.log("Retrieved users:");
         console.log(retrievedData);
 
         const names = retrievedData.map((user: UserData) => user.username);
@@ -60,12 +60,14 @@ function App(): JSX.Element {
         if (names.includes(username)) {
           retrievedData.forEach((user: UserData) => {
             if (user.username === username) {
+              console.log("User exists, retrieving highscore!");
               setHighscore(user.highscore);
             }
           });
         }
         // If user does not exist, add new user
         else {
+          console.log("New user, adding to storage!");
           retrievedData.push({ username, highscore: 0 });
           localStorage.setItem("userdata", JSON.stringify(retrievedData));
         }
