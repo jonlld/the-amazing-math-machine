@@ -25,6 +25,8 @@
 
   - Leaderboard, populated from local storage
   - 'About' page / modal
+  - Make it pretty, use icons, colors, animations TODO
+  - Refactor
 
 
   * Bonus ideas

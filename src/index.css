@@ -88,7 +88,7 @@ span {
 }
 
 .game-main__sums {
-  padding: 8px;
+  padding: 82px;
   width: 50%;
   height: 100%;
   background-color: rgb(98, 98, 98);
@@ -103,16 +103,25 @@ span {
 .login-input {
   font-family: inherit;
   font-size: 42px;
-  border: none;
-  /* text-align: center; */
+  /* border: none; */
+  border: 2px solid rgb(254, 242, 117);
+  text-align: center;
   display: block;
   width: 50%;
-  padding: 32px;
+  padding: 28px;
   /* margin-bottom: 3rem; */
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  /* focus transition */
+  transition: all 1s;
+}
+
+.quiz__input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
 }
 
 .game-main__progress {
+  padding: 82px;
   height: 100%;
   font-size: 24px;
   gap: 42px;
