@@ -78,7 +78,7 @@ function App(): JSX.Element {
   return (
     <Fragment>
       {isLoggedIn ? (
-        <Start onLogOut={logOut} username={username} />
+        <Start onLogOut={logOut} username={username} highscore={highscore} />
       ) : (
         <Login onLogIn={logIn} />
       )}

@@ -5,6 +5,7 @@ import Progress from "./Progress";
 interface StartProps {
   username: string;
   onLogOut: () => void;
+  highscore: number;
 }
 
 interface Sum {
@@ -12,7 +13,7 @@ interface Sum {
   second: number;
 }
 
-function Start({ username, onLogOut }: StartProps): JSX.Element {
+function Start({ username, onLogOut, highscore }: StartProps): JSX.Element {
   // Refs
   const startContainerRef = useRef<HTMLElement>(null);
 
@@ -103,6 +104,7 @@ function Start({ username, onLogOut }: StartProps): JSX.Element {
           message={message}
           isCorrect={isCorrect}
           score={score}
+          highscore={highscore}
         />
       </main>
     </section>
