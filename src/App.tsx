@@ -1,3 +1,53 @@
+/*
+
+  Development Notes:
+
+  1. Basic registration! (center)
+
+  - Prompt user to enter name (form, state) - center of page DONE
+  - Save name to local storage DONE
+  - Switch to game screen DONE
+
+  2. Game screen! (center)
+
+  - Choose game mode to start (addition, subtraction, multiplication etc. / zen mode, time mode / ramp difficulty) TODO
+  - ? Choose how many stages (1 stage is 10 sums) TODO 
+
+  3. Game! (slides to side, with progress on right? nav on top with name and logout)
+
+  - Answer the sums DONE
+  - Progress counter? TODO
+  - Add scores for correct answer DONE
+  - Add strike for incorrect answer DONE
+  - Add gameover state / screen once 3 strikes TODO
+
+  4. Other
+
+  - Leaderboard, populated from local storage
+  - 'About' page / modal
+
+
+  * Bonus ideas
+
+  - Add a TNT power for every 10 sums answered - allows you to skip an answer?
+
+
+  * References / Resources
+  
+  Imported Font:
+  https://fonts.google.com/specimen/Press+Start+2P
+
+  Layout:
+  https://www.w3schools.com/howto/howto_css_stacked_form.asp
+
+  CSS - BEM:
+  https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849/
+
+  Transitions - add a key: TODO
+  https://stackoverflow.com/questions/63186710/how-to-trigger-a-css-animation-on-every-time-a-react-component-re-renders
+
+*/
+
 import { useState, Fragment, useEffect } from "react";
 import Login from "./Login";
 import Start from "./Start";
