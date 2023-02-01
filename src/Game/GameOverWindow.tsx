@@ -6,7 +6,7 @@ const GameOverWindow = ({ score, highscore }: GameOverProps): JSX.Element => {
       <h1>Game Over!</h1>
       <p>Your current score is {score}! Great job!</p>
       <p>Your highscore is {highscore}!</p>
-      <button>Start Again</button>
+      <button className="btn">Play Again</button>
     </section>
   );
 };

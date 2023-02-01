@@ -42,7 +42,7 @@ function Login({ onLogIn }: LoginProps): JSX.Element {
           // placeholder="name here"
           autoFocus
         ></input>
-        <button className="login-button">Login</button>
+        <button className="btn login-button">Login</button>
       </form>
     </main>
   );

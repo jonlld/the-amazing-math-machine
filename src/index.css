@@ -64,9 +64,7 @@ span.username {
   color: #eee;
 }
 
-.game-header__button,
-.login-button,
-.game-start-button {
+.btn {
   border: none;
   background-color: #eee;
   color: #222;
@@ -79,8 +77,7 @@ span.username {
   margin-top: 24px;
 }
 
-.game-header__button:hover,
-.login-button:hover {
+.btn:hover {
   background-color: #ccc;
 }
 

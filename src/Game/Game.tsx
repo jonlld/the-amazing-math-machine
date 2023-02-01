@@ -98,7 +98,7 @@ function Game({
           Welcome To The <span>Amazing Math Machine</span>,{" "}
           <span className="username">{username}</span>!
         </h1>
-        <button className="game-header__button" onClick={onLogOut}>
+        <button className="btn" onClick={onLogOut}>
           Logout
         </button>
       </header>

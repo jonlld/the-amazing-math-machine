@@ -2,7 +2,7 @@ Development Notes:
 
 1. Basic registration! (center)
 
-- Prompt user to enter name (form, state) - center of page DONE
+- Prompt user to enter name DONE
 - Save name to local storage DONE
 - Switch to game screen DONE
 
@@ -15,14 +15,14 @@ Development Notes:
     - normal (each sum is timed, ramping difficulty, bonus points)
     - rush (how many sums in 60 seconds - separate leaderboard)
 
-3. Game!
+3. Start!
 
 - Display sum with input, and check answers DONE
-- Add scores for correct answer DONE
+- Add score for correct answer DONE
 - Add strike (max 3) for incorrect answer DONE
 - Add gameover state / screen once 3 strikes DONE
-- Update user stored data on game over TODO
-- Allow click to restart TODO
+- Update user stored data on game over DONE
+- Allow click to restart game TODO
 - Show user highscore on start screen TODO
 - Progress / level tracker? TODO
 
