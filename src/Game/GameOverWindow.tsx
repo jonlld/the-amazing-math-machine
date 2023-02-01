@@ -1,5 +1,14 @@
-const GameOverWindow = (): JSX.Element => {
-  return <h1>Game Over! Start Again?</h1>;
+import { GameOverProps } from "../models/interfaces";
+
+const GameOverWindow = ({ score, highscore }: GameOverProps): JSX.Element => {
+  return (
+    <section>
+      <h1>Game Over!</h1>
+      <p>Your current score is {score}! Great job!</p>
+      <p>Your highscore is {highscore}!</p>
+      <button>Start Again</button>
+    </section>
+  );
 };
 
 export default GameOverWindow;

@@ -45,7 +45,6 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
       if (strikes < 3) {
         setStrikes((p) => (p += 1));
       }
-
       setIsCorrect(false);
     }
 
@@ -94,7 +93,9 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
         {!isPlaying && !isGameOver && (
           <GameStartWindow onStart={onStartHandler} />
         )}
-        {!isPlaying && isGameOver && <GameOverWindow />}
+        {!isPlaying && isGameOver && (
+          <GameOverWindow score={score} highscore={highscore} />
+        )}
         {/* AFTER START */}
         {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}
         {isPlaying && (

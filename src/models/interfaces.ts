@@ -18,6 +18,11 @@ export interface GameStartProps {
   onStart: () => void;
 }
 
+export interface GameOverProps {
+  score: number;
+  highscore: number;
+}
+
 export interface ScoreProps {
   isCorrect: boolean;
   message: string;
