@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useEffect } from "react";
 import { QuizProps } from "../models/interfaces";
 
 function SumWindow({

@@ -1,3 +1,4 @@
+// generates two random # between 1 and 50
 export const generateSum = () => {
   const first = Math.floor(Math.random() * 50 + 1);
   const second = Math.floor(Math.random() * 50 + 1);

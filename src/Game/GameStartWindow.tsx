@@ -1,4 +1,3 @@
-import { isVoidExpression } from "typescript";
 import { GameStartProps } from "../models/interfaces";
 
 const GameStartWindow = ({ onStart }: GameStartProps): JSX.Element => {

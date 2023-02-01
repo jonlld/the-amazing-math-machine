@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState, useRef } from "react";
 import GameStartWindow from "./GameStartWindow";
+import GameOverWindow from "./GameOverWindow";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
@@ -25,6 +26,9 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
   // HANDLE GAME START
   const onStartHandler = (): void => {
     setIsPlaying(true);
+    // reset state here?
+    setScore(0);
+    setStrikes(0);
   };
 
   // HANDLE ANSWER
@@ -60,13 +64,14 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
       setMessage(`${strikes}/3 Strikes!`);
     }
     if (strikes === 3) {
-      setMessage("Game Over!");
-
       // TODO game over logic
+      setMessage("Game Over!");
+      setIsPlaying(false);
+      setIsGameOver(true);
     }
   }, [strikes]);
 
-  // Trigger transition after mounting
+  // Trigger fade-in on initial component load
   useEffect(() => {
     setTimeout(() => {
       startContainerRef.current?.classList.remove("hidden");
@@ -85,7 +90,12 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
         </button>
       </header>
       <main className="game-main">
-        {!isPlaying && <GameStartWindow onStart={onStartHandler} />}
+        {/* BEFORE START */}
+        {!isPlaying && !isGameOver && (
+          <GameStartWindow onStart={onStartHandler} />
+        )}
+        {!isPlaying && isGameOver && <GameOverWindow />}
+        {/* AFTER START */}
         {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}
         {isPlaying && (
           <ScoreWindow
