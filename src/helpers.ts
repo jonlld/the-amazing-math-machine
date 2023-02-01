@@ -7,14 +7,17 @@ export const generateSum = () => {
 };
 
 // Set first user details
-export const setInitialUser = (name: string): void => {
+export const storeInitialUser = (
+  username: string,
+  highscore: number = 0
+): void => {
   console.log("No data exists, adding first user!");
   localStorage.setItem(
     "userdata",
     JSON.stringify([
       {
-        username: name,
-        highscore: 0,
+        username,
+        highscore,
       },
     ])
   );
