@@ -181,3 +181,13 @@ span.username {
   flex-direction: column;
   gap: 24px;
 }
+
+.game-over--heading {
+  font-size: 36px;
+  color: rgb(208, 94, 113);
+  margin-bottom: 32px;
+}
+
+.game-over--score {
+  margin-bottom: 38px;
+}

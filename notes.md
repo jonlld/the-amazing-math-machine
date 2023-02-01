@@ -31,6 +31,7 @@ Development Notes:
 - Leaderboard, populated from local storage
 - 'About' page / modal
 - Make it pretty, use icons, colors, animations TODO
+- Sounds
 - Refactor
 - Make responsive (number boxes for touch input)
 
