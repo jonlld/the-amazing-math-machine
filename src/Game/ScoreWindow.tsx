@@ -21,7 +21,6 @@ function ScoreWindow({
         <p>{message}</p>
       </div>
       <div className="progress--container scores">
-        {/* Render only if have score or highscore */}
         <p>{score > 0 && `Your score is ${score}!`}</p>
         <p>{highscore > 0 && `Your previous highscore is ${highscore}!`}</p>
       </div>

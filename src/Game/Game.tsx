@@ -37,7 +37,13 @@ function Game({
   };
 
   // HANDLE GAME OVER
-  const onFinishHandler = (): void => {};
+  const playAgainHandler = (): void => {
+    setMessage("Good luck!");
+    setScore(0);
+    setStrikes(0);
+    setIsPlaying(true);
+    setIsGameOver(false);
+  };
 
   // HANDLE ANSWER
   const onAnswerHandler = (answer: number): void => {
@@ -75,10 +81,8 @@ function Game({
       setMessage("Game Over!");
       // end game
       setIsPlaying(false);
-
       // update highscore
       updateHighscore(score);
-
       // show game over screen
       setIsGameOver(true);
     }
@@ -108,7 +112,11 @@ function Game({
           <GameStartWindow onStart={onStartHandler} />
         )}
         {!isPlaying && isGameOver && (
-          <GameOverWindow score={score} highscore={highscore} />
+          <GameOverWindow
+            score={score}
+            highscore={highscore}
+            onPlayAgain={playAgainHandler}
+          />
         )}
         {/* AFTER START */}
         {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}

@@ -22,6 +22,7 @@ export interface GameStartProps {
 export interface GameOverProps {
   score: number;
   highscore: number;
+  onPlayAgain: () => void;
 }
 
 export interface ScoreProps {
