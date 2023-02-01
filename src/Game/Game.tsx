@@ -6,7 +6,12 @@ import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
 import { generateSum } from "../helpers";
 
-function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
+function Game({
+  username,
+  onLogOut,
+  highscore,
+  updateHighscore,
+}: StartProps): JSX.Element {
   // Refs
   const startContainerRef = useRef<HTMLElement>(null);
 
@@ -30,6 +35,9 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
     setScore(0);
     setStrikes(0);
   };
+
+  // HANDLE GAME OVER
+  const onFinishHandler = (): void => {};
 
   // HANDLE ANSWER
   const onAnswerHandler = (answer: number): void => {
@@ -65,7 +73,13 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
     if (strikes === 3) {
       // TODO game over logic
       setMessage("Game Over!");
+      // end game
       setIsPlaying(false);
+
+      // update highscore
+      updateHighscore(score);
+
+      // show game over screen
       setIsGameOver(true);
     }
   }, [strikes]);

@@ -7,6 +7,7 @@ export interface StartProps {
   username: string;
   onLogOut: () => void;
   highscore: number;
+  updateHighscore: (score: number) => void;
 }
 
 export interface Sum {

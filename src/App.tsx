@@ -80,6 +80,13 @@ function App(): JSX.Element {
     setIsLoggedIn(false);
   };
 
+  const updateHighscore = (score: number): void => {
+    // update if current score is higher than current highscore
+    if (score > highscore) {
+      setHighscore(score);
+    }
+  };
+
   // STORAGE UPDATES ON LOGIN OR USER CHANGE
   useEffect(() => {
     // Execute only if username is entered
@@ -131,7 +138,12 @@ function App(): JSX.Element {
   return (
     <Fragment>
       {isLoggedIn ? (
-        <Game onLogOut={logOut} username={username} highscore={highscore} />
+        <Game
+          onLogOut={logOut}
+          username={username}
+          highscore={highscore}
+          updateHighscore={updateHighscore}
+        />
       ) : (
         <Login onLogIn={logIn} />
       )}
