@@ -22,7 +22,10 @@
   - Display sum with input, and check answers DONE
   - Add scores for correct answer DONE
   - Add strike (max 3) for incorrect answer DONE
-  - Add gameover state / screen once 3 strikes TODO
+  - Add gameover state / screen once 3 strikes DONE
+  - Update user stored data on game over TODO
+  - Allow click to restart TODO 
+  - Show user highscore on start screen TODO 
   - Progress / level tracker? TODO
 
   4. Other
@@ -59,14 +62,13 @@ import { useState, Fragment, useEffect } from "react";
 import Login from "./Login";
 import Game from "./Game/Game";
 import { UserData } from "./models/interfaces";
+import { setInitialUser } from "./helpers";
 
 function App(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  // current user and highscore
   const [username, setUsername] = useState<string>("");
-  // stored Data objects - all users and highscores
-  const [userData, setUserData] = useState<UserData[]>([]);
   const [highscore, setHighscore] = useState<number>(0);
+  const [userData, setUserData] = useState<UserData[]>([]);
 
   const logIn = (name: string): void => {
     if (name) {
@@ -87,27 +89,18 @@ function App(): JSX.Element {
     }
   };
 
-  // STORAGE UPDATES ON LOGIN OR USER CHANGE
+  // UPDATE / RETRIEVE STORAGE ON LOGIN OR USER CHANGE
   useEffect(() => {
     // Execute only if username is entered
     if (username) {
       console.log("executing use Effect now");
 
-      // If no data, add user
+      // NO STORED DATA
       if (localStorage.getItem("userdata") === null) {
-        console.log("No data exists, adding first user!");
-        localStorage.setItem(
-          "userdata",
-          JSON.stringify([
-            {
-              username,
-              highscore: 0,
-            },
-          ])
-        );
+        setInitialUser(username);
       }
 
-      // If data, check users
+      // HAVE STORED DATA: CHECK USERS
       else {
         console.log("Data exists, checking data...");
         const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
@@ -134,6 +127,12 @@ function App(): JSX.Element {
       }
     }
   }, [username]);
+
+  // UPDATE USER DATA ON GAME OVER && NEW HIGHSCORE TODO
+  useEffect(() => {}, [highscore]);
+
+  // UPDATE STORAGE ON DATA UPDATE TODO
+  useEffect(() => {}, [userData]);
 
   return (
     <Fragment>
