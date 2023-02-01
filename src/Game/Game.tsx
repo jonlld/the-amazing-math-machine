@@ -122,6 +122,8 @@ function Game({
         {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}
         {isPlaying && (
           <ScoreWindow
+            // Add changing key to force whole component to render & trigger animation each time
+            key={score}
             message={message}
             isCorrect={isCorrect}
             score={score}
