@@ -123,7 +123,7 @@ function Game({
         {isPlaying && (
           <ScoreWindow
             // Add changing key to force whole component to render & trigger animation each time
-            key={score}
+            key={Math.random()}
             message={message}
             isCorrect={isCorrect}
             score={score}
