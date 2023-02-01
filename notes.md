@@ -52,3 +52,6 @@ https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hour
 
 Transitions - add a key: TODO
 https://stackoverflow.com/questions/63186710/how-to-trigger-a-css-animation-on-every-time-a-react-component-re-renders
+
+Animations - wiggle effect
+https://blog.hubspot.com/website/css-animation-examples

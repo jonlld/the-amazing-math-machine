@@ -146,6 +146,7 @@ span.username {
 
 .incorrect {
   background-color: rgb(208, 94, 113);
+
   animation: incorrect-pulse 0.3s, wiggle 0.5s;
 }
 
