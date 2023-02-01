@@ -1,17 +1,7 @@
 import { Fragment, useEffect, useState, useRef } from "react";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
-
-interface StartProps {
-  username: string;
-  onLogOut: () => void;
-  highscore: number;
-}
-
-interface Sum {
-  first: number;
-  second: number;
-}
+import { StartProps, Sum } from "../models/interfaces";
 
 function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
   // Refs
@@ -91,7 +81,8 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
     <section ref={startContainerRef} className="start-container hidden">
       <header className="game-header">
         <h1 className="game-header__welcome">
-          Welcome To The <span>Amazing Math Machine</span>, {username}!
+          Welcome To The <span>Amazing Math Machine</span>,{" "}
+          <span className="username">{username}</span>!
         </h1>
         <button className="game-header__button" onClick={onLogOut}>
           Logout

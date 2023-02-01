@@ -1,9 +1,5 @@
 import React, { Fragment, useRef } from "react";
-
-interface QuizProps {
-  sum: { first: number; second: number };
-  onAnswer: (guess: number) => void;
-}
+import { QuizProps } from "../models/interfaces";
 
 function SumWindow({
   sum: { first, second },

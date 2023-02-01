@@ -1,12 +1,5 @@
 import { useEffect } from "react";
-
-interface Props {
-  isPlaying: boolean;
-  isCorrect: boolean;
-  message: string;
-  score: number;
-  highscore: number;
-}
+import { ScoreProps } from "../models/interfaces";
 
 function ScoreWindow({
   isPlaying,
@@ -14,7 +7,7 @@ function ScoreWindow({
   message,
   score,
   highscore,
-}: Props): JSX.Element {
+}: ScoreProps): JSX.Element {
   let classes = "";
 
   if (message === "Good luck!") {

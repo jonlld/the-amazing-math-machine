@@ -27,6 +27,10 @@ span {
   color: rgb(254, 242, 117);
 }
 
+span.username {
+  color: rgb(125, 248, 123);
+}
+
 /* LOGIN */
 .login-container {
   max-width: 50%;
@@ -74,7 +78,8 @@ span {
   margin-top: 24px;
 }
 
-.game-header__button:hover {
+.game-header__button:hover,
+.login-button:hover {
   background-color: #ccc;
 }
 

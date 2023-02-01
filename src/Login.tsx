@@ -32,7 +32,7 @@ function Login({ onLogIn }: LoginProps): JSX.Element {
       </h1>
       <form onSubmit={onSubmitHandler}>
         <label className="login-label" htmlFor="user">
-          <span>Username:</span>
+          <span className="username">Username:</span>
         </label>
         <input
           className="login-input"

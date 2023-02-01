@@ -58,11 +58,7 @@
 import { useState, Fragment, useEffect } from "react";
 import Login from "./Login";
 import Game from "./Game/Game";
-
-interface UserData {
-  username: string;
-  highscore: number;
-}
+import { UserData } from "./models/interfaces";
 
 function App(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
