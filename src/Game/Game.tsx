@@ -2,34 +2,32 @@ import { Fragment, useEffect, useState, useRef } from "react";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
+import { generateSum } from "../helpers";
 
 function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
   // Refs
   const startContainerRef = useRef<HTMLElement>(null);
 
   // State
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
+  const [strikes, setStrikes] = useState<number>(0);
+  const [message, setMessage] = useState<string>("Good luck!");
   const [sum, setSum] = useState<Sum>({
     first: 0,
     second: 0,
   });
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
-  // change to three strikes rule
-  const [strikes, setStrikes] = useState<number>(0);
-  const [message, setMessage] = useState<string>("Good luck!");
 
-  // Handle Answer Fn
+  // HANDLE ANSWER
   const onAnswerHandler = (answer: number): void => {
-    // Start game TODO
-
-    // Handle correct
+    // IF CORRECT
     if (sum.first + sum.second === answer) {
       setMessage("Correct!");
       setIsCorrect(true);
       setScore((prev) => prev + 10);
     }
 
-    // Handle incorrect
+    // IF INCORRECT
     else {
       if (strikes < 3) {
         setStrikes((p) => (p += 1));
@@ -38,23 +36,13 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
       setIsCorrect(false);
     }
 
-    // Populate next sum
-    generateSum();
-  };
-
-  // Generate Sum Helper
-  const generateSum = (): void => {
-    const first = Math.floor(Math.random() * 50 + 1);
-    const second = Math.floor(Math.random() * 50 + 1);
-
-    setSum((prev) => {
-      return { ...prev, first, second };
-    });
+    // ALWAYS
+    setSum(generateSum());
   };
 
   // Load initial sum
   useEffect(() => {
-    generateSum();
+    setSum(generateSum());
   }, []);
 
   // Update message once state update is processed

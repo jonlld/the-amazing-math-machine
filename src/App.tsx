@@ -61,7 +61,7 @@ import Game from "./Game/Game";
 import { UserData } from "./models/interfaces";
 
 function App(): JSX.Element {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   // current user and highscore
   const [username, setUsername] = useState<string>("");
   // stored Data objects - all users and highscores
