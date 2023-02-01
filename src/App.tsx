@@ -5,7 +5,7 @@ import { UserData } from "./models/interfaces";
 import { storeInitialUser, storeUpdatedUser } from "./helpers";
 
 function App(): JSX.Element {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [username, setUsername] = useState<string>("");
   const [highscore, setHighscore] = useState<number>(0);
 
