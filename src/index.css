@@ -118,7 +118,7 @@ span.username {
   font-size: 42px;
   /* border: none; */
   border: 2px solid rgb(254, 242, 117);
-  text-align: center;
+  /* text-align: center; */
   display: block;
   width: 50%;
   padding: 28px;
@@ -140,13 +140,14 @@ span.username {
   gap: 42px;
   align-items: center;
   justify-content: center;
+  text-align: center;
   width: 50%;
 }
 
 .incorrect {
   background-color: rgb(208, 94, 113);
   animation-name: incorrect-pulse;
-  animation-duration: 2s;
+  animation-duration: 0.3s;
 }
 
 @keyframes incorrect-pulse {
@@ -154,7 +155,7 @@ span.username {
     background-color: rgb(208, 94, 113);
   }
   50% {
-    background-color: rgb(148, 68, 82);
+    background-color: rgb(255, 128, 149);
   }
   100% {
     background-color: rgb(208, 94, 113);
@@ -163,6 +164,20 @@ span.username {
 
 .correct {
   background-color: rgb(166, 192, 127);
+  animation-name: correct-pulse;
+  animation-duration: 0.3s;
+}
+
+@keyframes correct-pulse {
+  0% {
+    background-color: rgb(166, 192, 127);
+  }
+  50% {
+    background-color: rgb(206, 236, 161);
+  }
+  100% {
+    background-color: rgb(166, 192, 127);
+  }
 }
 
 .quiz--container,
