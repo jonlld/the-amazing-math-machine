@@ -12,33 +12,33 @@ function App(): JSX.Element {
   // Handle storage and username / highscore state on login
   const logIn = (name: string): void => {
     if (name) {
-      let currentUser: UserData = { username: name, highscore: 0 };
+      const formattedName = name.trim().toLowerCase();
+      let currentUser: UserData = { username: formattedName, highscore: 0 };
 
-      // NO STORED DATA: ADD USER
+      // NO STORED DATA
+      // INITIALISE STORAGE
       if (localStorage.getItem("userdata") === null) {
         storeInitialUser(currentUser.username);
       }
 
-      // STORED DATA: CHECK
+      // HAVE STORED DATA
       else {
         const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
-        let hasName = false;
+        let hasName = retrievedData
+          .map((el: UserData) => el.username)
+          .includes(currentUser.username);
 
-        // Fetch highscore
-        retrievedData.forEach((user: UserData) => {
-          if (user.username === currentUser.username) {
-            currentUser.highscore = user.highscore;
-            hasName = true;
-          }
-        });
-
-        // Or add new user
         if (!hasName) {
           retrievedData.push(currentUser);
           localStorage.setItem("userdata", JSON.stringify(retrievedData));
+        } else {
+          retrievedData.forEach((user: UserData) => {
+            if (user.username === currentUser.username) {
+              currentUser.highscore = user.highscore;
+            }
+          });
         }
 
-        // Update state
         setUsername(currentUser.username);
         setHighscore(currentUser.highscore);
         setIsLoggedIn(true);
@@ -54,7 +54,6 @@ function App(): JSX.Element {
   const updateHighscore = (score: number): void => {
     if (score > highscore) {
       console.log("Updating Highscore");
-
       setHighscore(score);
     }
   };
