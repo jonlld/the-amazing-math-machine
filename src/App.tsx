@@ -1,3 +1,98 @@
+import { useState, Fragment, useEffect } from "react";
+import Login from "./Login";
+import Game from "./Game/Game";
+import { UserData } from "./models/interfaces";
+import { setInitialUser } from "./helpers";
+
+function App(): JSX.Element {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
+  const [highscore, setHighscore] = useState<number>(0);
+  const [userData, setUserData] = useState<UserData[]>([]);
+
+  const logIn = (name: string): void => {
+    console.log("logIn");
+    if (name) {
+      // NO STORED DATA
+      if (localStorage.getItem("userdata") === null) {
+        setInitialUser(name);
+      }
+      // STORED DATA: CHECK USERS
+      else {
+        // PARSE
+        const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
+        const names = retrievedData.map((user: UserData) => user.username);
+
+        // If user exists, retrieve highscore
+        if (names.includes(name)) {
+          retrievedData.forEach((user: UserData) => {
+            if (user.username === name) {
+              setHighscore(user.highscore);
+            }
+          });
+        }
+        // If user does not exist, add new user
+        else {
+          retrievedData.push({ username: name, highscore: 0 });
+          localStorage.setItem("userdata", JSON.stringify(retrievedData));
+        }
+      }
+
+      // Update state with final storage
+      setUserData(JSON.parse(localStorage.getItem("userdata")!));
+
+      // update state
+      setUsername(name);
+      setIsLoggedIn(true);
+    }
+  };
+
+  const logOut = (): void => {
+    console.log("logOut");
+    setIsLoggedIn(false);
+  };
+
+  const updateHighscore = (score: number): void => {
+    console.log("updateHighscore");
+    // update if current score is higher than current highscore
+    if (score > highscore) {
+      setHighscore(score);
+    }
+  };
+
+  // UPDATE USER DATA ON GAME OVER && NEW HIGHSCORE TODO
+  // useEffect(() => {
+  //   setUserData((prev) => {
+  //     prev.map((user) => {
+  //       if (user.username === username) {
+  //         user.highscore = highscore;
+  //       }
+  //     });
+  //   });
+  // }, [highscore]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("userdata", JSON.stringify(userData));
+  // }, [userData]);
+
+  return (
+    <Fragment>
+      {isLoggedIn ? (
+        <Game
+          onLogOut={logOut}
+          username={username}
+          highscore={highscore}
+          updateHighscore={updateHighscore}
+        />
+      ) : (
+        <Login onLogIn={logIn} />
+      )}
+    </Fragment>
+  );
+}
+
+export default App;
+
 /*
 
   Development Notes:
@@ -57,97 +152,3 @@
   https://stackoverflow.com/questions/63186710/how-to-trigger-a-css-animation-on-every-time-a-react-component-re-renders
 
 */
-
-import { useState, Fragment, useEffect } from "react";
-import Login from "./Login";
-import Game from "./Game/Game";
-import { UserData } from "./models/interfaces";
-import { setInitialUser } from "./helpers";
-
-function App(): JSX.Element {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  const [username, setUsername] = useState<string>("");
-  const [highscore, setHighscore] = useState<number>(0);
-  const [userData, setUserData] = useState<UserData[]>([]);
-
-  const logIn = (name: string): void => {
-    if (name) {
-      setUsername(name);
-      setIsLoggedIn(true);
-    }
-  };
-
-  const logOut = (): void => {
-    console.log("logging out");
-    setIsLoggedIn(false);
-  };
-
-  const updateHighscore = (score: number): void => {
-    // update if current score is higher than current highscore
-    if (score > highscore) {
-      setHighscore(score);
-    }
-  };
-
-  // UPDATE / RETRIEVE STORAGE ON LOGIN OR USER CHANGE
-  useEffect(() => {
-    // Execute only if username is entered
-    if (username) {
-      console.log("executing use Effect now");
-
-      // NO STORED DATA
-      if (localStorage.getItem("userdata") === null) {
-        setInitialUser(username);
-      }
-
-      // HAVE STORED DATA: CHECK USERS
-      else {
-        console.log("Data exists, checking data...");
-        const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
-        console.log("Retrieved users:");
-        console.log(retrievedData);
-
-        const names = retrievedData.map((user: UserData) => user.username);
-
-        // If user exists, retrieve highscore
-        if (names.includes(username)) {
-          retrievedData.forEach((user: UserData) => {
-            if (user.username === username) {
-              console.log("User exists, retrieving highscore!");
-              setHighscore(user.highscore);
-            }
-          });
-        }
-        // If user does not exist, add new user
-        else {
-          console.log("New user, adding to storage!");
-          retrievedData.push({ username, highscore: 0 });
-          localStorage.setItem("userdata", JSON.stringify(retrievedData));
-        }
-      }
-    }
-  }, [username]);
-
-  // UPDATE USER DATA ON GAME OVER && NEW HIGHSCORE TODO
-  useEffect(() => {}, [highscore]);
-
-  // UPDATE STORAGE ON DATA UPDATE TODO
-  useEffect(() => {}, [userData]);
-
-  return (
-    <Fragment>
-      {isLoggedIn ? (
-        <Game
-          onLogOut={logOut}
-          username={username}
-          highscore={highscore}
-          updateHighscore={updateHighscore}
-        />
-      ) : (
-        <Login onLogIn={logIn} />
-      )}
-    </Fragment>
-  );
-}
-
-export default App;
