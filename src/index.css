@@ -65,7 +65,8 @@ span.username {
 }
 
 .game-header__button,
-.login-button {
+.login-button,
+.game-start-button {
   border: none;
   background-color: #eee;
   color: #222;
@@ -89,7 +90,16 @@ span.username {
   color: #eee;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  /* justify-content: space-between; */
+}
+
+.game-start--container {
+  text-align: center;
+}
+
+.game-start--header {
+  margin-bottom: 12px;
 }
 
 .game-main__sums {

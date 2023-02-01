@@ -14,6 +14,10 @@ export interface Sum {
   second: number;
 }
 
+export interface GameStartProps {
+  onStart: () => void;
+}
+
 export interface ScoreProps {
   isCorrect: boolean;
   message: string;

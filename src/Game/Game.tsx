@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState, useRef } from "react";
+import GameStartWindow from "./GameStartWindow";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
@@ -17,6 +18,14 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
     first: 0,
     second: 0,
   });
+
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
+
+  // HANDLE GAME START
+  const onStartHandler = (): void => {
+    setIsPlaying(true);
+  };
 
   // HANDLE ANSWER
   const onAnswerHandler = (answer: number): void => {
@@ -57,7 +66,7 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
     }
   }, [strikes]);
 
-  // For CSS Transition
+  // Trigger transition after mounting
   useEffect(() => {
     setTimeout(() => {
       startContainerRef.current?.classList.remove("hidden");
@@ -76,13 +85,16 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
         </button>
       </header>
       <main className="game-main">
-        <SumWindow sum={sum} onAnswer={onAnswerHandler} />
-        <ScoreWindow
-          message={message}
-          isCorrect={isCorrect}
-          score={score}
-          highscore={highscore}
-        />
+        {!isPlaying && <GameStartWindow onStart={onStartHandler} />}
+        {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}
+        {isPlaying && (
+          <ScoreWindow
+            message={message}
+            isCorrect={isCorrect}
+            score={score}
+            highscore={highscore}
+          />
+        )}
       </main>
     </section>
   );
