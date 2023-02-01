@@ -8,7 +8,6 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
   const startContainerRef = useRef<HTMLElement>(null);
 
   // State
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [sum, setSum] = useState<Sum>({
     first: 0,
     second: 0,
@@ -21,8 +20,7 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
 
   // Handle Answer Fn
   const onAnswerHandler = (answer: number): void => {
-    // Start game
-    setIsPlaying(true);
+    // Start game TODO
 
     // Handle correct
     if (sum.first + sum.second === answer) {
@@ -66,7 +64,8 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
     }
     if (strikes === 3) {
       setMessage("Game Over!");
-      setIsPlaying(false);
+
+      // TODO game over logic
     }
   }, [strikes]);
 
@@ -91,7 +90,6 @@ function Game({ username, onLogOut, highscore }: StartProps): JSX.Element {
       <main className="game-main">
         <SumWindow sum={sum} onAnswer={onAnswerHandler} />
         <ScoreWindow
-          isPlaying={isPlaying}
           message={message}
           isCorrect={isCorrect}
           score={score}

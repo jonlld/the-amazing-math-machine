@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { ScoreProps } from "../models/interfaces";
 
 function ScoreWindow({
-  isPlaying,
   isCorrect,
   message,
   score,
@@ -22,8 +21,8 @@ function ScoreWindow({
         <p>{message}</p>
       </div>
       <div className="progress--container scores">
-        <p>{isPlaying || score ? `Your score is ${score}!` : ``}</p>
-        <p>{highscore ? `Your highscore is ${highscore}!` : ``}</p>
+        <p>{score > 0 && `Your score is ${score}!`}</p>
+        <p>{highscore > 0 && `Your highscore is ${highscore}!`}</p>
       </div>
     </section>
   );

@@ -15,7 +15,6 @@ export interface Sum {
 }
 
 export interface ScoreProps {
-  isPlaying: boolean;
   isCorrect: boolean;
   message: string;
   score: number;
