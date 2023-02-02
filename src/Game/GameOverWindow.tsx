@@ -4,9 +4,15 @@ const GameOverWindow = ({
   score,
   highscore,
   onPlayAgain,
+  onChoose,
 }: GameOverProps): JSX.Element => {
-  const clickHandler = (): void => {
+  const playHandler = (): void => {
     onPlayAgain();
+  };
+
+  const chooseHandler = (): void => {
+    console.log("Back to choose game screen!");
+    onChoose();
   };
 
   return (
@@ -21,10 +27,10 @@ const GameOverWindow = ({
           Your <span>highscore</span> is <span>{highscore}!</span>
         </p>
       )}
-      <button className="btn btn__play-again" onClick={clickHandler}>
+      <button className="btn btn__play-again" onClick={playHandler}>
         Play Again
       </button>
-      <button className="btn" onClick={clickHandler}>
+      <button className="btn" onClick={chooseHandler}>
         Choose Game Type
       </button>
     </section>

@@ -29,23 +29,32 @@ function Game({
     operand: "",
   });
 
-  // HANDLE GAME START
+  // HANDLE GAME START FROM CHOOSE GAME BUTTON CLICK
   const onStartHandler = (type: string): void => {
     // set type state for later use in generating sums
     setType(type);
     // Load initial sum
     setSum(generateSum(type));
+    setMessage("Good luck!");
     setIsPlaying(true);
     setScore(0);
     setStrikes(0);
   };
 
-  // HANDLE NEW GAME
+  // FROM GAME OVER SCREEN
+
+  // NEW GAME
   const playAgainHandler = (): void => {
     setMessage("Good luck!");
     setScore(0);
     setStrikes(0);
     setIsPlaying(true);
+    setIsGameOver(false);
+  };
+
+  // CHOOSE AGAIN
+  const chooseHandler = (): void => {
+    setIsPlaying(false);
     setIsGameOver(false);
   };
 
@@ -78,6 +87,7 @@ function Game({
     if (strikes === 3) {
       setMessage("Game Over!");
       setIsPlaying(false);
+      // Update highscore on game over
       updateHighscore(score);
       setIsGameOver(true);
     }
@@ -113,6 +123,7 @@ function Game({
             score={score}
             highscore={highscore}
             onPlayAgain={playAgainHandler}
+            onChoose={chooseHandler}
           />
         )}
 

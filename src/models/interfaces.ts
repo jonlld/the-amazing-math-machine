@@ -35,6 +35,7 @@ export interface GameOverProps {
   score: number;
   highscore: number;
   onPlayAgain: () => void;
+  onChoose: () => void;
 }
 
 export interface ScoreProps {

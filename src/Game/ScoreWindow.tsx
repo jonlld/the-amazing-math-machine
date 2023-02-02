@@ -8,6 +8,7 @@ function ScoreWindow({
 }: ScoreProps): JSX.Element {
   let classes = "";
 
+  // Class (and therefore animation) added based on message
   if (message === "Good luck!") {
     classes = "score-window--container";
   } else {

@@ -6,8 +6,8 @@ Development Notes / Todo list:
 - Save name to local storage DONE
 - Retrieve highscore if user exists DONE
 - Switch to Game Choose screen DONE
-- Retrieve and show leaderboard for current users on login screen TODO
-- Allow click on
+- Retrieve and show leaderboard for current users on login screen DONE
+- Allow click on name to login DONE
 
 2. Game Choose screen!
 
@@ -33,7 +33,7 @@ Development Notes / Todo list:
 
 - Show score and highscore DONE
 - Allow click to restart game DONE
-- Allow click to change game mode TODO
+- Allow click to change game mode DONE
 
 5. Other
 
