@@ -78,13 +78,18 @@ span.username {
 /* HEADER */
 .game-header {
   background-color: rgb(154, 154, 154);
-  display: flex;
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   text-transform: uppercase;
-  font-size: 12px;
   padding: 32px;
   height: 25vh;
+}
+
+.game-header--message {
+  font-size: 32px;
   color: #eee;
 }
 
@@ -166,13 +171,15 @@ span.username {
 /* *********** GAME - GAME OVER WINDOW *********** */
 
 .game-over--heading {
+  text-transform: uppercase;
   font-size: 36px;
   color: rgb(208, 94, 113);
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 
 .game-over--score {
-  margin-bottom: 38px;
+  text-transform: uppercase;
+  margin-bottom: 64px;
 }
 
 /* *********** UI CLASSES *********** */

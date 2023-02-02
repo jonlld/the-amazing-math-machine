@@ -97,8 +97,8 @@ function Game({
   return (
     <section ref={startContainerRef} className="game-container hidden">
       <header className="game-header">
-        <h1 className="game-header__message">
-          Welcome To The <span>Amazing Math Machine</span>,{" "}
+        <h1 className="game-header--message">
+          Welcome To The <span>Amazing Math Machine</span>,
           <span className="username">{username}</span>!
         </h1>
         <button className="btn" onClick={onLogOut}>
