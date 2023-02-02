@@ -66,6 +66,9 @@ https://stackoverflow.com/questions/63186710/how-to-trigger-a-css-animation-on-e
 Animations - wiggle effect
 https://blog.hubspot.com/website/css-animation-examples
 
+Underline transition:
+https://www.30secondsofcode.org/css/s/hover-underline-animation
+
 https://stackoverflow.com/questions/26986129/play-multiple-css-animations-at-the-same-time
 
 Retrieving attribute on button click:

@@ -90,10 +90,40 @@ fix layout!
   justify-content: space-between;
   margin-bottom: 16px;
 }
-/* 
+
+/* button */
 .leaderboard--listitem__user {
-  color: rgb(125, 248, 123);
-} */
+  /* font: inherit; */
+  /* border: none; */
+  /* background: none; */
+  text-decoration: none;
+  color: #eee;
+  cursor: pointer;
+  /* for pseudo element */
+  display: inline-block;
+  position: relative;
+}
+
+.leaderboard--listitem__user::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  /* hidden by default */
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #eee;
+  /* retreats to bottom right after hover */
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.leaderboard--listitem__user:hover::after {
+  /* grows from bottom left on hover  */
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
 
 .leaderboard--listitem__score {
   color: rgb(254, 242, 117);
