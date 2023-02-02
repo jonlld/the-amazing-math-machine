@@ -4,11 +4,16 @@ import GameOverWindow from "./GameOverWindow";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
-import { generateSum } from "../helpers";
+import { generateSum, checkAnswer } from "../helpers";
 
 // TODO
-// 1. pass type operand (as string) to SumWindow as part of sum state...
-// 2. check answer based on current operand
+// 1. pass type operand (as string) to SumWindow as part of sum state... DONE
+// 2. check answer based on current operand DONE
+
+// TODO
+// For multiplication, limit scope to 1 - 10...
+// Also, delete type state as have sum.operand ??
+// For subtraction, second number cannot be larger...
 
 function Game({
   username,
@@ -54,22 +59,21 @@ function Game({
 
   // HANDLE ANSWER
   const onAnswerHandler = (answer: number): void => {
+    let isGood = checkAnswer(sum, answer);
+
     // IF CORRECT
-    if (sum.first + sum.second === answer) {
+    if (isGood) {
       setMessage("Correct!");
       setIsCorrect(true);
       setScore((prev) => prev + 10);
     }
-
     // IF INCORRECT
     else {
-      if (strikes < 3) {
-        setStrikes((p) => (p += 1));
-      }
+      if (strikes < 3) setStrikes((p) => (p += 1));
       setIsCorrect(false);
     }
 
-    // ALWAYS
+    // EVERY TIME
     setSum(generateSum(type));
   };
 
