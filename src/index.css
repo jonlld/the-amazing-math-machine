@@ -44,7 +44,7 @@ fix layout!
 .login--container {
   /* center main container */
   margin: 80px auto;
-  max-width: 80%;
+  max-width: 75%;
   /* layout of enclosed sections */
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -78,6 +78,25 @@ fix layout!
   font-size: 32px;
   color: rgb(125, 248, 123);
   margin-bottom: 32px;
+}
+
+.leaderboard--list {
+  list-style: none;
+}
+
+.leaderboard--listitem {
+  font-size: 26px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+/* 
+.leaderboard--listitem__user {
+  color: rgb(125, 248, 123);
+} */
+
+.leaderboard--listitem__score {
+  color: rgb(254, 242, 117);
 }
 
 /* *********** CHOOSE GAME *********** */

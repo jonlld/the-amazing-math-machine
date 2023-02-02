@@ -2,10 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { LoginProps } from "../models/interfaces";
 import LeaderboardItem from "./LeaderboardItem";
 
-// TODO
-// Receive userdata props DONE
-// Map into sub-component to render list of users
-
 function Login({ onLogIn, users }: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLElement>(null);
@@ -57,7 +53,7 @@ function Login({ onLogIn, users }: LoginProps): JSX.Element {
       <section className="leaderboard--container">
         <h1 className="leaderboard--title">Leaderboard:</h1>
         {usersIsEmpty && <p>Looks like you're the first player!</p>}
-        {!usersIsEmpty && <ul>{items}</ul>}
+        {!usersIsEmpty && <ul className="leaderboard--list">{items}</ul>}
       </section>
     </main>
   );
