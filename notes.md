@@ -1,45 +1,55 @@
-Development Notes:
+Development Notes / Todo list:
 
-1. Basic registration! (center)
+1. Login screen!
 
 - Prompt user to enter name DONE
 - Save name to local storage DONE
-- Switch to game screen DONE
+- Retrieve highscore if user exists DONE
+- Switch to Game Choose screen DONE
+- Retrieve and show leaderboard for current users on login screen TODO
+- Allow click on
 
-2. Game screen! (center)
+2. Game Choose screen!
 
-- Choose game mode to start TODO
-  - sum type (addition, subtraction)
-  - game type
-    - zen
-    - normal (each sum is timed, ramping difficulty, bonus points)
-    - rush (how many sums in 60 seconds - separate leaderboard)
+- Choose game mode to start
+  - game type (addition, subtraction, multiplication, random) DONE
+  - add logic for various operands and treatment DONE
+  - add additional game modes TODO
+    - peaceful
+    - standard (each sum is timed, ramping difficulty, bonus points)
+    - speedrun (how many sums in 60 seconds - separate leaderboard)
 
-3. Start!
+3. Sum and Score screens!
 
-- Display sum with input, and check answers DONE
-- Add score for correct answer DONE
-- Add strike (max 3) for incorrect answer DONE
-- Add gameover state / screen once 3 strikes DONE
-- Update user stored data on game over DONE
+- Display sum with an input box DONE
+- Check answer on submit and show result DONE
+- If correct, add 10 to score DONE
+- If incorrect, add 1 strike (max 3) DONE
+- Animate answer results DONE
+- If game over (3 strikes) update user data DONE
+- Show some kind of progress / level tracker? TODO
+
+4. Game Over screen!
+
+- Show score and highscore DONE
 - Allow click to restart game DONE
-- Show user highscore on start screen TODO
-- Progress / level tracker? TODO
+- Allow click to change game mode TODO
 
-4. Other
+5. Other
 
-- Leaderboard, populated from local storage
-- 'About' page / modal
+- About page (slide in? arrows?)
 - Make it pretty, use icons, colors, animations TODO
-- Sounds
+- Add some sounds to correct / incorrect
+- Make responsive for smaller windows (maybe number boxes for touch inputs - see hangman idea)
 - Refactor
-- Make responsive (number boxes for touch input)
 
-* Bonus ideas
+---
 
-- Add a TNT power for every 10 sums answered - allows you to skip an answer?
+- Additional:
 
-* References / Resources
+* Add a TNT power for every 10 sums answered - allows you to skip an answer?
+
+- References / Resources:
 
 Imported Font:
 https://fonts.google.com/specimen/Press+Start+2P
