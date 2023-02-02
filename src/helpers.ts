@@ -1,11 +1,19 @@
 import { UserData } from "./models/interfaces";
 
 // generates two random # between 1 and 50
-export const generateSum = () => {
+export const generateSum = (type: string) => {
+  const operands = ["+", "-", "*"];
+  let typeOutput = "";
+
+  if (type === "add") typeOutput = operands[0];
+  if (type === "subtract") typeOutput = operands[1];
+  if (type === "multiply") typeOutput = operands[2];
+  if (type === "random") typeOutput = operands[Math.floor(Math.random() * 3)];
+
   const first = Math.floor(Math.random() * 50 + 1);
   const second = Math.floor(Math.random() * 50 + 1);
 
-  return { first, second };
+  return { first, second, typeOutput };
 };
 
 // Set first user details
