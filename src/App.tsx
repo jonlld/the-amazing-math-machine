@@ -6,7 +6,7 @@ import { storeInitialUser, storeUpdatedUser } from "./helpers";
 
 function App(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  const [username, setUsername] = useState<string>("");
+  const [username, setUsername] = useState<string>("TEST");
   const [highscore, setHighscore] = useState<number>(0);
 
   const logIn = (name: string): void => {

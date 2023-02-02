@@ -3,17 +3,17 @@ import { UserData } from "./models/interfaces";
 // generates two random # between 1 and 50
 export const generateSum = (type: string) => {
   const operands = ["+", "-", "*"];
-  let typeOutput = "";
+  let operand = "";
 
-  if (type === "add") typeOutput = operands[0];
-  if (type === "subtract") typeOutput = operands[1];
-  if (type === "multiply") typeOutput = operands[2];
-  if (type === "random") typeOutput = operands[Math.floor(Math.random() * 3)];
+  if (type === "add") operand = operands[0];
+  if (type === "subtract") operand = operands[1];
+  if (type === "multiply") operand = operands[2];
+  if (type === "random") operand = operands[Math.floor(Math.random() * 3)];
 
   const first = Math.floor(Math.random() * 50 + 1);
   const second = Math.floor(Math.random() * 50 + 1);
 
-  return { first, second, typeOutput };
+  return { first, second, operand };
 };
 
 // Set first user details

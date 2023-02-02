@@ -13,6 +13,7 @@ export interface StartProps {
 export interface Sum {
   first: number;
   second: number;
+  operand: string;
 }
 
 export interface ChooseProps {

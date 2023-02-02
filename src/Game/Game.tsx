@@ -6,6 +6,10 @@ import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
 import { generateSum } from "../helpers";
 
+// TODO
+// 1. pass type operand (as string) to SumWindow as part of sum state...
+// 2. check answer based on current operand
+
 function Game({
   username,
   onLogOut,
@@ -16,6 +20,7 @@ function Game({
   const startContainerRef = useRef<HTMLElement>(null);
 
   // State
+  const [type, setType] = useState<string>("");
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [strikes, setStrikes] = useState<number>(0);
@@ -25,12 +30,13 @@ function Game({
   const [sum, setSum] = useState<Sum>({
     first: 0,
     second: 0,
+    operand: "",
   });
 
   // HANDLE GAME START
   const onStartHandler = (type: string): void => {
+    setType(type);
     setIsPlaying(true);
-    // reset state here?
     setScore(0);
     setStrikes(0);
   };
@@ -62,12 +68,12 @@ function Game({
     }
 
     // ALWAYS
-    setSum(generateSum());
+    setSum(generateSum(type));
   };
 
   // Load initial sum
   useEffect(() => {
-    setSum(generateSum());
+    setSum(generateSum(type));
   }, []);
 
   // Update message once state update is processed
