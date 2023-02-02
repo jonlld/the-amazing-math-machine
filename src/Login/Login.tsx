@@ -48,7 +48,7 @@ function Login({
         </h1>
         <form onSubmit={onSubmitHandler}>
           <label className="login--label" htmlFor="user">
-            <span className="username">New Users:</span>
+            <span className="register">Register:</span>
           </label>
           <input
             className="login--input"
@@ -62,7 +62,7 @@ function Login({
         </form>
       </section>
       <section className="leaderboard--container">
-        <h1 className="leaderboard--title">Highscores:</h1>
+        <h1 className="leaderboard--title">Leaderboard:</h1>
         {usersIsEmpty && (
           <p>
             Looks like you're the first player! Please register your name on the

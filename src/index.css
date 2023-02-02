@@ -30,6 +30,7 @@ span {
   color: rgb(254, 242, 117);
 }
 
+span.register,
 span.machine {
   color: rgb(125, 248, 123);
 }
@@ -43,12 +44,12 @@ fix layout!
 
 .login-window--container {
   /* center main container */
-  margin: 80px auto;
+  margin: 110px auto;
   max-width: 75%;
   /* layout of enclosed sections */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 80vh;
+  height: 70vh;
   /* transition for container */
   transition: all 0.5s ease-out;
 }
@@ -298,7 +299,7 @@ fix layout!
 }
 
 .btn__choose {
-  background-color: rgb(125, 248, 123);
+  background-color: rgb(206, 236, 161);
   margin-right: 48px;
 }
 
@@ -319,6 +320,11 @@ fix layout!
 .btn__random {
   margin: 0;
   background-color: rgb(255, 154, 170);
+}
+
+.btn__random:hover {
+  margin: 0;
+  background-color: rgb(250, 202, 210);
 }
 
 .btn__play-again {
