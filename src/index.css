@@ -138,13 +138,22 @@ fix layout!
 /* *********** CHOOSE GAME *********** */
 
 .choose--container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* transition for container */
+  transition: all 0.5s ease-out;
 }
 
+/* TODO fix layout without using margins? */
 .choose--header {
   text-transform: uppercase;
   font-size: 32px;
-  margin-bottom: 64px;
+  margin-bottom: 100px;
+}
+
+.choose--buttons {
+  margin-bottom: 100px;
 }
 
 /* *********** GAME - WHOLE SCREEN *********** */
@@ -272,6 +281,7 @@ fix layout!
   padding: 16px;
   font-family: inherit;
   cursor: pointer;
+  transition: all 0.5s ease-out;
 }
 
 .login-button {
@@ -303,7 +313,7 @@ fix layout!
 
 .btn__random {
   margin: 0;
-  background-color: rgb(254, 242, 117);
+  background-color: rgb(255, 154, 170);
 }
 
 .btn__play-again {
