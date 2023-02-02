@@ -38,14 +38,17 @@ function Login({
   ));
 
   return (
-    <main ref={containerRef} className="login--container hidden shift-down">
-      <section>
+    <main
+      ref={containerRef}
+      className="login-window--container hidden shift-down"
+    >
+      <section className="login--container">
         <h1 className="login--title">
-          Please enter <span>your name</span> to start!
+          Please click on <span>your name</span> or register below to start!
         </h1>
         <form onSubmit={onSubmitHandler}>
           <label className="login--label" htmlFor="user">
-            <span className="username">Username:</span>
+            <span className="username">New Users:</span>
           </label>
           <input
             className="login--input"
@@ -59,8 +62,13 @@ function Login({
         </form>
       </section>
       <section className="leaderboard--container">
-        <h1 className="leaderboard--title">Leaderboard:</h1>
-        {usersIsEmpty && <p>Looks like you're the first player!</p>}
+        <h1 className="leaderboard--title">Highscores:</h1>
+        {usersIsEmpty && (
+          <p>
+            Looks like you're the first player! Please register your name on the
+            left.
+          </p>
+        )}
         {!usersIsEmpty && <ul className="leaderboard--list">{items}</ul>}
       </section>
     </main>

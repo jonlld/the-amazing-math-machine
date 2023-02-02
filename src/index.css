@@ -41,7 +41,7 @@ TODO
 fix layout! 
 */
 
-.login--container {
+.login-window--container {
   /* center main container */
   margin: 80px auto;
   max-width: 75%;
@@ -53,18 +53,26 @@ fix layout!
   transition: all 0.5s ease-out;
 }
 
+.login--container {
+  padding-right: 46px;
+}
+
 .login--title,
 .login--label {
   margin-bottom: 24px;
 }
 
+.login--title span {
+  font-size: 28px;
+}
+
 .login--input {
   font-family: inherit;
   font-weight: bold;
-  font-size: 42px;
+  font-size: 24px;
   border: 2px solid rgb(254, 242, 117);
   display: block;
-  width: 75%;
+  width: 70%;
   padding: 12px;
   transition: all 2s ease-out;
 }
@@ -88,15 +96,13 @@ fix layout!
   font-size: 26px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
-/* button */
 .leaderboard--listitem__user {
-  /* font: inherit; */
-  /* border: none; */
-  /* background: none; */
-  text-decoration: none;
+  font: inherit;
+  border: none;
+  background: none;
   color: #eee;
   cursor: pointer;
   /* for pseudo element */
@@ -108,12 +114,12 @@ fix layout!
   content: "";
   position: absolute;
   width: 100%;
-  /* hidden by default */
-  transform: scaleX(0);
   height: 2px;
   bottom: 0;
   left: 0;
   background-color: #eee;
+  /* hidden by default */
+  transform: scaleX(0);
   /* retreats to bottom right after hover */
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;

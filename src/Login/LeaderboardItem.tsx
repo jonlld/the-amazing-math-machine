@@ -9,9 +9,9 @@ function LeaderboardItem({ user, login }: LeaderboardProps): JSX.Element {
 
   return (
     <li className="leaderboard--listitem">
-      <p className="leaderboard--listitem__user" onClick={clickHandler}>
+      <button className="leaderboard--listitem__user" onClick={clickHandler}>
         {formattedName}
-      </p>
+      </button>
       <p className="leaderboard--listitem__score">{user.highscore}</p>
     </li>
   );
