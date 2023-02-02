@@ -1,4 +1,4 @@
-import { UserData } from "./models/interfaces";
+import { UserData, Sum } from "./models/interfaces";
 
 // generates two random # between 1 and 50
 export const generateSum = (type: string) => {
@@ -47,4 +47,17 @@ export const storeUpdatedUser = (
   });
 
   localStorage.setItem("userdata", JSON.stringify(retrievedData));
+};
+
+export const checkAnswer = (
+  { first, second, operand }: Sum,
+  answer: number
+): boolean => {
+  let result: boolean = false;
+
+  if (operand === "+") result = first + second === answer;
+  if (operand === "-") result = first - second === answer;
+  if (operand === "*") result = first * second === answer;
+
+  return result;
 };
