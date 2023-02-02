@@ -103,11 +103,15 @@ function Game({
   return (
     <section ref={startContainerRef} className="game-container hidden">
       <header className="game-header">
-        <h1 className="game-header--message">
-          Welcome To The <span>Amazing Math Machine</span>,
-          <span className="username">{username}</span>!
-        </h1>
-        <button className="btn" onClick={onLogOut}>
+        <div>
+          <h1 className="game-header--message">
+            Welcome, <span>{username}!</span>
+          </h1>
+          <p>
+            ...to the <span className="machine">Amazing Math Machine!</span>
+          </p>
+        </div>
+        <button className="btn  game-header--button" onClick={onLogOut}>
           Logout
         </button>
       </header>

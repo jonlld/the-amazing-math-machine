@@ -30,7 +30,7 @@ span {
   color: rgb(254, 242, 117);
 }
 
-span.username {
+span.machine {
   color: rgb(125, 248, 123);
 }
 
@@ -166,12 +166,9 @@ fix layout!
 /* HEADER */
 .game-header {
   background-color: rgb(154, 154, 154);
-  display: grid;
-  grid-template-columns: 7fr 1fr;
-  gap: 42px;
-  /* display: flex;
+  display: flex;
   align-items: center;
-  justify-content: space-between; */
+  justify-content: space-between;
   text-transform: uppercase;
   padding: 32px;
   height: 25vh;
@@ -179,7 +176,14 @@ fix layout!
 
 .game-header--message {
   font-size: 32px;
+  margin-bottom: 22px;
   color: #eee;
+}
+
+.game-header--button {
+  align-self: flex-start;
+  background: none;
+  transition: none;
 }
 
 /* MAIN */
@@ -229,7 +233,8 @@ fix layout!
 
 .sum--input:focus {
   outline: none;
-  box-shadow: 0 0 0 0.5rem rgba(253, 242, 233, 0.5);
+  /* box-shadow: 0 0 0 0.5rem rgba(253, 242, 233, 0.5); */
+  box-shadow: 0 0 0 0.3rem rgb(254, 242, 117);
 }
 
 /* *********** GAME - SCORE WINDOW *********** */
@@ -278,7 +283,7 @@ fix layout!
   background-color: #eee;
   color: #222;
   font-size: 12px;
-  padding: 16px;
+  padding: 18px;
   font-family: inherit;
   cursor: pointer;
   transition: all 0.5s ease-out;
@@ -359,7 +364,7 @@ fix layout!
 
 .incorrect {
   background-color: rgb(208, 94, 113);
-  animation: incorrect-pulse 0.3s, wiggle 0.5s;
+  animation: incorrect-pulse 0.3s, wiggle 1s;
 }
 
 @keyframes incorrect-pulse {

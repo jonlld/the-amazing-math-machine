@@ -34,6 +34,7 @@ Development Notes / Todo list:
 - Show score and highscore DONE
 - Allow click to restart game DONE
 - Allow click to change game mode DONE
+- Add transition for game over screen TODO
 
 5. Other
 
