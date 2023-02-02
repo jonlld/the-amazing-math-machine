@@ -34,28 +34,44 @@ span.username {
   color: rgb(125, 248, 123);
 }
 
-/* *********** LOGIN CLASSES *********** */
+/* *********** LOGIN & LEADERBOARD CLASSES *********** */
 
-.login-container {
-  max-width: 50%;
-  margin: 200px auto;
-  transition: all 0.5s;
+.login--container {
+  /* center main container */
+  margin: 100px auto;
+  max-width: 80%;
+  /* layout of the sections */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* transition */
+  transition: all 0.5s ease-out;
 }
 
-.login-title,
-.login-label {
+.login--title,
+.login--label {
   margin-bottom: 24px;
 }
 
-.login-input {
+.login--input {
   font-family: inherit;
   font-weight: bold;
   font-size: 42px;
   border: 2px solid rgb(254, 242, 117);
   display: block;
-  width: 50%;
-  padding: 28px;
+  width: 45%;
+  padding: 12px;
   transition: all 2s ease-out;
+}
+
+.leaderboard--container {
+  border-left: 2px solid #eee;
+  padding-left: 46px;
+}
+
+.leaderboard--title {
+  font-size: 32px;
+  color: rgb(125, 248, 123);
+  margin-bottom: 32px;
 }
 
 /* *********** CHOOSE GAME *********** */
@@ -194,6 +210,7 @@ span.username {
   font-size: 12px;
   padding: 16px;
   font-family: inherit;
+  cursor: pointer;
 }
 
 .login-button {
@@ -213,16 +230,15 @@ span.username {
   background-color: rgb(232, 246, 210);
 }
 
-.btn__add {
-}
+/* .btn__add {
+} */
 
 .btn__subtract {
   background-color: rgb(254, 242, 117);
 }
 
-.btn__multiply {
-  /*  */
-}
+/* .btn__multiply {
+} */
 
 .btn__random {
   margin: 0;
