@@ -12,16 +12,14 @@ function App(): JSX.Element {
   // storage
   const [leaderboardData, setLeaderboardData] = useState<UserData[]>([]);
 
-  // TODO - LEADERBOARD
-  // Retrieve all user data on *load* to populate leaderboard
-
-  // ON LOAD - RETRIEVE DATA IF ANY
+  // UPDATE LEADERBOARD ON LOAD AND CHANGE OF LOGIN STATUS
   useEffect(() => {
+    console.log("updating leaderboard running");
     if (localStorage.getItem("userdata") !== null) {
       const data = JSON.parse(localStorage.getItem("userdata")!);
       setLeaderboardData(data);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   const logIn = (name: string): void => {
     if (name) {
@@ -59,6 +57,7 @@ function App(): JSX.Element {
     }
   };
 
+  // TODO update leaderboard to latest stored data on logout
   const logOut = (): void => {
     console.log("logOut");
     setIsLoggedIn(false);
