@@ -35,7 +35,7 @@ function Game({
     setStrikes(0);
   };
 
-  // HANDLE GAME OVER
+  // HANDLE NEW GAME
   const playAgainHandler = (): void => {
     setMessage("Good luck!");
     setScore(0);

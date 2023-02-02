@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { ScoreProps } from "../models/interfaces";
 
 function ScoreWindow({

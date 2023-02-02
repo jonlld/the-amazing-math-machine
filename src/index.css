@@ -194,6 +194,15 @@ span.username {
   background-color: #ccc;
 }
 
+.btn__play-again {
+  margin-right: 48px;
+  background-color: rgb(206, 236, 161);
+}
+
+.btn__play-again:hover {
+  background-color: rgb(232, 246, 210);
+}
+
 /* *********** TRANSITION CLASSES *********** */
 
 .shift-down {
@@ -205,6 +214,8 @@ span.username {
 }
 
 /* *********** ANIMATION CLASSES *********** */
+
+/* *********** SCORE WINDOW *********** */
 
 .correct {
   background-color: rgb(166, 192, 127);
