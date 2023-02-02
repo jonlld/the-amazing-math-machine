@@ -65,7 +65,9 @@ span.username {
 }
 
 .choose--header {
-  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-size: 32px;
+  margin-bottom: 64px;
 }
 
 /* *********** GAME - WHOLE SCREEN *********** */
@@ -80,6 +82,7 @@ span.username {
   background-color: rgb(154, 154, 154);
   display: grid;
   grid-template-columns: 7fr 1fr;
+  gap: 42px;
   /* display: flex;
   align-items: center;
   justify-content: space-between; */
@@ -199,6 +202,31 @@ span.username {
 
 .btn:hover {
   background-color: #ccc;
+}
+
+.btn__choose {
+  background-color: rgb(125, 248, 123);
+  margin-right: 48px;
+}
+
+.btn__choose:hover {
+  background-color: rgb(232, 246, 210);
+}
+
+.btn__add {
+}
+
+.btn__subtract {
+  background-color: rgb(254, 242, 117);
+}
+
+.btn__multiply {
+  /*  */
+}
+
+.btn__random {
+  margin: 0;
+  background-color: rgb(254, 242, 117);
 }
 
 .btn__play-again {

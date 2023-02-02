@@ -57,3 +57,6 @@ Animations - wiggle effect
 https://blog.hubspot.com/website/css-animation-examples
 
 https://stackoverflow.com/questions/26986129/play-multiple-css-animations-at-the-same-time
+
+Retrieving attribute on button click:
+https://stackoverflow.com/questions/58634154/react-typescript-get-data-attribute-from-click-event

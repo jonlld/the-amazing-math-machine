@@ -16,7 +16,7 @@ export interface Sum {
 }
 
 export interface ChooseProps {
-  onStart: () => void;
+  onStart: (type: string) => void;
 }
 
 export interface GameOverProps {

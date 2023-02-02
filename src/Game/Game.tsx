@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState, useRef } from "react";
-import ChooseGameWindow from "./ChooseGameWindow";
+import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
@@ -28,7 +28,7 @@ function Game({
   });
 
   // HANDLE GAME START
-  const onStartHandler = (): void => {
+  const onStartHandler = (type: string): void => {
     setIsPlaying(true);
     // reset state here?
     setScore(0);
