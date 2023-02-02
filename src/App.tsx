@@ -6,10 +6,8 @@ import { storeInitialUser, storeUpdatedUser } from "./helpers";
 
 function App(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  // current
   const [username, setUsername] = useState<string>("");
   const [highscore, setHighscore] = useState<number>(0);
-  // storage
   const [leaderboardData, setLeaderboardData] = useState<UserData[]>([]);
 
   // UPDATE LEADERBOARD ON LOAD AND CHANGE OF LOGIN STATUS
@@ -21,28 +19,30 @@ function App(): JSX.Element {
     }
   }, [isLoggedIn]);
 
+  //
   const logIn = (name: string): void => {
     if (name) {
       const formattedName = name.trim().toLowerCase();
       let currentUser: UserData = { username: formattedName, highscore: 0 };
 
-      // NO STORED DATA
-      // INITIALISE STORAGE
+      // INITIALISE IF NO STORED DATA
       if (localStorage.getItem("userdata") === null) {
         storeInitialUser(currentUser.username);
       }
 
-      // HAVE STORED DATA
+      // CHECK IF HAVE STORED DATA
       else {
         const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
         let hasName = retrievedData
           .map((el: UserData) => el.username)
           .includes(currentUser.username);
 
+        // IF USER DOES NOT EXIST, ADD NEW USER
         if (!hasName) {
           retrievedData.push(currentUser);
           localStorage.setItem("userdata", JSON.stringify(retrievedData));
         } else {
+          // IF USER EXISTS, UPDATE CURRENT SCORE / HIGHSCORE
           retrievedData.forEach((el: UserData) => {
             if (el.username === currentUser.username) {
               currentUser.highscore = el.highscore;
@@ -57,9 +57,7 @@ function App(): JSX.Element {
     }
   };
 
-  // TODO update leaderboard to latest stored data on logout
   const logOut = (): void => {
-    console.log("logOut");
     setIsLoggedIn(false);
   };
 

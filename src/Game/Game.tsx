@@ -76,13 +76,9 @@ function Game({
       setMessage(`${strikes}/3 Strikes!`);
     }
     if (strikes === 3) {
-      // TODO game over logic
       setMessage("Game Over!");
-      // end game
       setIsPlaying(false);
-      // update highscore
       updateHighscore(score);
-      // show game over screen
       setIsGameOver(true);
     }
   }, [strikes]);
