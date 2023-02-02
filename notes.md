@@ -22,7 +22,7 @@ Development Notes:
 - Add strike (max 3) for incorrect answer DONE
 - Add gameover state / screen once 3 strikes DONE
 - Update user stored data on game over DONE
-- Allow click to restart game TODO
+- Allow click to restart game DONE
 - Show user highscore on start screen TODO
 - Progress / level tracker? TODO
 
@@ -55,3 +55,5 @@ https://stackoverflow.com/questions/63186710/how-to-trigger-a-css-animation-on-e
 
 Animations - wiggle effect
 https://blog.hubspot.com/website/css-animation-examples
+
+https://stackoverflow.com/questions/26986129/play-multiple-css-animations-at-the-same-time

@@ -104,6 +104,12 @@ span.username {
   width: 50%;
   height: 100%;
   background-color: rgb(98, 98, 98);
+  transition: all 0.5s;
+}
+
+/* for transition */
+.shift-down {
+  transform: translateY(42px);
 }
 
 .quiz__sum {

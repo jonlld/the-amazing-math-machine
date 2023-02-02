@@ -5,6 +5,7 @@ function SumWindow({
   sum: { first, second },
   onAnswer,
 }: QuizProps): JSX.Element {
+  const sumContainerRef = useRef<HTMLDivElement>(null);
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent): void => {
@@ -14,8 +15,17 @@ function SumWindow({
     }
   };
 
+  // remove class on mount to trigger transition
+  useEffect(() => {
+    sumContainerRef.current?.classList.remove("hidden");
+    sumContainerRef.current?.classList.remove("shift-down");
+  }, []);
+
   return (
-    <section className="game-main__sums">
+    <section
+      ref={sumContainerRef}
+      className="game-main__sums hidden shift-down"
+    >
       <div className="quiz--container sum">
         <p className="quiz__sum">
           {first} + {second}

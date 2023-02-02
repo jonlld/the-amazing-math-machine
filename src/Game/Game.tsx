@@ -20,13 +20,12 @@ function Game({
   const [score, setScore] = useState<number>(0);
   const [strikes, setStrikes] = useState<number>(0);
   const [message, setMessage] = useState<string>("Good luck!");
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [sum, setSum] = useState<Sum>({
     first: 0,
     second: 0,
   });
-
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
   // HANDLE GAME START
   const onStartHandler = (): void => {
