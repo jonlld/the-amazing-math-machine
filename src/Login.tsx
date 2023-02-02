@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from "react";
+import { LoginProps } from "./models/interfaces";
 
-interface LoginProps {
-  onLogIn: (name: string) => void;
-}
-
-function Login({ onLogIn }: LoginProps): JSX.Element {
+function Login({ onLogIn, users }: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 

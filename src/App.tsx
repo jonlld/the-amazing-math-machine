@@ -85,7 +85,7 @@ function App(): JSX.Element {
           updateHighscore={updateHighscore}
         />
       ) : (
-        <Login onLogIn={logIn} />
+        <Login onLogIn={logIn} users={leaderboardData} />
       )}
     </Fragment>
   );

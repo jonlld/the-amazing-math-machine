@@ -3,6 +3,11 @@ export interface UserData {
   highscore: number;
 }
 
+export interface LoginProps {
+  onLogIn: (name: string) => void;
+  users: UserData[];
+}
+
 export interface StartProps {
   username: string;
   onLogOut: () => void;
