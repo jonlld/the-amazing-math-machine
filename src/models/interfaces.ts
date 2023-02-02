@@ -6,10 +6,12 @@ export interface UserData {
 export interface LoginProps {
   onLogIn: (name: string) => void;
   users: UserData[];
+  onLeaderboardLogin: (user: UserData) => void;
 }
 
 export interface LeaderboardProps {
   user: UserData;
+  login: (user: UserData) => void;
 }
 
 export interface StartProps {

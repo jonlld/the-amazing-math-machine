@@ -2,7 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { LoginProps } from "../models/interfaces";
 import LeaderboardItem from "./LeaderboardItem";
 
-function Login({ onLogIn, users }: LoginProps): JSX.Element {
+function Login({
+  onLogIn,
+  users,
+  onLeaderboardLogin,
+}: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
@@ -26,7 +30,11 @@ function Login({ onLogIn, users }: LoginProps): JSX.Element {
 
   // Render LeaderboardItem list
   const items = users.map((user) => (
-    <LeaderboardItem key={user.username} user={user} />
+    <LeaderboardItem
+      key={user.username}
+      user={user}
+      login={onLeaderboardLogin}
+    />
   ));
 
   return (

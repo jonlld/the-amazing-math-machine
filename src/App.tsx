@@ -19,7 +19,14 @@ function App(): JSX.Element {
     }
   }, [isLoggedIn]);
 
-  //
+  // Login - leaderboard click
+  const leaderBoardLogIn = (user: UserData) => {
+    setUsername(user.username);
+    setHighscore(user.highscore);
+    setIsLoggedIn(true);
+  };
+
+  // Login - name input
   const logIn = (name: string): void => {
     if (name) {
       const formattedName = name.trim().toLowerCase();
@@ -78,7 +85,11 @@ function App(): JSX.Element {
           updateHighscore={updateHighscore}
         />
       ) : (
-        <Login onLogIn={logIn} users={leaderboardData} />
+        <Login
+          onLogIn={logIn}
+          onLeaderboardLogin={leaderBoardLogIn}
+          users={leaderboardData}
+        />
       )}
     </Fragment>
   );

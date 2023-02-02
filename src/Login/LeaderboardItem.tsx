@@ -1,12 +1,18 @@
 import { LeaderboardProps } from "../models/interfaces";
 
-function LeaderboardItem({ user }: LeaderboardProps): JSX.Element {
-  const formattedUser = user.username.toUpperCase();
+function LeaderboardItem({ user, login }: LeaderboardProps): JSX.Element {
+  const formattedName = user.username.toUpperCase();
+
+  const clickHandler = () => {
+    login(user);
+  };
 
   return (
     <li className="leaderboard--listitem">
-      <div className="leaderboard--listitem__user">{formattedUser}</div>
-      <div className="leaderboard--listitem__score">{user.highscore}</div>
+      <p className="leaderboard--listitem__user" onClick={clickHandler}>
+        {formattedName}
+      </p>
+      <p className="leaderboard--listitem__score">{user.highscore}</p>
     </li>
   );
 }
