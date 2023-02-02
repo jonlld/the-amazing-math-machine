@@ -13,7 +13,7 @@ import { generateSum, checkAnswer } from "../helpers";
 // TODO
 // 3. For subtraction, second number cannot be larger...
 // 4. Delete type state as have sum.operand - probably not required
-// 5. For multiplication, limit scope to 1 - 10...
+// 5. For multiplication, limit scope to 1 - 10 DONE
 
 function Game({
   username,

@@ -3,19 +3,22 @@ import { UserData, Sum } from "./models/interfaces";
 // generates two random # between 1 and 50
 export const generateSum = (type: string) => {
   const operands = ["+", "-", "*"];
-  let operand = "";
-  let multiplier = 50;
 
+  let operand = "";
   if (type === "add") operand = operands[0];
   if (type === "subtract") operand = operands[1];
   if (type === "multiply") operand = operands[2];
   if (type === "random") operand = operands[Math.floor(Math.random() * 3)];
 
   // Limit scope for multiplication sums
+  let multiplier = 50;
   if (operand === "*") multiplier = 10;
 
-  const first = Math.floor(Math.random() * multiplier + 1);
-  const second = Math.floor(Math.random() * multiplier + 1);
+  let first = Math.floor(Math.random() * multiplier + 1);
+  let second = Math.floor(Math.random() * multiplier + 1);
+
+  // Ensure second number is smaller for subtraction
+  if (operand === "-" && second > first) [second, first] = [first, second];
 
   return { first, second, operand };
 };
