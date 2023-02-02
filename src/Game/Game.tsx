@@ -6,15 +6,6 @@ import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
 import { generateSum, checkAnswer } from "../helpers";
 
-// DONE
-// 1. pass type operand (as string) to SumWindow as part of sum state... DONE
-// 2. check answer based on current operand DONE
-
-// TODO
-// 3. For subtraction, second number cannot be larger...
-// 4. Delete type state as have sum.operand - probably not required
-// 5. For multiplication, limit scope to 1 - 10 DONE
-
 function Game({
   username,
   onLogOut,
@@ -25,13 +16,13 @@ function Game({
   const startContainerRef = useRef<HTMLElement>(null);
 
   // State
-  const [type, setType] = useState<string>("");
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [strikes, setStrikes] = useState<number>(0);
   const [message, setMessage] = useState<string>("Good luck!");
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [type, setType] = useState<string>("");
   const [sum, setSum] = useState<Sum>({
     first: 0,
     second: 0,
@@ -40,6 +31,7 @@ function Game({
 
   // HANDLE GAME START
   const onStartHandler = (type: string): void => {
+    // set type state for later use in generating sums
     setType(type);
     // Load initial sum
     setSum(generateSum(type));
@@ -74,10 +66,11 @@ function Game({
     }
 
     // EVERY TIME
+    // use type state in generating subsequent sums
     setSum(generateSum(type));
   };
 
-  // Update message once state update is processed
+  // CHECK STRIKES AND MANAGE GAME OVER
   useEffect(() => {
     if (strikes !== 0) {
       setMessage(`${strikes}/3 Strikes!`);
@@ -114,9 +107,11 @@ function Game({
       </header>
       <main className="game-main">
         {/* BEFORE START */}
+
         {!isPlaying && !isGameOver && (
           <ChooseGameWindow onStart={onStartHandler} />
         )}
+
         {!isPlaying && isGameOver && (
           <GameOverWindow
             score={score}
@@ -124,8 +119,11 @@ function Game({
             onPlayAgain={playAgainHandler}
           />
         )}
+
         {/* AFTER START */}
+
         {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}
+
         {isPlaying && (
           <ScoreWindow
             // Add changing key to force whole component to render & trigger animation each time
