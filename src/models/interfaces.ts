@@ -34,6 +34,6 @@ export interface ScoreProps {
 }
 
 export interface QuizProps {
-  sum: { first: number; second: number };
+  sum: Sum;
   onAnswer: (guess: number) => void;
 }

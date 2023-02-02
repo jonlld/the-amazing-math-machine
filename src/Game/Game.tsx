@@ -36,6 +36,8 @@ function Game({
   // HANDLE GAME START
   const onStartHandler = (type: string): void => {
     setType(type);
+    // Load initial sum
+    setSum(generateSum(type));
     setIsPlaying(true);
     setScore(0);
     setStrikes(0);
@@ -70,11 +72,6 @@ function Game({
     // ALWAYS
     setSum(generateSum(type));
   };
-
-  // Load initial sum
-  useEffect(() => {
-    setSum(generateSum(type));
-  }, []);
 
   // Update message once state update is processed
   useEffect(() => {

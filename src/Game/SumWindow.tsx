@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useEffect } from "react";
 import { QuizProps } from "../models/interfaces";
 
 function SumWindow({
-  sum: { first, second },
+  sum: { first, second, operand },
   onAnswer,
 }: QuizProps): JSX.Element {
   const sumContainerRef = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ function SumWindow({
     >
       <div className="sum--container">
         <p className="sum--sum">
-          {first} + {second}
+          {first} {operand} {second}
         </p>
       </div>
       <div className="sum--container">
