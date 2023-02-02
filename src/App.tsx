@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
-import Login from "./Login";
+import Login from "./Login/Login";
 import Game from "./Game/Game";
 import { UserData } from "./models/interfaces";
 import { storeInitialUser, storeUpdatedUser } from "./helpers";
@@ -15,15 +15,11 @@ function App(): JSX.Element {
   // TODO - LEADERBOARD
   // Retrieve all user data on *load* to populate leaderboard
 
-  // ON LOAD - RETRIEVE LEADERBOARD
+  // ON LOAD - RETRIEVE DATA IF ANY
   useEffect(() => {
-    if (localStorage.getItem("userdata") === null) {
-      console.log("No stored information to retrieve!");
-    } else {
+    if (localStorage.getItem("userdata") !== null) {
       const data = JSON.parse(localStorage.getItem("userdata")!);
       setLeaderboardData(data);
-      console.log("Found data:");
-      console.log(data);
     }
   }, []);
 

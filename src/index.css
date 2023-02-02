@@ -36,14 +36,20 @@ span.username {
 
 /* *********** LOGIN & LEADERBOARD CLASSES *********** */
 
+/* 
+TODO 
+fix layout! 
+*/
+
 .login--container {
   /* center main container */
-  margin: 100px auto;
+  margin: 80px auto;
   max-width: 80%;
-  /* layout of the sections */
+  /* layout of enclosed sections */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* transition */
+  height: 80vh;
+  /* transition for container */
   transition: all 0.5s ease-out;
 }
 
@@ -58,7 +64,7 @@ span.username {
   font-size: 42px;
   border: 2px solid rgb(254, 242, 117);
   display: block;
-  width: 45%;
+  width: 75%;
   padding: 12px;
   transition: all 2s ease-out;
 }

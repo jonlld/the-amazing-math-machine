@@ -8,6 +8,10 @@ export interface LoginProps {
   users: UserData[];
 }
 
+export interface LeaderboardProps {
+  user: UserData;
+}
+
 export interface StartProps {
   username: string;
   onLogOut: () => void;
