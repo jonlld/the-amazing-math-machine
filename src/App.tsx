@@ -56,11 +56,11 @@ function App(): JSX.Element {
             }
           });
         }
-
-        setUsername(currentUser.username);
-        setHighscore(currentUser.highscore);
-        setIsLoggedIn(true);
       }
+
+      setUsername(currentUser.username);
+      setHighscore(currentUser.highscore);
+      setIsLoggedIn(true);
     }
   };
 
