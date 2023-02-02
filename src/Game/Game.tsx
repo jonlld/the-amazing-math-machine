@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState, useRef } from "react";
-import GameStartWindow from "./GameStartWindow";
+import ChooseGameWindow from "./GameStartWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
@@ -95,9 +95,9 @@ function Game({
   }, []);
 
   return (
-    <section ref={startContainerRef} className="start-container hidden">
+    <section ref={startContainerRef} className="game-container hidden">
       <header className="game-header">
-        <h1 className="game-header__welcome">
+        <h1 className="game-header__message">
           Welcome To The <span>Amazing Math Machine</span>,{" "}
           <span className="username">{username}</span>!
         </h1>
@@ -108,7 +108,7 @@ function Game({
       <main className="game-main">
         {/* BEFORE START */}
         {!isPlaying && !isGameOver && (
-          <GameStartWindow onStart={onStartHandler} />
+          <ChooseGameWindow onStart={onStartHandler} />
         )}
         {!isPlaying && isGameOver && (
           <GameOverWindow

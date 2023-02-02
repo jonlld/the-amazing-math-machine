@@ -1,12 +1,15 @@
 /* Font = Press Start 2P */
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-/* universal reset */
+/* RESET */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+/* TAG SELECTORS */
 
 body {
   font-family: "Press Start 2P", sans-serif;
@@ -31,15 +34,12 @@ span.username {
   color: rgb(125, 248, 123);
 }
 
-/* LOGIN */
+/* *********** LOGIN CLASSES *********** */
+
 .login-container {
   max-width: 50%;
   margin: 200px auto;
-  transition: all 1s ease-in;
-}
-
-.hidden {
-  opacity: 0;
+  transition: all 0.5s;
 }
 
 .login-title,
@@ -47,11 +47,35 @@ span.username {
   margin-bottom: 24px;
 }
 
-/* GAME HEADER */
-.start-container {
-  transition: all 1s ease-in;
+.login-input {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 42px;
+  border: 2px solid rgb(254, 242, 117);
+  display: block;
+  width: 50%;
+  padding: 28px;
+  transition: all 2s ease-out;
 }
 
+/* *********** CHOOSE GAME *********** */
+
+.choose--container {
+  text-align: center;
+}
+
+.choose--header {
+  margin-bottom: 12px;
+}
+
+/* *********** GAME - WHOLE SCREEN *********** */
+
+/* CONTAINER */
+.game-container {
+  transition: all 0.5s;
+}
+
+/* HEADER */
 .game-header {
   background-color: rgb(154, 154, 154);
   display: flex;
@@ -63,6 +87,95 @@ span.username {
   height: 25vh;
   color: #eee;
 }
+
+/* MAIN */
+.game-main {
+  height: 75vh;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* justify-content: space-between; */
+}
+
+/* *********** GAME - SUM WINDOW *********** */
+
+.sum-window--container {
+  padding: 82px;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(98, 98, 98);
+  transition: all 0.5s;
+}
+
+.sum--container {
+  background-color: #222;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sum--sum {
+  font-size: 58px;
+  margin-bottom: 16px;
+}
+
+.sum--input {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 42px;
+  /* border: 2px solid rgb(254, 242, 117); */
+  text-align: center;
+  display: block;
+  width: 50%;
+  padding: 28px;
+  transition: all 0.3s ease-out;
+}
+
+.sum--input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.5rem rgba(253, 242, 233, 0.5);
+}
+
+/* *********** GAME - SCORE WINDOW *********** */
+
+.score-window--container {
+  padding: 82px;
+  height: 100%;
+  font-size: 24px;
+  gap: 42px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+}
+
+.score--container {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scores {
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* *********** GAME - GAME OVER WINDOW *********** */
+
+.game-over--heading {
+  font-size: 36px;
+  color: rgb(208, 94, 113);
+  margin-bottom: 32px;
+}
+
+.game-over--score {
+  margin-bottom: 38px;
+}
+
+/* *********** UI CLASSES *********** */
 
 .btn {
   border: none;
@@ -81,78 +194,38 @@ span.username {
   background-color: #ccc;
 }
 
-/* GAME MAIN */
-.game-main {
-  height: 75vh;
-  color: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* justify-content: space-between; */
-}
+/* *********** TRANSITION CLASSES *********** */
 
-.game-start--container {
-  text-align: center;
-}
-
-.game-start--header {
-  margin-bottom: 12px;
-}
-
-.game-main__sums {
-  padding: 82px;
-  width: 50%;
-  height: 100%;
-  background-color: rgb(98, 98, 98);
-  transition: all 0.5s;
-}
-
-/* for transition */
 .shift-down {
   transform: translateY(42px);
 }
 
-.quiz__sum {
-  font-size: 58px;
-  margin-bottom: 16px;
+.hidden {
+  opacity: 0;
 }
 
-.quiz__input,
-.login-input {
-  font-family: inherit;
-  font-weight: bold;
-  font-size: 42px;
-  /* border: none; */
-  border: 2px solid rgb(254, 242, 117);
-  /* text-align: center; */
-  display: block;
-  width: 50%;
-  padding: 28px;
-  /* margin-bottom: 3rem; */
-  /* border-radius: 8px; */
-  /* focus transition */
-  transition: all 2s ease-out;
+/* *********** ANIMATION CLASSES *********** */
+
+.correct {
+  background-color: rgb(166, 192, 127);
+  animation-name: correct-pulse;
+  animation-duration: 0.3s;
 }
 
-.quiz__input:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
-}
-
-.game-main__progress {
-  padding: 82px;
-  height: 100%;
-  font-size: 24px;
-  gap: 42px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 50%;
+@keyframes correct-pulse {
+  0% {
+    background-color: rgb(166, 192, 127);
+  }
+  50% {
+    background-color: rgb(206, 236, 161);
+  }
+  100% {
+    background-color: rgb(166, 192, 127);
+  }
 }
 
 .incorrect {
   background-color: rgb(208, 94, 113);
-
   animation: incorrect-pulse 0.3s, wiggle 0.5s;
 }
 
@@ -193,49 +266,4 @@ span.username {
   100% {
     transform: rotateZ(0);
   }
-}
-
-.correct {
-  background-color: rgb(166, 192, 127);
-  animation-name: correct-pulse;
-  animation-duration: 0.3s;
-}
-
-@keyframes correct-pulse {
-  0% {
-    background-color: rgb(166, 192, 127);
-  }
-  50% {
-    background-color: rgb(206, 236, 161);
-  }
-  100% {
-    background-color: rgb(166, 192, 127);
-  }
-}
-
-.quiz--container,
-.progress--container {
-  height: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quiz--container.sum {
-  background-color: #222;
-}
-
-.scores {
-  flex-direction: column;
-  gap: 24px;
-}
-
-.game-over--heading {
-  font-size: 36px;
-  color: rgb(208, 94, 113);
-  margin-bottom: 32px;
-}
-
-.game-over--score {
-  margin-bottom: 38px;
 }

@@ -1,9 +1,9 @@
-import { GameStartProps } from "../models/interfaces";
+import { ChooseProps } from "../models/interfaces";
 
-const GameStartWindow = ({ onStart }: GameStartProps): JSX.Element => {
+const ChooseGameWindow = ({ onStart }: ChooseProps): JSX.Element => {
   return (
-    <section className="game-start--container">
-      <h1 className="game-start--header">Click to start playing!</h1>
+    <section className="choose--container">
+      <h1 className="choose--header">Click to start playing!</h1>
       <button className="btn" onClick={onStart}>
         Go!
       </button>
@@ -11,4 +11,4 @@ const GameStartWindow = ({ onStart }: GameStartProps): JSX.Element => {
   );
 };
 
-export default GameStartWindow;
+export default ChooseGameWindow;

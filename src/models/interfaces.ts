@@ -15,7 +15,7 @@ export interface Sum {
   second: number;
 }
 
-export interface GameStartProps {
+export interface ChooseProps {
   onStart: () => void;
 }
 

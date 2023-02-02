@@ -24,18 +24,18 @@ function SumWindow({
   return (
     <section
       ref={sumContainerRef}
-      className="game-main__sums hidden shift-down"
+      className="sum-window--container hidden shift-down"
     >
-      <div className="quiz--container sum">
-        <p className="quiz__sum">
+      <div className="sum--container">
+        <p className="sum--sum">
           {first} + {second}
         </p>
       </div>
-      <div className="quiz--container">
+      <div className="sum--container">
         <input
           ref={answerRef}
           type="number"
-          className="quiz__input"
+          className="sum--input"
           onKeyDown={handleKeyDown}
           autoFocus
         />

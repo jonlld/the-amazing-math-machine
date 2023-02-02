@@ -10,17 +10,17 @@ function ScoreWindow({
   let classes = "";
 
   if (message === "Good luck!") {
-    classes = "game-main__progress";
+    classes = "score-window--container";
   } else {
-    classes = `game-main__progress ${isCorrect ? "correct" : "incorrect"}`;
+    classes = `score-window--container ${isCorrect ? "correct" : "incorrect"}`;
   }
 
   return (
     <section className={classes}>
-      <div className="progress--container">
+      <div className="score--container">
         <p>{message}</p>
       </div>
-      <div className="progress--container scores">
+      <div className="score--container scores">
         <p>{score > 0 && `Your score is ${score}!`}</p>
         <p>{highscore > 0 && `Your previous highscore is ${highscore}!`}</p>
       </div>
