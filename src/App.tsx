@@ -1,13 +1,31 @@
-import { useState, Fragment, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import Login from "./Login";
 import Game from "./Game/Game";
 import { UserData } from "./models/interfaces";
 import { storeInitialUser, storeUpdatedUser } from "./helpers";
 
 function App(): JSX.Element {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  const [username, setUsername] = useState<string>("TEST");
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  // current
+  const [username, setUsername] = useState<string>("");
   const [highscore, setHighscore] = useState<number>(0);
+  // storage
+  const [leaderboardData, setLeaderboardData] = useState<UserData[]>([]);
+
+  // TODO - LEADERBOARD
+  // Retrieve all user data on *load* to populate leaderboard
+
+  // ON LOAD - RETRIEVE LEADERBOARD
+  useEffect(() => {
+    if (localStorage.getItem("userdata") === null) {
+      console.log("No stored information to retrieve!");
+    } else {
+      const data = JSON.parse(localStorage.getItem("userdata")!);
+      setLeaderboardData(data);
+      console.log("Found data:");
+      console.log(data);
+    }
+  }, []);
 
   const logIn = (name: string): void => {
     if (name) {
