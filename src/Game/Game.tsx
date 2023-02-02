@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState, useRef } from "react";
-import ChooseGameWindow from "./GameStartWindow";
+import ChooseGameWindow from "./ChooseGameWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "../Game/SumWindow";
 import ScoreWindow from "../Game/ScoreWindow";
