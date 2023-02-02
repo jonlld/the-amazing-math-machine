@@ -6,14 +6,14 @@ import ScoreWindow from "../Game/ScoreWindow";
 import { StartProps, Sum } from "../models/interfaces";
 import { generateSum, checkAnswer } from "../helpers";
 
-// TODO
+// DONE
 // 1. pass type operand (as string) to SumWindow as part of sum state... DONE
 // 2. check answer based on current operand DONE
 
 // TODO
-// For multiplication, limit scope to 1 - 10...
-// Also, delete type state as have sum.operand ??
-// For subtraction, second number cannot be larger...
+// 3. For subtraction, second number cannot be larger...
+// 4. Delete type state as have sum.operand - probably not required
+// 5. For multiplication, limit scope to 1 - 10...
 
 function Game({
   username,
