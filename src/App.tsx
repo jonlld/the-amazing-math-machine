@@ -2,7 +2,11 @@ import { useState, useEffect, Fragment } from "react";
 import Login from "./Login/Login";
 import Game from "./Game/Game";
 import { UserData } from "./models/interfaces";
-import { storeInitialUser, storeUpdatedUser } from "./helpers";
+import {
+  storeInitialUser,
+  storeUpdatedUser,
+  sortUsersByScore,
+} from "./helpers";
 
 function App(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -10,12 +14,13 @@ function App(): JSX.Element {
   const [highscore, setHighscore] = useState<number>(0);
   const [leaderboardData, setLeaderboardData] = useState<UserData[]>([]);
 
-  // UPDATE LEADERBOARD ON LOAD AND CHANGE OF LOGIN STATUS
+  // UPDATE LEADERBOARD
+  // TRIGGERED ONCE ON LOAD & ON LOGOUT
   useEffect(() => {
-    console.log("updating leaderboard running");
     if (localStorage.getItem("userdata") !== null) {
       const data = JSON.parse(localStorage.getItem("userdata")!);
-      setLeaderboardData(data);
+      const sortedData = sortUsersByScore(data);
+      setLeaderboardData(sortedData);
     }
   }, [isLoggedIn]);
 

@@ -23,6 +23,19 @@ export const generateSum = (type: string) => {
   return { first, second, operand };
 };
 
+export const checkAnswer = (
+  { first, second, operand }: Sum,
+  answer: number
+): boolean => {
+  let result: boolean = false;
+
+  if (operand === "+") result = first + second === answer;
+  if (operand === "-") result = first - second === answer;
+  if (operand === "*") result = first * second === answer;
+
+  return result;
+};
+
 // Set first user details
 export const storeInitialUser = (
   username: string,
@@ -56,15 +69,23 @@ export const storeUpdatedUser = (
   localStorage.setItem("userdata", JSON.stringify(retrievedData));
 };
 
-export const checkAnswer = (
-  { first, second, operand }: Sum,
-  answer: number
-): boolean => {
-  let result: boolean = false;
+// Sort
+export const sortUsersByScore = (data: UserData[]): UserData[] => {
+  // copy
+  const dataToSort = [...data];
 
-  if (operand === "+") result = first + second === answer;
-  if (operand === "-") result = first - second === answer;
-  if (operand === "*") result = first * second === answer;
+  const compare = (a: UserData, b: UserData): number => {
+    if (a.highscore > b.highscore) {
+      return -1;
+    }
+    if (a.highscore < b.highscore) {
+      return 1;
+    }
+    return 0;
+  };
 
-  return result;
+  let sortedUsers = dataToSort.sort(compare);
+
+  // return new array
+  return sortedUsers;
 };

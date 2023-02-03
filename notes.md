@@ -40,8 +40,8 @@ Development Notes / Todo list:
 
 5. Other
 
-- About page (slide in? arrows?)
-- Refactor UI
+- About page (slide in? arrows?) TODO
+- Refactor state / functions / UI layout TODO
 - Polish - add icons, colors, animation, sound TODO
 - Make responsive
 
