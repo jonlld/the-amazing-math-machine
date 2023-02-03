@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { LoginProps } from "../models/interfaces";
+import { LoginProps } from "../../models/interfaces";
 import LeaderboardItem from "./LeaderboardItem";
 
 function Login({

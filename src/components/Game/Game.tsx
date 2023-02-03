@@ -1,10 +1,10 @@
 import { Fragment, useEffect, useState, useRef } from "react";
 import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
-import SumWindow from "../Game/SumWindow";
-import ScoreWindow from "../Game/ScoreWindow";
-import { StartProps, Sum } from "../models/interfaces";
-import { generateSum, checkAnswer } from "../helpers";
+import SumWindow from "./SumWindow";
+import ScoreWindow from "./ScoreWindow";
+import { StartProps, Sum } from "../../models/interfaces";
+import { generateSum, checkAnswer } from "../../helpers";
 
 function Game({
   username,

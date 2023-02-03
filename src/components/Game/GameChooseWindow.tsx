@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { ChooseProps } from "../models/interfaces";
+import { ChooseProps } from "../../models/interfaces";
 
 const GameChooseWindow = ({ onStart }: ChooseProps): JSX.Element => {
   const chooseContainerRef = useRef<HTMLDivElement>(null);

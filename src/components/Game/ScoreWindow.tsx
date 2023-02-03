@@ -1,4 +1,4 @@
-import { ScoreProps } from "../models/interfaces";
+import { ScoreProps } from "../../models/interfaces";
 
 function ScoreWindow({
   isCorrect,

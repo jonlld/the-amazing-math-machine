@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
-import Login from "./Login/Login";
-import Game from "./Game/Game";
+import Login from "./components/Login/Login";
+import Game from "./components/Game/Game";
 import { UserData } from "./models/interfaces";
 import {
   storeInitialUser,

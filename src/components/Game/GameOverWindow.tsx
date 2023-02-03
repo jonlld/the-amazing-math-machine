@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { GameOverProps } from "../models/interfaces";
+import { GameOverProps } from "../../models/interfaces";
 
 const GameOverWindow = ({
   score,
