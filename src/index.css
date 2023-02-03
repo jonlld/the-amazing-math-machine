@@ -78,6 +78,10 @@ fix layout!
   transition: all 2s ease-out;
 }
 
+.login--input::placeholder {
+  color: #ccc;
+}
+
 .leaderboard--container {
   border-left: 2px solid #eee;
   padding-left: 46px;

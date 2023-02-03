@@ -55,7 +55,7 @@ function Login({
             ref={nameInputRef}
             id="user"
             type="text"
-            // placeholder="name here"
+            placeholder="name"
             autoFocus
           ></input>
           <button className="btn login-button">Login</button>

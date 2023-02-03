@@ -8,7 +8,8 @@ Development Notes / Todo list:
 - Switch to Game Choose screen DONE
 - Retrieve and show leaderboard for current users on login screen DONE
 - Allow click on name to login DONE
-- Sort leaderboard and add a trophy to the top score TODO
+- Sort leaderboard DONE
+- Add a trophy marker to the best score TODO
 
 2. Game Choose screen!
 
