@@ -9,7 +9,7 @@ Development Notes / Todo list:
 - Retrieve and show leaderboard for current users on login screen DONE
 - Allow click on name to login DONE
 - Sort leaderboard DONE
-- Add a trophy marker to the best score TODO
+- Add a trophy marker to the best score DONE
 
 2. Game Choose screen!
 
@@ -41,10 +41,10 @@ Development Notes / Todo list:
 
 5. Other
 
-- About page (slide in? arrows?) TODO
-- Refactor state / functions / UI layout TODO
+- About page (made by / explanation etc.) TODO
+- Make responsive TODO
+- Refactor layout / state management / compartmentalise functions TODO
 - Polish - add icons, colors, animation, sound TODO
-- Make responsive
 
 ---
 

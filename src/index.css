@@ -143,7 +143,7 @@ fix layout!
   transform: scaleX(0);
   /* retreats to bottom right after hover */
   transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
 .leaderboard--listitem__user:hover::after {
@@ -284,6 +284,10 @@ fix layout!
 }
 
 /* *********** GAME - GAME OVER WINDOW *********** */
+
+.game-over--container {
+  transition: all 1s;
+}
 
 .game-over--heading {
   text-transform: uppercase;

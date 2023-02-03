@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { GameOverProps } from "../models/interfaces";
 
 const GameOverWindow = ({
@@ -6,6 +7,8 @@ const GameOverWindow = ({
   onPlayAgain,
   onChoose,
 }: GameOverProps): JSX.Element => {
+  const gameOverContainerRef = useRef<HTMLElement>(null);
+
   const playHandler = (): void => {
     onPlayAgain();
   };
@@ -15,8 +18,15 @@ const GameOverWindow = ({
     onChoose();
   };
 
+  // BUG Why require setTimeout here but not for others?
+  useEffect(() => {
+    setTimeout(() => {
+      gameOverContainerRef.current?.classList.remove("hidden");
+    }, 0);
+  }, []);
+
   return (
-    <section>
+    <section ref={gameOverContainerRef} className="game-over--container hidden">
       <h1 className="game-over--heading">Game Over!</h1>
       <p className="game-over--score">
         Your <span>score</span> was <span>{score}.</span>
