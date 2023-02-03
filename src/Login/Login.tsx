@@ -29,7 +29,7 @@ function Login({
   }, []);
 
   // Render LeaderboardItem list
-  const items = users.map((user) => (
+  const leaderboardItems = users.map((user) => (
     <LeaderboardItem
       key={user.username}
       user={user}
@@ -69,7 +69,9 @@ function Login({
             left.
           </p>
         )}
-        {!usersIsEmpty && <ul className="leaderboard--list">{items}</ul>}
+        {!usersIsEmpty && (
+          <ul className="leaderboard--list">{leaderboardItems}</ul>
+        )}
       </section>
     </main>
   );

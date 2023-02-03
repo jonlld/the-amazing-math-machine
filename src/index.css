@@ -55,6 +55,7 @@ fix layout!
 }
 
 .login--container {
+  max-width: 500px;
   padding-right: 46px;
 }
 
@@ -85,6 +86,7 @@ fix layout!
 .leaderboard--container {
   border-left: 2px solid #eee;
   padding-left: 46px;
+  max-width: 500px;
 }
 
 .leaderboard--title {
@@ -95,6 +97,8 @@ fix layout!
 
 .leaderboard--list {
   list-style: none;
+  /* for pseudo-element */
+  position: relative;
 }
 
 .leaderboard--listitem {
@@ -102,6 +106,15 @@ fix layout!
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
+  padding-right: 120px;
+}
+
+.leaderboard--listitem:first-child:after {
+  content: "AMAZING!";
+  position: absolute;
+  font-size: 14px;
+  right: 0;
+  color: gold;
 }
 
 .leaderboard--listitem__user {
