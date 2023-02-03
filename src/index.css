@@ -108,13 +108,16 @@ fix layout!
   margin-bottom: 24px;
 }
 
-/* relative to container; note 'top' is defaulting to first-child offset */
+/* relative to container
+/* note 'top' is defaulting to first-child offset */
 .leaderboard--listitem:first-child::after {
   content: "AMAZING!";
   position: absolute;
-  font-size: 18px;
+  font-size: 16px;
   right: 0;
   color: rgb(208, 94, 113);
+  /* duration | easing-function | delay | name */
+  animation: 8s linear 3s infinite leaderboard-bounce;
 }
 
 .leaderboard--listitem__user {
@@ -369,8 +372,8 @@ fix layout!
 
 .correct {
   background-color: rgb(166, 192, 127);
-  animation-name: correct-pulse;
-  animation-duration: 0.3s;
+  /* duration | easing-function | name */
+  animation: 0.3s linear correct-pulse;
 }
 
 @keyframes correct-pulse {
@@ -387,7 +390,8 @@ fix layout!
 
 .incorrect {
   background-color: rgb(208, 94, 113);
-  animation: incorrect-pulse 0.3s, wiggle 1s;
+  /* duration | easing-function | name */
+  animation: 0.3s linear incorrect-pulse, 1s linear wiggle;
 }
 
 @keyframes incorrect-pulse {
@@ -402,7 +406,32 @@ fix layout!
   }
 }
 
-/* Keyframes */
+@keyframes leaderboard-bounce {
+  0%,
+  1% {
+    transform: scale(1);
+  }
+  4% {
+    transform: scale(0.7);
+  }
+  5% {
+    transform: scale(1.3);
+  }
+  6% {
+    transform: scale(0.8);
+  }
+  7% {
+    transform: scale(1.2);
+  }
+  8% {
+    transform: scale(0.9);
+  }
+  9%,
+  100% {
+    transform: scale(1);
+  }
+}
+
 @keyframes wiggle {
   0%,
   7% {
