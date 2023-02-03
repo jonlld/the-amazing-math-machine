@@ -86,7 +86,8 @@ fix layout!
 .leaderboard--container {
   border-left: 2px solid #eee;
   padding-left: 46px;
-  max-width: 500px;
+  /* for pseudo-element positioning */
+  position: relative;
 }
 
 .leaderboard--title {
@@ -96,9 +97,8 @@ fix layout!
 }
 
 .leaderboard--list {
+  max-width: 70%;
   list-style: none;
-  /* for pseudo-element */
-  position: relative;
 }
 
 .leaderboard--listitem {
@@ -106,15 +106,15 @@ fix layout!
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
-  padding-right: 120px;
 }
 
-.leaderboard--listitem:first-child:after {
+/* relative to container; note 'top' is defaulting to first-child offset */
+.leaderboard--listitem:first-child::after {
   content: "AMAZING!";
   position: absolute;
-  font-size: 14px;
+  font-size: 18px;
   right: 0;
-  color: gold;
+  color: rgb(208, 94, 113);
 }
 
 .leaderboard--listitem__user {
