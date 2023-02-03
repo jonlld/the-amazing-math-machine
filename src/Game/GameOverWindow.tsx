@@ -22,11 +22,15 @@ const GameOverWindow = ({
   useEffect(() => {
     setTimeout(() => {
       gameOverContainerRef.current?.classList.remove("hidden");
+      gameOverContainerRef.current?.classList.remove("shift-down");
     }, 0);
   }, []);
 
   return (
-    <section ref={gameOverContainerRef} className="game-over--container hidden">
+    <section
+      ref={gameOverContainerRef}
+      className="game-over--container hidden shift-down"
+    >
       <h1 className="game-over--heading">Game Over!</h1>
       <p className="game-over--score">
         Your <span>score</span> was <span>{score}.</span>
