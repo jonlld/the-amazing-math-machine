@@ -1,3 +1,8 @@
+/* 
+TODO 
+fix layouts! 
+*/
+
 /* Font = Press Start 2P */
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
@@ -36,11 +41,6 @@ span.machine {
 }
 
 /* *********** LOGIN & LEADERBOARD CLASSES *********** */
-
-/* 
-TODO 
-fix layout! 
-*/
 
 .login-window--container {
   /* center main container */
