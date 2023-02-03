@@ -8,6 +8,7 @@ Development Notes / Todo list:
 - Switch to Game Choose screen DONE
 - Retrieve and show leaderboard for current users on login screen DONE
 - Allow click on name to login DONE
+- Sort leaderboard and add a trophy to the top score TODO
 
 2. Game Choose screen!
 
@@ -27,6 +28,7 @@ Development Notes / Todo list:
 - If incorrect, add 1 strike (max 3) DONE
 - Animate answer results DONE
 - If game over (3 strikes) update user data DONE
+- Add (optional) timer to complete sum or receive a strike TODO
 - Show some kind of progress / level tracker? TODO
 
 4. Game Over screen!
@@ -34,21 +36,21 @@ Development Notes / Todo list:
 - Show score and highscore DONE
 - Allow click to restart game DONE
 - Allow click to change game mode DONE
-- Add transition for game over screen TODO
+- Add transitions for game over screen TODO
 
 5. Other
 
 - About page (slide in? arrows?)
-- Make it pretty, use icons, colors, animations TODO
-- Add some sounds to correct / incorrect
-- Make responsive for smaller windows (maybe number boxes for touch inputs - see hangman idea)
-- Refactor
+- Refactor UI
+- Polish - add icons, colors, animation, sound TODO
+- Make responsive
 
 ---
 
-- Additional:
+- Additional Ideas:
 
 * Add a TNT power for every 10 sums answered - allows you to skip an answer?
+* Timed mode - do x # of random sums in a fixed time
 
 - References / Resources:
 

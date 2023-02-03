@@ -42,7 +42,6 @@ function Game({
   };
 
   // FROM GAME OVER SCREEN
-
   // NEW GAME
   const playAgainHandler = (): void => {
     setMessage("Good luck!");
