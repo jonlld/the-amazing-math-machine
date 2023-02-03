@@ -188,7 +188,7 @@ fix layout!
 .game-header {
   background-color: rgb(154, 154, 154);
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   text-transform: uppercase;
   padding: 32px;
