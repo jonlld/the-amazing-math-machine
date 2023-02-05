@@ -17,7 +17,8 @@ function Login({
     if (nameInputRef.current?.value) {
       onLogIn(nameInputRef.current.value);
     } else {
-      console.log("Please enter a name!");
+      // temporary
+      alert("Please enter a name!");
     }
   };
 

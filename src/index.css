@@ -12,6 +12,8 @@ fix layouts!
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  /* border: 1px solid #eee; */
 }
 
 /* TAG SELECTORS */
@@ -53,7 +55,7 @@ span.machine {
 }
 
 .login--container {
-  max-width: 500px;
+  /* max-width: 500px; */
   padding-right: 46px;
 }
 
@@ -95,6 +97,8 @@ span.machine {
 }
 
 .leaderboard--list {
+  /* to improve */
+  overflow: auto;
   max-width: 70%;
   list-style: none;
 }
