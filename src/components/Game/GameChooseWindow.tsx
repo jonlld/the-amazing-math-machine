@@ -9,18 +9,10 @@ const GameChooseWindow = ({ onStart }: ChooseProps): JSX.Element => {
     onStart(type);
   };
 
-  // remove class on mount to trigger transition
-  useEffect(() => {
-    setTimeout(() => {
-      chooseContainerRef.current?.classList.remove("hidden");
-      chooseContainerRef.current?.classList.remove("shift-down");
-    }, 0);
-  }, []);
-
   return (
     <section
       ref={chooseContainerRef}
-      className="choose--container shift-down hidden"
+      className="choose--container fade-in-slide-up"
     >
       <h1 className="choose--header">Choose Game Type:</h1>
       <div className="choose--buttons">
