@@ -15,16 +15,10 @@ function SumWindow({
     }
   };
 
-  // remove class on mount to trigger transition
-  useEffect(() => {
-    sumContainerRef.current?.classList.remove("hidden");
-    sumContainerRef.current?.classList.remove("shift-down");
-  }, []);
-
   return (
     <section
       ref={sumContainerRef}
-      className="sum-window--container hidden shift-down"
+      className="sum-window--container fade-in-slide-up"
     >
       <div className="sum--container">
         <p className="sum--sum">
