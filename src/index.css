@@ -50,8 +50,10 @@ span.machine {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 70vh;
-  /* transition for container */
-  transition: all 0.5s ease-out;
+}
+
+.fade-in-slide-up {
+  animation: 0.5s ease-out fade-in-slide-up;
 }
 
 .login--container {
@@ -362,6 +364,7 @@ span.machine {
 
 /* *********** TRANSITION CLASSES *********** */
 
+/* TODO remove these */
 .shift-down {
   transform: translateY(42px);
 }
@@ -396,6 +399,17 @@ span.machine {
   background-color: rgb(208, 94, 113);
   /* duration | easing-function | name */
   animation: 0.3s linear incorrect-pulse, 1s linear wiggle;
+}
+
+@keyframes fade-in-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(42px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes incorrect-pulse {

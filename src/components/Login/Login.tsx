@@ -22,12 +22,6 @@ function Login({
     }
   };
 
-  // Transition - After FC Mounted
-  useEffect(() => {
-    containerRef.current?.classList.remove("hidden");
-    containerRef.current?.classList.remove("shift-down");
-  }, []);
-
   // Render LeaderboardItem list
   const leaderboardItems = users.map((user) => (
     <LeaderboardItem
@@ -40,7 +34,7 @@ function Login({
   return (
     <main
       ref={containerRef}
-      className="login-window--container hidden shift-down"
+      className="login-window--container fade-in-slide-up"
     >
       <section className="login--container">
         <h1 className="login--title">
