@@ -176,9 +176,7 @@ span.machine {
 /* *********** GAME - WHOLE SCREEN *********** */
 
 /* CONTAINER */
-.game-container {
-  transition: all 0.5s;
-}
+/* .game-container {} */
 
 /* HEADER */
 .game-header {
@@ -281,7 +279,8 @@ span.machine {
 /* *********** GAME - GAME OVER WINDOW *********** */
 
 .game-over--container {
-  transition: all 1s;
+  /* border: 1px solid #eee; */
+  padding: 64px;
 }
 
 .game-over--heading {
