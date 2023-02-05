@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { LoginProps } from "../../models/interfaces";
 import LeaderboardItem from "./LeaderboardItem";
 
@@ -8,7 +8,6 @@ function Login({
   onLeaderboardLogin,
 }: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
-  const containerRef = useRef<HTMLElement>(null);
 
   const usersIsEmpty = users.length === 0;
 
@@ -32,10 +31,7 @@ function Login({
   ));
 
   return (
-    <main
-      ref={containerRef}
-      className="login-window--container fade-in-slide-up"
-    >
+    <main className="login-window--container fade-in-slide-up">
       <section className="login--container">
         <h1 className="login--title">
           Please click on <span>your name</span> or register below to start!

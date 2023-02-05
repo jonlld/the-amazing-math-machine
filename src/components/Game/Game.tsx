@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "./SumWindow";
@@ -12,9 +12,6 @@ function Game({
   highscore,
   updateHighscore,
 }: StartProps): JSX.Element {
-  // Refs
-  const startContainerRef = useRef<HTMLElement>(null);
-
   // State
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
@@ -92,15 +89,8 @@ function Game({
     }
   }, [strikes]);
 
-  // Trigger fade-in on initial component load
-  useEffect(() => {
-    setTimeout(() => {
-      startContainerRef.current?.classList.remove("hidden");
-    }, 0);
-  }, []);
-
   return (
-    <section ref={startContainerRef} className="game-container hidden">
+    <section className="game-container fade-in-slide-up">
       <header className="game-header">
         <div>
           <h1 className="game-header--message">

@@ -1,11 +1,10 @@
-import React, { Fragment, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { QuizProps } from "../../models/interfaces";
 
 function SumWindow({
   sum: { first, second, operand },
   onAnswer,
 }: QuizProps): JSX.Element {
-  const sumContainerRef = useRef<HTMLDivElement>(null);
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent): void => {
@@ -16,10 +15,7 @@ function SumWindow({
   };
 
   return (
-    <section
-      ref={sumContainerRef}
-      className="sum-window--container fade-in-slide-up"
-    >
+    <section className="sum-window--container fade-in-slide-up">
       <div className="sum--container">
         <p className="sum--sum">
           {first} {operand} {second}

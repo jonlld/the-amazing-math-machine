@@ -1,19 +1,13 @@
-import React, { useRef, useEffect } from "react";
 import { ChooseProps } from "../../models/interfaces";
 
 const GameChooseWindow = ({ onStart }: ChooseProps): JSX.Element => {
-  const chooseContainerRef = useRef<HTMLDivElement>(null);
-
   const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
     const type = e.currentTarget.getAttribute("value")!;
     onStart(type);
   };
 
   return (
-    <section
-      ref={chooseContainerRef}
-      className="choose--container fade-in-slide-up"
-    >
+    <section className="choose--container fade-in-slide-up">
       <h1 className="choose--header">Choose Game Type:</h1>
       <div className="choose--buttons">
         <button
