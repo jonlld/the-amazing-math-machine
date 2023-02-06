@@ -40,10 +40,12 @@ function Game({
   // INITIALISE RESTARTED GAME
   useEffect(() => {
     if (isRestart && pauseData !== null) {
+      console.log(pauseData.pausedMessage);
       // Set state where located in Game
       setType(pauseData.pausedType);
       setSum(pauseData.pausedSum);
-      setMessage(pauseData.pausedMessage);
+      setMessage("test");
+      // setMessage(pauseData.pausedMessage);
       setScore(pauseData.pausedScore);
       setStrikes(pauseData.pausedStrikes);
       setIsCorrect(pauseData.pausedIsCorrect);
@@ -104,10 +106,10 @@ function Game({
 
   // CHECK ANSWER
   const onAnswerHandler = (answer: number): void => {
-    let isGood = checkAnswer(sum, answer);
+    let answerIsCorrect = checkAnswer(sum, answer);
 
     // IF CORRECT
-    if (isGood) {
+    if (answerIsCorrect) {
       setMessage(`
         Correct:
         ${3 - strikes} ${strikes === 2 ? "strike" : "strikes"} remaining!
@@ -117,7 +119,7 @@ function Game({
     }
 
     // IF INCORRECT
-    else {
+    else if (!answerIsCorrect) {
       if (strikes < 3) setStrikes((p) => (p += 1));
       setIsCorrect(false);
     }
@@ -126,6 +128,7 @@ function Game({
     setSum(generateSum(type));
   };
 
+  // BUG this is overwriting setMessage on restart
   // CHECK STRIKES & HANDLE GAME OVER
   useEffect(() => {
     // CONTINUE
@@ -138,7 +141,6 @@ function Game({
       setIsPlaying(false);
       setIsGameOver(true);
       setMessage("Game Over!");
-      // TODO refactor state
       // app-level state
       onGameOver(score);
     }
