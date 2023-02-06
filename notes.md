@@ -34,6 +34,9 @@ Development Notes / Todo list:
 - Animate answer results DONE
 - If game over (3 strikes) update user data DONE
 - Add pause / resume feature TODO
+  - bring score / gametype / message state to app level for restart
+  - add isRestarted state to delete save game on end game
+  - limit to one saved game
 - Add (optional) timer to complete sum or receive a strike TODO
 - If incorrect, show sum and correct answer? TODO
 - Show user tailored log - how many times played / best score / average score / favourite mode TODO

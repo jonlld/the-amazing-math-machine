@@ -6,11 +6,13 @@ import ScoreWindow from "./ScoreWindow";
 import { Sum, PausedGameData } from "../../models/interfaces";
 import { generateSum, checkAnswer } from "../../helpers";
 
-interface StartProps {
+interface GameProps {
   username: string;
   onLogOut: (data?: PausedGameData) => void;
   highscore: number;
   updateHighscore: (score: number) => void;
+  isRestart: boolean;
+  pauseData: PausedGameData | null;
 }
 
 function Game({
@@ -18,7 +20,9 @@ function Game({
   onLogOut,
   highscore,
   updateHighscore,
-}: StartProps): JSX.Element {
+  isRestart,
+  pauseData,
+}: GameProps): JSX.Element {
   // State
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
@@ -32,6 +36,17 @@ function Game({
     second: 0,
     operand: "",
   });
+
+  useEffect(() => {
+    if (isRestart && pauseData) {
+      setType(pauseData?.pausedType);
+      setSum(generateSum(pauseData?.pausedType));
+      setMessage(pauseData?.pausedMessage);
+      setScore(pauseData?.pausedScore);
+      setStrikes(pauseData?.pausedStrikes);
+      setIsPlaying(true);
+    }
+  }, [isRestart]);
 
   // HANDLE GAME START FROM CHOOSE GAME BUTTON CLICK
   const onStartHandler = (type: string): void => {
@@ -66,10 +81,12 @@ function Game({
     onLogOut();
   };
 
+  // TO SAVE DATA
   const onPauseHandler = (): void => {
     // format data to store and pass to parent function
     let pausedGameData = {
       username,
+      pausedType: type,
       pausedScore: score,
       pausedStrikes: strikes,
       pausedMessage: message,

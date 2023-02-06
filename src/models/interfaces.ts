@@ -7,6 +7,7 @@ export interface UserData {
 
 export interface PausedGameData {
   username: string;
+  pausedType: string;
   pausedScore: number;
   pausedStrikes: number;
   pausedMessage: string;
