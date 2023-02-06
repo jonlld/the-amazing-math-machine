@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "./SumWindow";
@@ -15,6 +15,12 @@ interface GameProps {
   pauseData: PausedGameData | null;
 }
 
+const sumDefault: Sum = {
+  first: 0,
+  second: 0,
+  operand: "",
+};
+
 function Game({
   username,
   onLogOut,
@@ -23,7 +29,6 @@ function Game({
   isRestart,
   pauseData,
 }: GameProps): JSX.Element {
-  // State
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [strikes, setStrikes] = useState<number>(0);
@@ -31,17 +36,12 @@ function Game({
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [type, setType] = useState<string>("");
-  const [sum, setSum] = useState<Sum>({
-    first: 0,
-    second: 0,
-    operand: "",
-  });
+  const [sum, setSum] = useState<Sum>(sumDefault);
 
   // INITIALISE RESTARTED GAME
   useEffect(() => {
     if (isRestart && pauseData !== null) {
-      console.log(pauseData.pausedMessage);
-      // Set state where located in Game
+      // Set Game state
       setType(pauseData.pausedType);
       setSum(pauseData.pausedSum);
       setMessage(pauseData.pausedMessage);
@@ -110,40 +110,39 @@ function Game({
     // IF CORRECT
     if (answerIsCorrect) {
       setMessage(`
-        Correct:
-        ${3 - strikes} ${strikes === 2 ? "strike" : "strikes"} remaining!
-        `);
+          Correct:
+          ${3 - strikes} ${strikes === 2 ? "strike" : "strikes"} remaining!
+          `);
       setIsCorrect(true);
       setScore((prev) => prev + 10);
     }
 
     // IF INCORRECT
-    else if (!answerIsCorrect) {
-      if (strikes < 3) setStrikes((p) => (p += 1));
+    if (!answerIsCorrect) {
+      // update using local variable based on state, before finally updating state (as scheduled)
+      let numStrikes = strikes;
+      numStrikes += 1;
+
+      if (numStrikes < 3) {
+        setMessage(`${numStrikes} of 3 Strikes!`);
+      }
+
+      if (numStrikes === 3) {
+        // state at this level
+        setIsPlaying(false);
+        setIsGameOver(true);
+        setMessage("Game Over!");
+        // app-level state
+        onGameOver(score);
+      }
+
+      setStrikes(numStrikes);
       setIsCorrect(false);
     }
 
     // GENERATE NEXT SUM: REQUIRES TYPE STATE
     setSum(generateSum(type));
   };
-
-  // BUG - overwriting restart setMessage
-  // CHECK STRIKES & HANDLE GAME OVER
-  useEffect(() => {
-    // CONTINUE
-    if (strikes !== 0) {
-      setMessage(`${strikes} of 3 Strikes!`);
-    }
-    // SET GAME OVER
-    if (strikes === 3) {
-      // state at this level
-      setIsPlaying(false);
-      setIsGameOver(true);
-      setMessage("Game Over!");
-      // app-level state
-      onGameOver(score);
-    }
-  }, [strikes]);
 
   return (
     <section className="game-container fade-in-slide-up">
@@ -165,13 +164,13 @@ function Game({
           </button>
           {isPlaying && (
             <button className="btn  game-header--btn" onClick={onPauseHandler}>
-              Pause Game
+              Logout & Save
             </button>
           )}
         </div>
       </header>
       <main className="game-main">
-        {/* NOT PLAYING STATES */}
+        {/* NON-PLAYING STATES */}
         {!isPlaying && !isGameOver && (
           <ChooseGameWindow onStart={onStartHandler} />
         )}
@@ -189,7 +188,7 @@ function Game({
 
         {isPlaying && (
           <ScoreWindow
-            // key to force re-render & trigger animation
+            // key to force re-render for animation
             key={Math.random()}
             message={message}
             isCorrect={isCorrect}
