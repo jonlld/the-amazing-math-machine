@@ -54,6 +54,11 @@ span.machine {
   height: 70vh;
 }
 
+.login--savegame {
+  color: rgb(255, 128, 149);
+  margin-bottom: 24px;
+}
+
 .login--container {
   /* max-width: 500px; */
   padding-right: 46px;

@@ -1,17 +1,21 @@
 import React, { useRef } from "react";
 import LeaderboardItem from "./LeaderboardItem";
-import { UserData } from "../../models/interfaces";
+import { PausedGameData, UserData } from "../../models/interfaces";
 
 interface LoginProps {
   onLogIn: (name: string) => void;
   users: UserData[];
   onLeaderboardLogin: (user: UserData) => void;
+  isPaused: boolean;
+  pauseData: PausedGameData | null;
 }
 
 function Login({
   onLogIn,
   users,
   onLeaderboardLogin,
+  isPaused,
+  pauseData,
 }: LoginProps): JSX.Element {
   const nameInputRef = useRef<HTMLInputElement>(null);
 
@@ -40,6 +44,11 @@ function Login({
   return (
     <main className="login-window--container fade-in-slide-up">
       <section className="login--container">
+        {isPaused && (
+          <p className="login--savegame">
+            {pauseData?.username.toUpperCase()}'s save game found! Restart?
+          </p>
+        )}
         <h1 className="login--title">
           Please click on <span>your name</span> or register below to start!
         </h1>

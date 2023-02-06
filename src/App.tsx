@@ -9,6 +9,10 @@ import {
 } from "./helpers";
 
 function App(): JSX.Element {
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [pauseGameData, setPauseGameData] = useState<PausedGameData | null>(
+    null
+  );
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [highscore, setHighscore] = useState<number>(0);
@@ -17,6 +21,16 @@ function App(): JSX.Element {
   // UPDATE LEADERBOARD
   // TRIGGERED ONCE ON LOAD & ON LOGOUT
   useEffect(() => {
+    // SET PAUSED IF DATA FOUND
+    if (localStorage.getItem("pausedData") !== null) {
+      // Trigger game paused message
+      setIsPaused(true);
+      // Retrieve
+      const data = JSON.parse(localStorage.getItem("pausedData")!);
+      setPauseGameData(data);
+    }
+
+    // ALSO, CHECK USER DATA
     if (localStorage.getItem("userdata") !== null) {
       const data = JSON.parse(localStorage.getItem("userdata")!);
       const sortedData = sortUsersByScore(data);
@@ -103,6 +117,8 @@ function App(): JSX.Element {
           onLogIn={logIn}
           onLeaderboardLogin={leaderBoardLogIn}
           users={leaderboardData}
+          isPaused={isPaused}
+          pauseData={pauseGameData}
         />
       )}
     </Fragment>
