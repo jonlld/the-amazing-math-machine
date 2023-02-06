@@ -37,7 +37,7 @@ Development Notes / Todo list:
   - add pause button and save game data to local storage (one save game limit for now) DONE
   - add check for saved game data and show message on login if any DONE
   - add button to restart saved game (isRestarted) DONE
-  - clear save game data once that game is completed - if isRestarted && isGameOver TODO
+  - clear save game data once that game is completed - if isRestarted && isGameOver - and remove save game message from login screen TODO
 - Add (optional) timer to complete sum or receive a strike TODO
 - If incorrect, show sum and correct answer? TODO
 - Show user tailored log - how many times played / best score / average score / favourite mode TODO

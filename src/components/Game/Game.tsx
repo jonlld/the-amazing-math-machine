@@ -10,7 +10,7 @@ interface GameProps {
   username: string;
   onLogOut: (data?: PausedGameData) => void;
   highscore: number;
-  updateHighscore: (score: number) => void;
+  onGameOver: (score: number) => void;
   isRestart: boolean;
   pauseData: PausedGameData | null;
 }
@@ -19,7 +19,7 @@ function Game({
   username,
   onLogOut,
   highscore,
-  updateHighscore,
+  onGameOver,
   isRestart,
   pauseData,
 }: GameProps): JSX.Element {
@@ -132,11 +132,12 @@ function Game({
       setMessage(`${strikes} of 3 Strikes!`);
     }
     if (strikes === 3) {
-      setMessage("Game Over!");
+      // app-level state
+      onGameOver(score);
+      // state at this level
       setIsPlaying(false);
-      // Update highscore on game over
-      updateHighscore(score);
       setIsGameOver(true);
+      setMessage("Game Over!");
     }
   }, [strikes]);
 

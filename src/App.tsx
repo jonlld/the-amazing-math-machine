@@ -110,7 +110,15 @@ function App(): JSX.Element {
     }
   };
 
-  const updateHighscore = (score: number): void => {
+  const gameOverHandler = (score: number): void => {
+    // delete paused game data if restarted game; reset state
+    if (isRestart) {
+      localStorage.removeItem("pausedData");
+      setIsRestart(false);
+      setIsPaused(false);
+    }
+
+    // update stored highscore if higher than previous
     if (score > highscore) {
       setHighscore(score);
       storeUpdatedUser(username, score);
@@ -124,7 +132,7 @@ function App(): JSX.Element {
           onLogOut={logOut}
           username={username}
           highscore={highscore}
-          updateHighscore={updateHighscore}
+          onGameOver={gameOverHandler}
           isRestart={isRestart}
           pauseData={pauseGameData}
         />
