@@ -25,7 +25,7 @@ Development Notes / Todo list:
 
 - Display sum with an input box DONE
 - Disallow submission if input is empty DONE
-- Add submission button TODO
+- Add sum submission button DONE
 - Check answer on submit and show result DONE
 - If correct, add 10 to score DONE
 - If incorrect, add 1 strike (max 3) DONE

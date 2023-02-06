@@ -247,6 +247,7 @@ span.machine {
   width: 50%;
   padding: 28px;
   transition: all 0.3s ease-out;
+  box-shadow: 0 0 0 0.3rem rgb(254, 242, 117);
 }
 
 .sum--input:focus {
@@ -356,6 +357,12 @@ span.machine {
 
 .btn__play-again:hover {
   background-color: rgb(232, 246, 210);
+}
+
+.btn__submit {
+  border: 5px solid rgb(154, 154, 154);
+  height: 110px;
+  margin-left: 32px;
 }
 
 /* *********** TRANSITION CLASSES *********** */
