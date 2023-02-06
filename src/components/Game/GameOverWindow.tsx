@@ -1,4 +1,9 @@
-import { GameOverProps } from "../../models/interfaces";
+interface GameOverProps {
+  score: number;
+  highscore: number;
+  onPlayAgain: () => void;
+  onChoose: () => void;
+}
 
 const GameOverWindow = ({
   score,

@@ -1,4 +1,9 @@
-import { LeaderboardProps } from "../../models/interfaces";
+import { UserData } from "../../models/interfaces";
+
+interface LeaderboardProps {
+  user: UserData;
+  login: (user: UserData) => void;
+}
 
 function LeaderboardItem({ user, login }: LeaderboardProps): JSX.Element {
   const formattedName = user.username.toUpperCase();

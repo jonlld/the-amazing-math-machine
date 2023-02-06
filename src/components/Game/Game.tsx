@@ -3,8 +3,15 @@ import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "./SumWindow";
 import ScoreWindow from "./ScoreWindow";
-import { StartProps, Sum } from "../../models/interfaces";
+import { Sum } from "../../models/interfaces";
 import { generateSum, checkAnswer } from "../../helpers";
+
+interface StartProps {
+  username: string;
+  onLogOut: () => void;
+  highscore: number;
+  updateHighscore: (score: number) => void;
+}
 
 function Game({
   username,
@@ -67,6 +74,7 @@ function Game({
       setIsCorrect(true);
       setScore((prev) => prev + 10);
     }
+
     // IF INCORRECT
     else {
       if (strikes < 3) setStrikes((p) => (p += 1));

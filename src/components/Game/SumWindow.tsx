@@ -1,5 +1,10 @@
 import React, { useRef } from "react";
-import { QuizProps } from "../../models/interfaces";
+import { Sum } from "../../models/interfaces";
+
+interface QuizProps {
+  sum: Sum;
+  onAnswer: (guess: number) => void;
+}
 
 function SumWindow({
   sum: { first, second, operand },

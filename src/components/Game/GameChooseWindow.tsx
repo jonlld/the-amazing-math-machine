@@ -1,4 +1,6 @@
-import { ChooseProps } from "../../models/interfaces";
+interface ChooseProps {
+  onStart: (type: string) => void;
+}
 
 const GameChooseWindow = ({ onStart }: ChooseProps): JSX.Element => {
   const clickHandler = (e: React.MouseEvent<HTMLElement>) => {

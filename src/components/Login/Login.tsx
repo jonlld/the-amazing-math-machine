@@ -1,6 +1,12 @@
 import React, { useRef } from "react";
-import { LoginProps } from "../../models/interfaces";
 import LeaderboardItem from "./LeaderboardItem";
+import { UserData } from "../../models/interfaces";
+
+interface LoginProps {
+  onLogIn: (name: string) => void;
+  users: UserData[];
+  onLeaderboardLogin: (user: UserData) => void;
+}
 
 function Login({
   onLogIn,

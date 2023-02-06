@@ -1,4 +1,9 @@
-import { ScoreProps } from "../../models/interfaces";
+interface ScoreProps {
+  isCorrect: boolean;
+  message: string;
+  score: number;
+  highscore: number;
+}
 
 function ScoreWindow({
   isCorrect,
