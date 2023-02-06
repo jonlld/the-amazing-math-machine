@@ -127,7 +127,7 @@ function Game({
     setSum(generateSum(type));
   };
 
-  // BUG this is overwriting setMessage on restart
+  // BUG - overwriting restart setMessage
   // CHECK STRIKES & HANDLE GAME OVER
   useEffect(() => {
     // CONTINUE
@@ -163,9 +163,11 @@ function Game({
           >
             Logout
           </button>
-          <button className="btn  game-header--btn" onClick={onPauseHandler}>
-            Pause Game
-          </button>
+          {isPlaying && (
+            <button className="btn  game-header--btn" onClick={onPauseHandler}>
+              Pause Game
+            </button>
+          )}
         </div>
       </header>
       <main className="game-main">
