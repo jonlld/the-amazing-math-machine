@@ -40,11 +40,12 @@ function Game({
   useEffect(() => {
     if (isRestart && pauseData !== null) {
       // Set state where located in Game
-      setType(pauseData?.pausedType);
-      setSum(generateSum(pauseData?.pausedType));
-      setMessage(pauseData?.pausedMessage);
-      setScore(pauseData?.pausedScore);
-      setStrikes(pauseData?.pausedStrikes);
+      setType(pauseData.pausedType);
+      setSum(generateSum(pauseData.pausedType));
+      setMessage(pauseData.pausedMessage);
+      setScore(pauseData.pausedScore);
+      setStrikes(pauseData.pausedStrikes);
+      setIsCorrect(pauseData.pausedIsCorrect);
       // set game status - start game
       setIsPlaying(true);
     }
@@ -92,6 +93,7 @@ function Game({
       pausedScore: score,
       pausedHighScore: highscore,
       pausedStrikes: strikes,
+      pausedIsCorrect: isCorrect,
       pausedMessage: message,
     };
     // pass in optional argument to handle in Game

@@ -11,6 +11,7 @@ export interface PausedGameData {
   pausedScore: number;
   pausedHighScore: number;
   pausedStrikes: number;
+  pausedIsCorrect: boolean;
   pausedMessage: string;
 }
 

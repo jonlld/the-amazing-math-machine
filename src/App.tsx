@@ -97,6 +97,8 @@ function App(): JSX.Element {
 
   // HANDLE LOGOUT OR PAUSE EVENTS w. OPTIONAL DATA PARAMETER
   const logOut = (data?: PausedGameData): void => {
+    setIsRestart(false);
+
     // IF LOGOUT
     if (typeof data === "undefined") {
       setIsLoggedIn(false);
@@ -104,7 +106,6 @@ function App(): JSX.Element {
     // IF PAUSE
     else {
       localStorage.setItem("pausedData", JSON.stringify(data));
-      setIsRestart(false);
       setIsLoggedIn(false);
     }
   };
