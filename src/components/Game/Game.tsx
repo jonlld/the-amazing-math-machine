@@ -37,6 +37,7 @@ function Game({
     operand: "",
   });
 
+  // INITIALISE RESTARTED GAME
   useEffect(() => {
     if (isRestart && pauseData !== null) {
       // Set state where located in Game
@@ -51,7 +52,7 @@ function Game({
     }
   }, [isRestart]);
 
-  // HANDLE GAME START FROM CHOOSE GAME BUTTON CLICK
+  // INITIALISE REGULAR GAME
   const onStartHandler = (type: string): void => {
     // set sum type state for later use in generating sums
     setType(type);
@@ -64,7 +65,7 @@ function Game({
   };
 
   // FROM GAME OVER SCREEN
-  // NEW GAME
+  // RE-INITIALISE REGULAR GAME
   const playAgainHandler = (): void => {
     setMessage("Good luck!");
     setScore(0);
@@ -73,18 +74,18 @@ function Game({
     setIsGameOver(false);
   };
 
-  // CHOOSE AGAIN
+  // RETURN TO CHOOSE GAME TYPE
   const chooseHandler = (): void => {
     setIsPlaying(false);
     setIsGameOver(false);
   };
 
   const onLogoutHandler = (): void => {
-    // call parent function
+    // props
     onLogOut();
   };
 
-  // TO SAVE DATA
+  // PAUSE GAME
   const onPauseHandler = (): void => {
     // format data
     let pausedGameData = {
@@ -97,11 +98,11 @@ function Game({
       pausedMessage: message,
       pausedSum: sum,
     };
-    // pass in optional argument to handle in Game
+    // handle in Game
     onLogOut(pausedGameData);
   };
 
-  // HANDLE ANSWER
+  // CHECK ANSWER
   const onAnswerHandler = (answer: number): void => {
     let isGood = checkAnswer(sum, answer);
 
@@ -121,23 +122,25 @@ function Game({
       setIsCorrect(false);
     }
 
-    // EVERY TIME
-    // use type state in generating subsequent sums
+    // GENERATE NEXT SUM: REQUIRES TYPE STATE
     setSum(generateSum(type));
   };
 
-  // CHECK STRIKES AND MANAGE GAME OVER
+  // CHECK STRIKES & HANDLE GAME OVER
   useEffect(() => {
+    // CONTINUE
     if (strikes !== 0) {
       setMessage(`${strikes} of 3 Strikes!`);
     }
+    // SET GAME OVER
     if (strikes === 3) {
-      // app-level state
-      onGameOver(score);
       // state at this level
       setIsPlaying(false);
       setIsGameOver(true);
       setMessage("Game Over!");
+      // TODO refactor state
+      // app-level state
+      onGameOver(score);
     }
   }, [strikes]);
 
