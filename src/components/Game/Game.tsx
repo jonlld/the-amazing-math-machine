@@ -44,8 +44,7 @@ function Game({
       // Set state where located in Game
       setType(pauseData.pausedType);
       setSum(pauseData.pausedSum);
-      setMessage("test");
-      // setMessage(pauseData.pausedMessage);
+      setMessage(pauseData.pausedMessage);
       setScore(pauseData.pausedScore);
       setStrikes(pauseData.pausedStrikes);
       setIsCorrect(pauseData.pausedIsCorrect);
@@ -159,13 +158,13 @@ function Game({
         </div>
         <div>
           <button
-            className="btn  game-header--button"
+            className="btn  game-header--btn logout"
             onClick={onLogoutHandler}
           >
             Logout
           </button>
-          <button className="btn  game-header--button" onClick={onPauseHandler}>
-            Pause
+          <button className="btn  game-header--btn" onClick={onPauseHandler}>
+            Pause Game
           </button>
         </div>
       </header>

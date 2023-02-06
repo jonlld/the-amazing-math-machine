@@ -58,7 +58,7 @@ function Login({
               style={{ marginBottom: "36px" }}
               onClick={onRestartHandler}
             >
-              Restart
+              Continue
             </button>
           </div>
         )}

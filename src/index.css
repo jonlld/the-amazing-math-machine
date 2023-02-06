@@ -55,6 +55,7 @@ span.machine {
 }
 
 .login--savegame {
+  font-size: 18px;
   color: rgb(255, 128, 149);
   margin-bottom: 24px;
 }
@@ -122,7 +123,7 @@ span.machine {
   position: absolute;
   font-size: 16px;
   right: 0;
-  color: rgb(208, 94, 113);
+  color: rgb(255, 128, 149);
   /* duration | easing-function | delay | name */
   animation: 8s linear 3s infinite leaderboard-bounce;
 }
@@ -194,7 +195,7 @@ span.machine {
   /* align-items: center; */
   justify-content: space-between;
   text-transform: uppercase;
-  padding: 32px;
+  padding: 46px;
   height: 25vh;
 }
 
@@ -204,10 +205,14 @@ span.machine {
   color: #eee;
 }
 
-.game-header--button {
+.game-header--btn {
   align-self: flex-start;
   background: none;
   transition: none;
+}
+
+.game-header--btn.logout {
+  margin-right: 24px;
 }
 
 /* MAIN */
