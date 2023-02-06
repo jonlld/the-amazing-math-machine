@@ -38,12 +38,14 @@ function Game({
   });
 
   useEffect(() => {
-    if (isRestart && pauseData) {
+    if (isRestart && pauseData !== null) {
+      // Set state where located in Game
       setType(pauseData?.pausedType);
       setSum(generateSum(pauseData?.pausedType));
       setMessage(pauseData?.pausedMessage);
       setScore(pauseData?.pausedScore);
       setStrikes(pauseData?.pausedStrikes);
+      // set game status - start game
       setIsPlaying(true);
     }
   }, [isRestart]);
@@ -83,14 +85,16 @@ function Game({
 
   // TO SAVE DATA
   const onPauseHandler = (): void => {
-    // format data to store and pass to parent function
+    // format data
     let pausedGameData = {
       username,
       pausedType: type,
       pausedScore: score,
+      pausedHighScore: highscore,
       pausedStrikes: strikes,
       pausedMessage: message,
     };
+    // pass in optional argument to handle in Game
     onLogOut(pausedGameData);
   };
 
@@ -157,7 +161,7 @@ function Game({
         </div>
       </header>
       <main className="game-main">
-        {/* NOT PLAYING */}
+        {/* NOT PLAYING STATES */}
         {!isPlaying && !isGameOver && (
           <ChooseGameWindow onStart={onStartHandler} />
         )}
@@ -170,7 +174,7 @@ function Game({
             onChoose={chooseHandler}
           />
         )}
-        {/* PLAYING */}
+        {/* PLAYING STATES */}
         {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}
 
         {isPlaying && (

@@ -9,6 +9,7 @@ export interface PausedGameData {
   username: string;
   pausedType: string;
   pausedScore: number;
+  pausedHighScore: number;
   pausedStrikes: number;
   pausedMessage: string;
 }

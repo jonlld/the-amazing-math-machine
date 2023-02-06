@@ -50,7 +50,10 @@ function App(): JSX.Element {
   const logIn = (name: string): void => {
     // RESTART
     if (name === "restart" && pauseGameData) {
+      // Set state where located in App
       setUsername(pauseGameData.username);
+      setHighscore(pauseGameData.pausedHighScore);
+      // Set login status
       setIsLoggedIn(true);
       setIsRestart(true);
     }
@@ -94,13 +97,14 @@ function App(): JSX.Element {
 
   // HANDLE LOGOUT OR PAUSE EVENTS w. OPTIONAL DATA PARAMETER
   const logOut = (data?: PausedGameData): void => {
-    // logout
+    // IF LOGOUT
     if (typeof data === "undefined") {
       setIsLoggedIn(false);
     }
-    // pause
+    // IF PAUSE
     else {
       localStorage.setItem("pausedData", JSON.stringify(data));
+      setIsRestart(false);
       setIsLoggedIn(false);
     }
   };
