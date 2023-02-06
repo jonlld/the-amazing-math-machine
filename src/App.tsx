@@ -69,7 +69,7 @@ function App(): JSX.Element {
     }
   };
 
-  // FOR LOGOUT OR PAUSE EVENTS - TODO RENAME
+  // HANDLE LOGOUT OR PAUSE EVENTS w. OPTIONAL DATA PARAMETER
   const logOut = (data?: PausedGameData): void => {
     // logout
     if (typeof data === "undefined") {

@@ -62,10 +62,12 @@ function Game({
   };
 
   const onLogoutHandler = (): void => {
+    // call parent function
     onLogOut();
   };
 
   const onPauseHandler = (): void => {
+    // format data to store and pass to parent function
     let pausedGameData = {
       username,
       pausedScore: score,
