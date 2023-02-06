@@ -5,6 +5,12 @@ export interface UserData {
   highscore: number;
 }
 
+export interface Sum {
+  first: number;
+  second: number;
+  operand: string;
+}
+
 export interface PausedGameData {
   username: string;
   pausedType: string;
@@ -13,10 +19,5 @@ export interface PausedGameData {
   pausedStrikes: number;
   pausedIsCorrect: boolean;
   pausedMessage: string;
-}
-
-export interface Sum {
-  first: number;
-  second: number;
-  operand: string;
+  pausedSum: Sum;
 }

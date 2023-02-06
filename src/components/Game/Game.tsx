@@ -41,7 +41,7 @@ function Game({
     if (isRestart && pauseData !== null) {
       // Set state where located in Game
       setType(pauseData.pausedType);
-      setSum(generateSum(pauseData.pausedType));
+      setSum(pauseData.pausedSum);
       setMessage(pauseData.pausedMessage);
       setScore(pauseData.pausedScore);
       setStrikes(pauseData.pausedStrikes);
@@ -95,6 +95,7 @@ function Game({
       pausedStrikes: strikes,
       pausedIsCorrect: isCorrect,
       pausedMessage: message,
+      pausedSum: sum,
     };
     // pass in optional argument to handle in Game
     onLogOut(pausedGameData);
