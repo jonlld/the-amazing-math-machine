@@ -13,7 +13,8 @@ function SumWindow({
   const answerRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent): void => {
-    if (e.key === "Enter") {
+    // prevent empty submission & check key
+    if (answerRef.current!.value && e.key === "Enter") {
       onAnswer(parseInt(answerRef.current!.value));
       answerRef.current!.value = "";
     }
