@@ -3,12 +3,12 @@ import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "./SumWindow";
 import ScoreWindow from "./ScoreWindow";
-import { Sum } from "../../models/interfaces";
+import { Sum, PausedGameData } from "../../models/interfaces";
 import { generateSum, checkAnswer } from "../../helpers";
 
 interface StartProps {
   username: string;
-  onLogOut: () => void;
+  onLogOut: (data?: PausedGameData) => void;
   highscore: number;
   updateHighscore: (score: number) => void;
 }
@@ -35,7 +35,7 @@ function Game({
 
   // HANDLE GAME START FROM CHOOSE GAME BUTTON CLICK
   const onStartHandler = (type: string): void => {
-    // set type state for later use in generating sums
+    // set sum type state for later use in generating sums
     setType(type);
     // Load initial sum
     setSum(generateSum(type));
@@ -59,6 +59,20 @@ function Game({
   const chooseHandler = (): void => {
     setIsPlaying(false);
     setIsGameOver(false);
+  };
+
+  const onLogoutHandler = (): void => {
+    onLogOut();
+  };
+
+  const onPauseHandler = (): void => {
+    let pausedGameData = {
+      username,
+      pausedScore: score,
+      pausedStrikes: strikes,
+      pausedMessage: message,
+    };
+    onLogOut(pausedGameData);
   };
 
   // HANDLE ANSWER
@@ -89,7 +103,7 @@ function Game({
   // CHECK STRIKES AND MANAGE GAME OVER
   useEffect(() => {
     if (strikes !== 0) {
-      setMessage(`${strikes}/3 Strikes!`);
+      setMessage(`${strikes} of 3 Strikes!`);
     }
     if (strikes === 3) {
       setMessage("Game Over!");
@@ -111,13 +125,20 @@ function Game({
             ...to the <span className="machine">Amazing Math Machine!</span>
           </p>
         </div>
-        <button className="btn  game-header--button" onClick={onLogOut}>
-          Logout
-        </button>
+        <div>
+          <button
+            className="btn  game-header--button"
+            onClick={onLogoutHandler}
+          >
+            Logout
+          </button>
+          <button className="btn  game-header--button" onClick={onPauseHandler}>
+            Pause
+          </button>
+        </div>
       </header>
       <main className="game-main">
-        {/* BEFORE START */}
-
+        {/* NOT PLAYING */}
         {!isPlaying && !isGameOver && (
           <ChooseGameWindow onStart={onStartHandler} />
         )}
@@ -130,14 +151,12 @@ function Game({
             onChoose={chooseHandler}
           />
         )}
-
-        {/* AFTER START */}
-
+        {/* PLAYING */}
         {isPlaying && <SumWindow sum={sum} onAnswer={onAnswerHandler} />}
 
         {isPlaying && (
           <ScoreWindow
-            // Add changing key to force whole component to render & trigger animation each time
+            // key to force re-render & trigger animation
             key={Math.random()}
             message={message}
             isCorrect={isCorrect}

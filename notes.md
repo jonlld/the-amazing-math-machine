@@ -13,6 +13,7 @@ Development Notes / Todo list:
 
 2. Game Choose screen!
 
+- Code: Export header to component TODO
 - Choose game mode to start
   - game type (addition, subtraction, multiplication, random) DONE
   - add logic for various operands and treatment DONE
@@ -30,11 +31,11 @@ Development Notes / Todo list:
 - If correct, add 10 to score DONE
 - If incorrect, add 1 strike (max 3) DONE
 - Keep num of strikes visible DONE
-- If incorrect, show sum and correct answer? TODO
 - Animate answer results DONE
 - If game over (3 strikes) update user data DONE
 - Add pause / resume feature TODO
 - Add (optional) timer to complete sum or receive a strike TODO
+- If incorrect, show sum and correct answer? TODO
 - Show user tailored log - how many times played / best score / average score / favourite mode TODO
 
 4. Game Over screen!
@@ -47,16 +48,16 @@ Development Notes / Todo list:
 5. Other
 
 - 'How to play' / 'About' pages TODO
-- Refactor layout / state management / compartmentalise functions TODO
 - Add polish - icons, colors, a little animation, a little sound TODO
-- Make responsive TODO
+- Refactor - layout / state/ modularity TODO
+- Make responsive! TODO
 
 ---
 
-- Additional Ideas:
+- Other Ideas:
 
 * Add a TNT power for every 10 sums answered - allows you to skip an answer?
-* Timed mode - do x # of random sums in a fixed time
+* Speedrun - do x # of random sums in a fixed time
 
 - References / Resources:
 

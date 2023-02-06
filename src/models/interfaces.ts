@@ -5,9 +5,15 @@ export interface UserData {
   highscore: number;
 }
 
+export interface PausedGameData {
+  username: string;
+  pausedScore: number;
+  pausedStrikes: number;
+  pausedMessage: string;
+}
+
 export interface Sum {
   first: number;
   second: number;
   operand: string;
 }
-

@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import Login from "./components/Login/Login";
 import Game from "./components/Game/Game";
-import { UserData } from "./models/interfaces";
+import { UserData, PausedGameData } from "./models/interfaces";
 import {
   storeInitialUser,
   storeUpdatedUser,
@@ -69,8 +69,17 @@ function App(): JSX.Element {
     }
   };
 
-  const logOut = (): void => {
-    setIsLoggedIn(false);
+  // FOR LOGOUT OR PAUSE EVENTS - TODO RENAME
+  const logOut = (data?: PausedGameData): void => {
+    // logout
+    if (typeof data === "undefined") {
+      setIsLoggedIn(false);
+    }
+    // pause
+    else {
+      localStorage.setItem("pausedData", JSON.stringify(data));
+      setIsLoggedIn(false);
+    }
   };
 
   const updateHighscore = (score: number): void => {
