@@ -10,6 +10,7 @@ import {
 
 function App(): JSX.Element {
   const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [isRestart, setIsRestart] = useState<boolean>(false);
   const [pauseGameData, setPauseGameData] = useState<PausedGameData | null>(
     null
   );
@@ -19,7 +20,7 @@ function App(): JSX.Element {
   const [leaderboardData, setLeaderboardData] = useState<UserData[]>([]);
 
   // UPDATE LEADERBOARD
-  // TRIGGERED ONCE ON LOAD & ON LOGOUT
+  // TRIGGERED ONCE ON LOAD & ON LOGOUT / SAVE
   useEffect(() => {
     // SET PAUSED IF DATA FOUND
     if (localStorage.getItem("pausedData") !== null) {
@@ -47,7 +48,15 @@ function App(): JSX.Element {
 
   // Login - name input
   const logIn = (name: string): void => {
-    if (name) {
+    // RESTART
+    if (name === "restart" && pauseGameData) {
+      setUsername(pauseGameData.username);
+      setIsLoggedIn(true);
+      setIsRestart(true);
+    }
+
+    // OTHER LOGIN
+    else if (name) {
       const formattedName = name.trim().toLowerCase();
       let currentUser: UserData = { username: formattedName, highscore: 0 };
 
@@ -111,6 +120,8 @@ function App(): JSX.Element {
           username={username}
           highscore={highscore}
           updateHighscore={updateHighscore}
+          isRestart={isRestart}
+          pauseData={pauseGameData}
         />
       ) : (
         <Login
