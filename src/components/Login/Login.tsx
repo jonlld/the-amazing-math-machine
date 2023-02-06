@@ -32,6 +32,10 @@ function Login({
     }
   };
 
+  const onRestartHandler = (e: React.MouseEvent): void => {
+    onLogIn("restart");
+  };
+
   // Render LeaderboardItem list
   const leaderboardItems = users.map((user) => (
     <LeaderboardItem
@@ -45,9 +49,18 @@ function Login({
     <main className="login-window--container fade-in-slide-up">
       <section className="login--container">
         {isPaused && (
-          <p className="login--savegame">
-            {pauseData?.username.toUpperCase()}'s save game found! Restart?
-          </p>
+          <div>
+            <p className="login--savegame">
+              Save game found for {pauseData?.username.toUpperCase()}!
+            </p>
+            <button
+              className="btn"
+              style={{ marginBottom: "36px" }}
+              onClick={onRestartHandler}
+            >
+              Restart
+            </button>
+          </div>
         )}
         <h1 className="login--title">
           Please click on <span>your name</span> or register below to start!
