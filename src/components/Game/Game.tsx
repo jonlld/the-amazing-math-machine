@@ -60,7 +60,10 @@ function Game({
 
     // IF CORRECT
     if (isGood) {
-      setMessage("Correct!");
+      setMessage(`
+        Correct:
+        ${3 - strikes} ${strikes === 2 ? "strike" : "strikes"} remaining!
+        `);
       setIsCorrect(true);
       setScore((prev) => prev + 10);
     }

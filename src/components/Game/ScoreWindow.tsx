@@ -21,8 +21,8 @@ function ScoreWindow({
         <p>{message}</p>
       </div>
       <div className="score--container scores">
-        <p>{score > 0 && `Your score is ${score}!`}</p>
-        <p>{highscore > 0 && `Your previous highscore is ${highscore}!`}</p>
+        <p>{score > 0 && `Your score is ${score}`}</p>
+        <p>{highscore > 0 && `Your highscore is ${highscore}`}</p>
       </div>
     </section>
   );

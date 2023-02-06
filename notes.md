@@ -24,27 +24,32 @@ Development Notes / Todo list:
 3. Sum and Score screens!
 
 - Display sum with an input box DONE
+- Disallow submission if input is empty TODO
+- Add submission button TODO
 - Check answer on submit and show result DONE
 - If correct, add 10 to score DONE
 - If incorrect, add 1 strike (max 3) DONE
+- Keep num of strikes visible DONE
+- If incorrect, show sum and correct answer? TODO
 - Animate answer results DONE
 - If game over (3 strikes) update user data DONE
+- Add pause / resume feature TODO
 - Add (optional) timer to complete sum or receive a strike TODO
-- Show some kind of progress / level tracker? TODO
+- Show user tailored log - how many times played / best score / average score / favourite mode TODO
 
 4. Game Over screen!
 
 - Show score and highscore DONE
 - Allow click to restart game DONE
 - Allow click to change game mode DONE
-- Add transitions for game over screen TODO
+- Add transitions for game over screen DONE
 
 5. Other
 
-- About page (made by / explanation etc.) TODO
-- Make responsive TODO
+- 'How to play' / 'About' pages TODO
 - Refactor layout / state management / compartmentalise functions TODO
-- Polish - add icons, colors, animation, sound TODO
+- Add polish - icons, colors, a little animation, a little sound TODO
+- Make responsive TODO
 
 ---
 
