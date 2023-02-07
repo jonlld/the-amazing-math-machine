@@ -37,13 +37,18 @@ function Login({
   };
 
   // Render LeaderboardItem list
-  const leaderboardItems = users.map((user) => (
-    <LeaderboardItem
-      key={user.username}
-      user={user}
-      login={onLeaderboardLogin}
-    />
-  ));
+  const leaderboardItems = users.map((user) => {
+    // Only render if user has score
+    if (user.highscore !== 0) {
+      return (
+        <LeaderboardItem
+          key={user.username}
+          user={user}
+          login={onLeaderboardLogin}
+        />
+      );
+    }
+  });
 
   return (
     <main className="login-window--container fade-in-slide-up">
