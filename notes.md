@@ -19,9 +19,10 @@ Development Notes / Todo list:
   - game type (addition, subtraction, multiplication, random) DONE
   - add logic for various operands and treatment DONE
   - add additional game modes TODO
-    - peaceful
-    - standard (each sum is timed, ramping difficulty, bonus points)
-    - speedrun (how many sums in 60 seconds - separate leaderboard)
+    - regular - normal, hard, impossible (number size)
+    - zen (no strikes, no timer)
+    - timed (each sum is timed)
+    - speedrun (how quick can you do 20 sums)
 
 3. Game Playing!
 
@@ -34,14 +35,19 @@ Development Notes / Todo list:
 - Keep num of strikes visible DONE
 - Animate answer results DONE
 - If game over (3 strikes) update user data DONE
-- Add pause / resume feature TODO
+- Update user data to include historical scores TODO
+
+- Add pause / resume feature:
+
   - add pause button and save game data to local storage (one save game limit for now) DONE
   - add check for saved game data and show message on login if any DONE
   - add button to restart saved game (isRestarted) DONE
   - hide button if not playing DONE
   - clear save game data once game is completed and remove message from login DONE
-  - alllow one save game per user... TODO
+  - 1. block if save game already exists TODO
+  - 2. then maybe alllow one save game per user TODO
   - Fix bug on restore to show previous message correctly DONE
+
 - Add (optional) timer to complete sum or receive a strike TODO
 - If incorrect, show sum and correct answer? TODO
 - Show user tailored log - how many times played / best score / average score / favourite mode TODO

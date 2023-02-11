@@ -27,7 +27,7 @@ function Login({
     if (nameInputRef.current?.value) {
       onLogIn(nameInputRef.current.value);
     } else {
-      // temporary
+      // TODO show message in UI
       alert("Please enter a name!");
     }
   };

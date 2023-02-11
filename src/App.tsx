@@ -22,7 +22,7 @@ function App(): JSX.Element {
   // UPDATE LEADERBOARD
   // TRIGGERED ONCE ON LOAD & ON LOGOUT / SAVE
   useEffect(() => {
-    // SET PAUSED IF DATA FOUND
+    // CHECK PAUSED DATA
     if (localStorage.getItem("pausedData") !== null) {
       // Trigger game paused message
       setIsPaused(true);
@@ -31,7 +31,7 @@ function App(): JSX.Element {
       setPauseGameData(data);
     }
 
-    // ALSO, CHECK USER DATA
+    // CHECK USER DATA
     if (localStorage.getItem("userdata") !== null) {
       const data = JSON.parse(localStorage.getItem("userdata")!);
       const sortedData = sortUsersByScore(data);
