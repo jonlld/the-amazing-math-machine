@@ -37,17 +37,14 @@ export const checkAnswer = (
 };
 
 // Set first user details
-export const storeInitialUser = (
-  username: string,
-  highscore: number = 0
-): void => {
+export const storeInitialUser = (username: string): void => {
   console.log("No data exists, adding first user!");
   localStorage.setItem(
     "userdata",
     JSON.stringify([
       {
         username,
-        highscore,
+        highscore: 0,
       },
     ])
   );
