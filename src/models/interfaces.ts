@@ -1,8 +1,4 @@
-// export interface UserData {
-//   username: string;
-//   highscore: number;
-// }
-
+// TODO Transfer save game data to a per-user basis
 export interface UserData {
   username: string;
   highscore: number;
