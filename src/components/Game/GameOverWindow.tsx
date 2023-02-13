@@ -16,6 +16,7 @@ const GameOverWindow = ({
   userStats,
 }: GameOverProps): JSX.Element => {
   // TODO
+  // BUG undefined for end of first user's game, and cannot login again
   // ADD STATS VIEW
   console.log(`You have played ${userStats?.scoreHistory.length} games!`);
   console.log(userStats?.scoreHistory);
