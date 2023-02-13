@@ -36,30 +36,57 @@ export const checkAnswer = (
   return result;
 };
 
-// Set first user details
-export const storeInitialUser = (username: string): void => {
-  console.log("No data exists, adding first user!");
-  localStorage.setItem(
-    "userdata",
-    JSON.stringify([
-      {
-        username,
-        highscore: 0,
-      },
-    ])
-  );
+// INITIALISE ARRAY OF USER OBJECTS
+export const initialiseStorage = (name: string): void => {
+  const initialUser: UserData = {
+    username: name,
+    highscore: 0,
+    savegame: false,
+    savegameData: {},
+    scoreHistory: [],
+  };
+
+  const initialData = [initialUser];
+
+  localStorage.setItem("userdata", JSON.stringify([initialData]));
 };
 
-// Update current user details
-export const storeUpdatedUser = (
+// ADD NEW USER TO ARRAY OF USER OBJECTS
+export const addNewUser = (name: string, retrievedData: UserData[]): void => {
+  const newUser: UserData = {
+    username: name,
+    highscore: 0,
+    savegame: false,
+    savegameData: {},
+    scoreHistory: [],
+  };
+
+  retrievedData.push(newUser);
+  localStorage.setItem("userdata", JSON.stringify(retrievedData));
+};
+
+export const updateUserOnGameOver = (
   username: string,
-  newHighScore: number
+  score: number,
+  currentHighscore: number
 ): void => {
+  console.log("updateUserOnGameOver");
+  console.log("score", score);
+  console.log("highscore", currentHighscore);
+
   const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
 
   retrievedData.forEach((el: UserData) => {
     if (el.username === username) {
-      el.highscore = newHighScore;
+      if (score > currentHighscore) {
+        el.highscore = score;
+      }
+
+      el.scoreHistory.push({
+        gameMode: "placeholder",
+        timestamp: new Date(),
+        score: score,
+      });
     }
   });
 

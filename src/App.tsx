@@ -3,8 +3,9 @@ import Login from "./components/Login/Login";
 import Game from "./components/Game/Game";
 import { UserData, PausedGameData } from "./models/interfaces";
 import {
-  storeInitialUser,
-  storeUpdatedUser,
+  initialiseStorage,
+  addNewUser,
+  updateUserOnGameOver,
   sortUsersByScore,
 } from "./helpers";
 
@@ -19,19 +20,19 @@ function App(): JSX.Element {
   const [highscore, setHighscore] = useState<number>(0);
   const [leaderboardData, setLeaderboardData] = useState<UserData[]>([]);
 
-  // UPDATE LEADERBOARD
-  // TRIGGERED ONCE ON LOAD & ON LOGOUT / SAVE
+  // FETCH SAVED DATA FOR LOGIN SCREEN
+  // TRIGGERED: INITIALISE & ON LOGOUT
   useEffect(() => {
-    // CHECK PAUSED DATA
+    // FETCH SAVEGAME DATA
     if (localStorage.getItem("pausedData") !== null) {
-      // Trigger game paused message
+      // To show saved game message
       setIsPaused(true);
-      // Retrieve
+      // Update state
       const data = JSON.parse(localStorage.getItem("pausedData")!);
       setPauseGameData(data);
     }
 
-    // CHECK USER DATA
+    // FETCH USER DATA
     if (localStorage.getItem("userdata") !== null) {
       const data = JSON.parse(localStorage.getItem("userdata")!);
       const sortedData = sortUsersByScore(data);
@@ -39,90 +40,90 @@ function App(): JSX.Element {
     }
   }, [isLoggedIn]);
 
-  // Login - leaderboard click
+  // HANDLE LOGIN WITH LEADERBOARD CLICK
+  // RECEIVES USER FROM LEADERBOARD ITEM
   const leaderBoardLogIn = (user: UserData) => {
     setUsername(user.username);
     setHighscore(user.highscore);
     setIsLoggedIn(true);
   };
 
-  // Login - name input
+  // HANDLE LOGIN WITH NAME INPUT OR CONTINUE
   const logIn = (name: string): void => {
-    // RESTART
+    // CONTINUE SAVE GAME
+    // CONTINUE BUTTON PASSES IN 'RESTART'
     if (name === "restart" && pauseGameData) {
-      // Set state where located in App
       setUsername(pauseGameData.username);
       setHighscore(pauseGameData.pausedHighScore);
-      // Set login status
       setIsLoggedIn(true);
       setIsRestart(true);
     }
 
-    // OTHER LOGIN
+    // START NEW GAME
     else if (name) {
       const formattedName = name.trim().toLowerCase();
-      let currentUser: UserData = { username: formattedName, highscore: 0 };
 
-      // INITIALISE IF NO STORED DATA
+      // INITIALISE IF FIRST USER
       if (localStorage.getItem("userdata") === null) {
-        storeInitialUser(currentUser.username);
+        initialiseStorage(formattedName);
       }
 
       // CHECK IF HAVE STORED DATA
       else {
         const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
-        let hasName = retrievedData
+
+        const existingPlayer = retrievedData
           .map((el: UserData) => el.username)
-          .includes(currentUser.username);
+          .includes(formattedName);
 
         // IF USER DOES NOT EXIST, ADD NEW USER
-        if (!hasName) {
-          retrievedData.push(currentUser);
-          localStorage.setItem("userdata", JSON.stringify(retrievedData));
-        } else {
-          // IF USER EXISTS, UPDATE CURRENT SCORE / HIGHSCORE
+        if (!existingPlayer) {
+          addNewUser(formattedName, retrievedData);
+        }
+        // IF USER EXISTS, UPDATE CURRENT SCORE / HIGHSCORE
+        else {
           retrievedData.forEach((el: UserData) => {
-            if (el.username === currentUser.username) {
-              currentUser.highscore = el.highscore;
+            if (el.username === formattedName) {
+              setHighscore(el.highscore);
             }
           });
         }
+        setUsername(formattedName);
       }
 
-      setUsername(currentUser.username);
-      setHighscore(currentUser.highscore);
       setIsLoggedIn(true);
     }
   };
 
-  // HANDLE LOGOUT OR PAUSE EVENTS w. OPTIONAL DATA PARAMETER
+  // HANDLE LOGOUT OR PAUSE
+  // IF PAUSE, TAKES DATA TO SAVE GAME
   const logOut = (data?: PausedGameData): void => {
+    // RESET
     setIsRestart(false);
 
-    // IF LOGOUT
-    if (typeof data === "undefined") {
-      setIsLoggedIn(false);
-    }
     // IF PAUSE
-    else {
+    if (data) {
       localStorage.setItem("pausedData", JSON.stringify(data));
-      setIsLoggedIn(false);
     }
+
+    setIsLoggedIn(false);
   };
 
   const gameOverHandler = (score: number): void => {
-    // delete paused game data if restarted game; reset state
+    // IF RESTART, CLEAR SAVEGAME DATA
     if (isRestart) {
       localStorage.removeItem("pausedData");
       setIsRestart(false);
       setIsPaused(false);
     }
 
-    // update stored highscore if higher than previous
+    // TODO check if this if statement required
     if (score > highscore) {
       setHighscore(score);
-      storeUpdatedUser(username, score);
     }
+
+    // UPDATE USER DATA
+    updateUserOnGameOver(username, score, highscore);
   };
 
   return (
