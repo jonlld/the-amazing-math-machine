@@ -3,7 +3,7 @@ import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "./SumWindow";
 import ScoreWindow from "./ScoreWindow";
-import { Sum, PausedGameData } from "../../models/interfaces";
+import { Sum, PausedGameData, UserData } from "../../models/interfaces";
 import { generateSum, checkAnswer } from "../../helpers";
 
 interface GameProps {
@@ -13,6 +13,7 @@ interface GameProps {
   onGameOver: (score: number) => void;
   isRestart: boolean;
   pauseData: PausedGameData | null;
+  stats: UserData | null;
 }
 
 const sumDefault: Sum = {
@@ -28,6 +29,7 @@ function Game({
   onGameOver,
   isRestart,
   pauseData,
+  stats,
 }: GameProps): JSX.Element {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
@@ -181,6 +183,7 @@ function Game({
             highscore={highscore}
             onPlayAgain={playAgainHandler}
             onChoose={chooseHandler}
+            stats={stats}
           />
         )}
         {/* PLAYING STATES */}

@@ -1,8 +1,11 @@
+import { UserData } from "../../models/interfaces";
+
 interface GameOverProps {
   score: number;
   highscore: number;
   onPlayAgain: () => void;
   onChoose: () => void;
+  stats: UserData | null;
 }
 
 const GameOverWindow = ({
@@ -10,6 +13,7 @@ const GameOverWindow = ({
   highscore,
   onPlayAgain,
   onChoose,
+  stats,
 }: GameOverProps): JSX.Element => {
   const playHandler = (): void => {
     onPlayAgain();

@@ -19,6 +19,9 @@ function App(): JSX.Element {
   const [username, setUsername] = useState<string>("");
   const [highscore, setHighscore] = useState<number>(0);
   const [leaderboardData, setLeaderboardData] = useState<UserData[]>([]);
+  const [currentUserStats, setCurrentUserStats] = useState<UserData | null>(
+    null
+  );
 
   // FETCH SAVED DATA FOR LOGIN SCREEN
   // TRIGGERED: INITIALISE & ON LOGOUT
@@ -124,6 +127,14 @@ function App(): JSX.Element {
 
     // UPDATE USER DATA
     updateUserOnGameOver(username, score, highscore);
+
+    const updatedData = JSON.parse(localStorage.getItem("userdata")!);
+
+    updatedData.forEach((user: UserData) => {
+      if (user.username === username) {
+        setCurrentUserStats(user);
+      }
+    });
   };
 
   return (
@@ -136,6 +147,7 @@ function App(): JSX.Element {
           onGameOver={gameOverHandler}
           isRestart={isRestart}
           pauseData={pauseGameData}
+          stats={currentUserStats}
         />
       ) : (
         <Login
