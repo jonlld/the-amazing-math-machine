@@ -5,7 +5,7 @@ interface GameOverProps {
   highscore: number;
   onPlayAgain: () => void;
   onChoose: () => void;
-  stats: UserData | null;
+  userStats: UserData | null;
 }
 
 const GameOverWindow = ({
@@ -13,8 +13,13 @@ const GameOverWindow = ({
   highscore,
   onPlayAgain,
   onChoose,
-  stats,
+  userStats,
 }: GameOverProps): JSX.Element => {
+  // TODO
+  // ADD STATS VIEW
+  console.log(`You have played ${userStats?.scoreHistory.length} games!`);
+  console.log(userStats?.scoreHistory);
+
   const playHandler = (): void => {
     onPlayAgain();
   };

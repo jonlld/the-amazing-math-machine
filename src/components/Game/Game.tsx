@@ -13,7 +13,7 @@ interface GameProps {
   onGameOver: (score: number) => void;
   isRestart: boolean;
   pauseData: PausedGameData | null;
-  stats: UserData | null;
+  userStats: UserData | null;
 }
 
 const sumDefault: Sum = {
@@ -29,7 +29,7 @@ function Game({
   onGameOver,
   isRestart,
   pauseData,
-  stats,
+  userStats,
 }: GameProps): JSX.Element {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
@@ -183,7 +183,7 @@ function Game({
             highscore={highscore}
             onPlayAgain={playAgainHandler}
             onChoose={chooseHandler}
-            stats={stats}
+            userStats={userStats}
           />
         )}
         {/* PLAYING STATES */}

@@ -147,7 +147,7 @@ function App(): JSX.Element {
           onGameOver={gameOverHandler}
           isRestart={isRestart}
           pauseData={pauseGameData}
-          stats={currentUserStats}
+          userStats={currentUserStats}
         />
       ) : (
         <Login
