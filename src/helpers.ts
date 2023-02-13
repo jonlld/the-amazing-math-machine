@@ -84,8 +84,11 @@ export const updateUserOnGameOver = (
         user.highscore = score;
       }
 
+      // 5 = default difficulty
+      // Peaceful = Default game mode w. no timer or ramping
       user.scoreHistory.push({
-        gameMode: "placeholder",
+        difficulty: 5,
+        gameMode: "peaceful",
         timestamp: new Date(),
         score: score,
       });

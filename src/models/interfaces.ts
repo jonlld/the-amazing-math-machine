@@ -9,6 +9,7 @@ export interface UserData {
 
 // TODO Implement game modes
 export interface ScoreItem {
+  difficulty: number;
   gameMode: string;
   timestamp: Date;
   score: number;
