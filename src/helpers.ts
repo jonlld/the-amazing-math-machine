@@ -70,19 +70,21 @@ export const updateUserOnGameOver = (
   score: number,
   currentHighscore: number
 ): void => {
-  console.log("updateUserOnGameOver");
-  console.log("score", score);
-  console.log("highscore", currentHighscore);
-
   const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
 
-  retrievedData.forEach((el: UserData) => {
-    if (el.username === username) {
+  retrievedData.forEach((user: UserData) => {
+    // ROLL ANY DATA IN ORIGINAL FORMAT
+    if (!user.hasOwnProperty("savegame")) user.savegame = false;
+    if (!user.hasOwnProperty("savegameData")) user.savegameData = {};
+    if (!user.hasOwnProperty("scoreHistory")) user.scoreHistory = [];
+
+    // UPDATE HIGHSCORE AND SCORE HISTORY
+    if (user.username === username) {
       if (score > currentHighscore) {
-        el.highscore = score;
+        user.highscore = score;
       }
 
-      el.scoreHistory.push({
+      user.scoreHistory.push({
         gameMode: "placeholder",
         timestamp: new Date(),
         score: score,
@@ -90,6 +92,7 @@ export const updateUserOnGameOver = (
     }
   });
 
+  // STORE UPDATED DATA
   localStorage.setItem("userdata", JSON.stringify(retrievedData));
 };
 
