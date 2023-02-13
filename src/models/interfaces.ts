@@ -7,6 +7,7 @@ export interface UserData {
   scoreHistory: ScoreItem[];
 }
 
+// TODO Implement game modes
 export interface ScoreItem {
   gameMode: string;
   timestamp: Date;
