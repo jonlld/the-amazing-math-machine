@@ -11,7 +11,7 @@ export interface UserData {
 export interface ScoreItem {
   difficulty: number;
   gameMode: string;
-  timestamp: Date;
+  date: string;
   score: number;
 }
 

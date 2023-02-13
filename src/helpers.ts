@@ -78,18 +78,30 @@ export const updateUserOnGameOver = (
     if (!user.hasOwnProperty("savegameData")) user.savegameData = {};
     if (!user.hasOwnProperty("scoreHistory")) user.scoreHistory = [];
 
+    // ****** DEVELOPMENT ONLY: RESET TEST SCORE HISTORY ******
+    // if (user.username === 'test') {
+    //   user.scoreHistory = [];
+    // }
+
     // UPDATE HIGHSCORE AND SCORE HISTORY
     if (user.username === username) {
       if (score > currentHighscore) {
         user.highscore = score;
       }
 
+      // Get and format date
+      const now = new Date();
+      const day = `${now.getDate()}`.padStart(2, "0");
+      const month = `${now.getMonth() + 1}`.padStart(2, "0");
+      const year = now.getFullYear();
+      const date = `${day}/${month}/${year}`;
+
       // 5 = default difficulty
       // Peaceful = Default game mode w. no timer or ramping
       user.scoreHistory.push({
         difficulty: 5,
         gameMode: "peaceful",
-        timestamp: new Date(),
+        date,
         score: score,
       });
     }
