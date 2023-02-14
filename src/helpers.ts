@@ -48,7 +48,7 @@ export const initialiseStorage = (name: string): void => {
 
   const initialData = [initialUser];
 
-  localStorage.setItem("userdata", JSON.stringify([initialData]));
+  localStorage.setItem("userdata", JSON.stringify(initialData));
 };
 
 // ADD NEW USER TO ARRAY OF USER OBJECTS
