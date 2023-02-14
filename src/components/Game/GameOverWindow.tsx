@@ -18,6 +18,15 @@ const GameOverWindow = ({
 }: GameOverProps): JSX.Element => {
   const [isViewStats, setIsViewStats] = useState<boolean>(false);
 
+  let aveScore;
+  if (userStats) {
+    const allScoresSum = userStats?.scoreHistory.reduce(
+      (acc, curr) => (acc += curr.score),
+      0
+    );
+    aveScore = allScoresSum / userStats?.scoreHistory.length;
+  }
+
   const playHandler = (): void => {
     onPlayAgain();
   };
@@ -49,7 +58,14 @@ const GameOverWindow = ({
         )}
         {isViewStats && (
           <div>
-            <h1>You have played {userStats?.scoreHistory.length} games!</h1>
+            <h1 className="game-over--heading">Stats:</h1>
+            <p className="game-over--score">
+              You have played{" "}
+              <span>{userStats?.scoreHistory.length} games</span>!
+            </p>
+            <p game-over--score>
+              Your <span>average score</span> is <span>{aveScore}</span>!
+            </p>
           </div>
         )}
       </div>
