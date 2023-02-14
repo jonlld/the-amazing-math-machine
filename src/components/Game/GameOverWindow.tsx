@@ -61,10 +61,12 @@ const GameOverWindow = ({
             <h1 className="game-over--heading">Stats:</h1>
             <p className="game-over--score">
               You have{" "}
-              <span>played {userStats?.scoreHistory.length} games!</span>
+              <span>played {userStats?.scoreHistory.length} games</span> in
+              total!
             </p>
             <p className="game-over--score">
-              Your <span>average score</span> is <span>{aveScore}!</span>
+              Your <span>average score</span> is <span>{aveScore}</span>, how
+              cool is that!
             </p>
           </div>
         )}
