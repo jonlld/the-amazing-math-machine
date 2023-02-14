@@ -24,7 +24,7 @@ const GameOverWindow = ({
       (acc, curr) => (acc += curr.score),
       0
     );
-    aveScore = allScoresSum / userStats?.scoreHistory.length;
+    aveScore = Math.round(allScoresSum / userStats?.scoreHistory.length);
   }
 
   const playHandler = (): void => {
