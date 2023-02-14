@@ -68,9 +68,11 @@ export const addNewUser = (name: string, retrievedData: UserData[]): void => {
 export const updateUserOnGameOver = (
   username: string,
   score: number,
-  currentHighscore: number
+  highscore: number
 ): void => {
   const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
+
+  // BUG username is empty!
 
   retrievedData.forEach((user: UserData) => {
     // ROLL ANY DATA IN ORIGINAL FORMAT
@@ -85,7 +87,7 @@ export const updateUserOnGameOver = (
 
     // UPDATE HIGHSCORE AND SCORE HISTORY
     if (user.username === username) {
-      if (score > currentHighscore) {
+      if (score > highscore) {
         user.highscore = score;
       }
 
@@ -109,6 +111,8 @@ export const updateUserOnGameOver = (
 
   // STORE UPDATED DATA
   localStorage.setItem("userdata", JSON.stringify(retrievedData));
+  console.log("data stored on game over");
+  console.log(retrievedData);
 };
 
 // Sort
