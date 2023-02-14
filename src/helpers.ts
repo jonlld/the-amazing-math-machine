@@ -72,8 +72,6 @@ export const updateUserOnGameOver = (
 ): void => {
   const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
 
-  // BUG username is empty!
-
   retrievedData.forEach((user: UserData) => {
     // ROLL ANY DATA IN ORIGINAL FORMAT
     if (!user.hasOwnProperty("savegame")) user.savegame = false;

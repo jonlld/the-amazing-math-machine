@@ -69,6 +69,7 @@ function App(): JSX.Element {
       // INITIALISE IF FIRST USER
       if (localStorage.getItem("userdata") === null) {
         initialiseStorage(formattedName);
+        setUsername(formattedName);
       }
 
       // CHECK IF HAVE STORED DATA
