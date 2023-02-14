@@ -296,6 +296,16 @@ span.machine {
 .game-over--container {
   /* border: 1px solid #eee; */
   padding: 64px;
+  display: grid;
+  grid-template-columns: auto 200px;
+  justify-content: right;
+  gap: 100px;
+}
+
+.game-over--button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .game-over--heading {
@@ -367,6 +377,19 @@ span.machine {
 
 .btn__play-again:hover {
   background-color: rgb(232, 246, 210);
+}
+
+.btn__choose-type {
+  margin-right: 48px;
+}
+
+.btn__toggle-stats {
+  margin-right: 48px;
+  background-color: rgb(254, 242, 117);
+}
+
+.btn__toggle-stats:hover {
+  background-color: rgb(245, 239, 175);
 }
 
 .btn__submit {

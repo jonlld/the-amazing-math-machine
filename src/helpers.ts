@@ -79,7 +79,7 @@ export const updateUserOnGameOver = (
     if (!user.hasOwnProperty("scoreHistory")) user.scoreHistory = [];
 
     // ****** DEVELOPMENT ONLY: RESET TEST SCORE HISTORY ******
-    // if (user.username === 'test') {
+    // if (user.username === "test") {
     //   user.scoreHistory = [];
     // }
 
@@ -97,10 +97,10 @@ export const updateUserOnGameOver = (
       const date = `${day}/${month}/${year}`;
 
       // 5 = default difficulty
-      // Peaceful = Default game mode w. no timer or ramping
+      // Zen = Default game mode w. no timer or ramping
       user.scoreHistory.push({
         difficulty: 5,
-        gameMode: "peaceful",
+        gameMode: "zen",
         date,
         score: score,
       });
