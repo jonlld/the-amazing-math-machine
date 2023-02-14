@@ -295,9 +295,12 @@ span.machine {
 
 .game-over--container {
   /* border: 1px solid #eee; */
+  height: 100%;
   padding: 64px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 70vh 30vh;
   gap: 100px;
+  /* animation: fade-in-slide-up; */
 }
 
 .game-over--button-container {
