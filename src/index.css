@@ -296,9 +296,7 @@ span.machine {
 .game-over--container {
   /* border: 1px solid #eee; */
   padding: 64px;
-  display: grid;
-  grid-template-columns: auto 200px;
-  justify-content: right;
+  display: flex;
   gap: 100px;
 }
 
