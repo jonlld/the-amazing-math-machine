@@ -372,7 +372,7 @@ span.machine {
 }
 
 .btn__play-again {
-  margin-right: 48px;
+  /* margin-right: 48px; */
   background-color: rgb(206, 236, 161);
 }
 
@@ -380,12 +380,12 @@ span.machine {
   background-color: rgb(232, 246, 210);
 }
 
-.btn__choose-type {
+/* .btn__choose-type {
   margin-right: 48px;
-}
+} */
 
 .btn__toggle-stats {
-  margin-right: 48px;
+  /* margin-right: 48px; */
   background-color: rgb(254, 242, 117);
 }
 
