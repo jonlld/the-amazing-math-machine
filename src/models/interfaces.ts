@@ -11,6 +11,7 @@ export interface UserData {
 export interface ScoreItem {
   difficulty: number;
   gameMode: string;
+  sumType: string;
   date: string;
   score: number;
 }

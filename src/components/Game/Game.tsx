@@ -8,12 +8,12 @@ import { generateSum, checkAnswer } from "../../helpers";
 
 interface GameProps {
   username: string;
-  onLogOut: (data?: PausedGameData) => void;
   highscore: number;
-  onGameOver: (score: number) => void;
   isRestart: boolean;
   pauseData: PausedGameData | null;
   userStats: UserData | null;
+  onLogOut: (data?: PausedGameData) => void;
+  onGameOver: (score: number, sumType: string) => void;
 }
 
 const sumDefault: Sum = {
@@ -24,12 +24,12 @@ const sumDefault: Sum = {
 
 function Game({
   username,
-  onLogOut,
   highscore,
-  onGameOver,
   isRestart,
   pauseData,
   userStats,
+  onLogOut,
+  onGameOver,
 }: GameProps): JSX.Element {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
@@ -37,14 +37,14 @@ function Game({
   const [message, setMessage] = useState<string>("Good luck!");
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
-  const [type, setType] = useState<string>("");
+  const [sumType, setSumType] = useState<string>("");
   const [sum, setSum] = useState<Sum>(sumDefault);
 
   // INITIALISE RESTARTED GAME
   useEffect(() => {
     if (isRestart && pauseData !== null) {
       // Set Game state
-      setType(pauseData.pausedType);
+      setSumType(pauseData.pausedType);
       setSum(pauseData.pausedSum);
       setMessage(pauseData.pausedMessage);
       setScore(pauseData.pausedScore);
@@ -56,11 +56,11 @@ function Game({
   }, [isRestart]);
 
   // INITIALISE REGULAR GAME
-  const onStartHandler = (type: string): void => {
-    // set sum type state for later use in generating sums
-    setType(type);
-    // Load initial sum
-    setSum(generateSum(type));
+  const onStartHandler = (sumType: string): void => {
+    // set sumType state for later use in generating sums
+    setSumType(sumType);
+    // Load initial sum, taking sumType
+    setSum(generateSum(sumType));
     setMessage("Good luck!");
     setIsPlaying(true);
     setScore(0);
@@ -77,7 +77,7 @@ function Game({
     setIsGameOver(false);
   };
 
-  // RETURN TO CHOOSE GAME TYPE
+  // RETURN TO CHOOSE GAME
   const chooseHandler = (): void => {
     setIsPlaying(false);
     setIsGameOver(false);
@@ -93,7 +93,7 @@ function Game({
     // format data
     let pausedGameData = {
       username,
-      pausedType: type,
+      pausedType: sumType,
       pausedScore: score,
       pausedHighScore: highscore,
       pausedStrikes: strikes,
@@ -135,7 +135,7 @@ function Game({
         setIsGameOver(true);
         setMessage("Game Over!");
         // app-level state
-        onGameOver(score);
+        onGameOver(score, sumType);
       }
 
       setStrikes(numStrikes);
@@ -143,7 +143,7 @@ function Game({
     }
 
     // GENERATE NEXT SUM: REQUIRES TYPE STATE
-    setSum(generateSum(type));
+    setSum(generateSum(sumType));
   };
 
   return (

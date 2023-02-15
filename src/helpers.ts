@@ -1,14 +1,14 @@
 import { UserData, Sum } from "./models/interfaces";
 
 // generates two random # between 1 and 50
-export const generateSum = (type: string) => {
+export const generateSum = (sumType: string) => {
   const operands = ["+", "-", "*"];
 
   let operand = "";
-  if (type === "add") operand = operands[0];
-  if (type === "subtract") operand = operands[1];
-  if (type === "multiply") operand = operands[2];
-  if (type === "random") operand = operands[Math.floor(Math.random() * 3)];
+  if (sumType === "add") operand = operands[0];
+  if (sumType === "subtract") operand = operands[1];
+  if (sumType === "multiply") operand = operands[2];
+  if (sumType === "mix") operand = operands[Math.floor(Math.random() * 3)];
 
   // Limit scope for multiplication sums
   let multiplier = 50;
@@ -68,15 +68,21 @@ export const addNewUser = (name: string, retrievedData: UserData[]): void => {
 export const updateUserOnGameOver = (
   username: string,
   score: number,
-  highscore: number
+  highscore: number,
+  sumType: string
 ): void => {
   const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
 
   retrievedData.forEach((user: UserData) => {
-    // ROLL ANY DATA IN ORIGINAL FORMAT
+    // ROLL OLD DATA (ADD BELOW PROPERTIES)
     if (!user.hasOwnProperty("savegame")) user.savegame = false;
     if (!user.hasOwnProperty("savegameData")) user.savegameData = {};
     if (!user.hasOwnProperty("scoreHistory")) user.scoreHistory = [];
+
+    // ROLL OLD SCOREHISTORY (ADD SUMTYPE PROPERTY)
+    user.scoreHistory.forEach((scoreItem) => {
+      if (!scoreItem.sumType) scoreItem.sumType = "";
+    });
 
     // ****** DEVELOPMENT ONLY: RESET TEST SCORE HISTORY ******
     // if (user.username === "test") {
@@ -101,6 +107,7 @@ export const updateUserOnGameOver = (
       user.scoreHistory.push({
         difficulty: 5,
         gameMode: "zen",
+        sumType,
         date,
         score: score,
       });

@@ -113,7 +113,7 @@ function App(): JSX.Element {
     setIsLoggedIn(false);
   };
 
-  const gameOverHandler = (score: number): void => {
+  const gameOverHandler = (score: number, sumType: string): void => {
     // IF RESTART, CLEAR SAVEGAME DATA
     if (isRestart) {
       localStorage.removeItem("pausedData");
@@ -126,8 +126,8 @@ function App(): JSX.Element {
       setHighscore(score);
     }
 
-    // UPDATE USER DATA
-    updateUserOnGameOver(username, score, highscore);
+    // UPDATE STORED USER DATA
+    updateUserOnGameOver(username, score, highscore, sumType);
 
     const updatedData = JSON.parse(localStorage.getItem("userdata")!);
 

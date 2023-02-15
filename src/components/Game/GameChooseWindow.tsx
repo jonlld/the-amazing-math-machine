@@ -35,7 +35,7 @@ const GameChooseWindow = ({ onStart }: ChooseProps): JSX.Element => {
         </button>
         <button
           className="btn btn__choose btn__random"
-          value="random"
+          value="mix"
           onClick={clickHandler}
         >
           Mix it up!
