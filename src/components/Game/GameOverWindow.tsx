@@ -43,7 +43,7 @@ const GameOverWindow = ({
     <section className="game-over--container fade-in-slide-up">
       <div>
         {!isViewStats && (
-          <div>
+          <div className="fade-in-slide-up">
             <h1 className="game-over--heading">Game Over!</h1>
             <p className="game-over--score">
               Your <span>score</span> was <span>{score}.</span>
@@ -57,7 +57,7 @@ const GameOverWindow = ({
           </div>
         )}
         {isViewStats && (
-          <div>
+          <div className="fade-in-slide-up">
             <h1 className="game-over--heading">Stats:</h1>
             <p className="game-over--score">
               You have{" "}
