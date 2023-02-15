@@ -18,13 +18,17 @@ const GameOverWindow = ({
 }: GameOverProps): JSX.Element => {
   const [isViewStats, setIsViewStats] = useState<boolean>(false);
 
+  let numGames;
   let aveScore;
+
+  // UPDATE AVE SCORE & NUM GAMES
   if (userStats) {
+    numGames = userStats?.scoreHistory.length;
     const allScoresSum = userStats?.scoreHistory.reduce(
       (acc, curr) => (acc += curr.score),
       0
     );
-    aveScore = Math.round(allScoresSum / userStats?.scoreHistory.length);
+    aveScore = Math.round(allScoresSum / numGames);
   }
 
   const playHandler = (): void => {
@@ -58,11 +62,13 @@ const GameOverWindow = ({
         )}
         {isViewStats && (
           <div className="fade-in-slide-up">
-            <h1 className="game-over--heading">Stats:</h1>
+            <h1 className="game-over--heading stats">Stats:</h1>
             <p className="game-over--score">
               You have{" "}
-              <span>played {userStats?.scoreHistory.length} games</span> in
-              total!
+              <span>
+                played {numGames} {numGames === 1 ? "game" : "games"}
+              </span>{" "}
+              in total!
             </p>
             <p className="game-over--score">
               Your <span>average score</span> is <span>{aveScore}</span>, how
