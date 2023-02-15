@@ -3,7 +3,12 @@ import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "./SumWindow";
 import ScoreWindow from "./ScoreWindow";
-import { Sum, PausedGameData, UserData } from "../../models/interfaces";
+import {
+  Sum,
+  PausedGameData,
+  UserData,
+  SumType,
+} from "../../models/interfaces";
 import { generateSum, checkAnswer } from "../../helpers";
 
 interface GameProps {
@@ -13,7 +18,7 @@ interface GameProps {
   pauseData: PausedGameData | null;
   userStats: UserData | null;
   onLogOut: (data?: PausedGameData) => void;
-  onGameOver: (score: number, sumType: string) => void;
+  onGameOver: (score: number, sumType: SumType) => void;
 }
 
 const sumDefault: Sum = {
@@ -37,7 +42,7 @@ function Game({
   const [message, setMessage] = useState<string>("Good luck!");
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
-  const [sumType, setSumType] = useState<string>("");
+  const [sumType, setSumType] = useState<SumType>("");
   const [sum, setSum] = useState<Sum>(sumDefault);
 
   // INITIALISE RESTARTED GAME
@@ -56,7 +61,7 @@ function Game({
   }, [isRestart]);
 
   // INITIALISE REGULAR GAME
-  const onStartHandler = (sumType: string): void => {
+  const onStartHandler = (sumType: SumType): void => {
     // set sumType state for later use in generating sums
     setSumType(sumType);
     // Load initial sum, taking sumType

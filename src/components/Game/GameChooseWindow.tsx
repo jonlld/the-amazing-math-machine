@@ -1,11 +1,22 @@
+import { SumType } from "../../models/interfaces";
+
 interface ChooseProps {
-  onStart: (type: string) => void;
+  onStart: (sumType: SumType) => void;
 }
 
 const GameChooseWindow = ({ onStart }: ChooseProps): JSX.Element => {
   const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
-    const type = e.currentTarget.getAttribute("value")!;
-    onStart(type);
+    const sumType = e.currentTarget.getAttribute("value")!;
+    if (
+      sumType === "" ||
+      sumType === "add" ||
+      sumType === "subtract" ||
+      sumType === "multiply" ||
+      sumType === "mix"
+    ) {
+      // Initialises game from Game
+      onStart(sumType);
+    }
   };
 
   return (

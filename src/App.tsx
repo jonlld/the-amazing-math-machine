@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import Login from "./components/Login/Login";
 import Game from "./components/Game/Game";
-import { UserData, PausedGameData } from "./models/interfaces";
+import { UserData, PausedGameData, SumType } from "./models/interfaces";
 import {
   initialiseStorage,
   addNewUser,
@@ -113,7 +113,7 @@ function App(): JSX.Element {
     setIsLoggedIn(false);
   };
 
-  const gameOverHandler = (score: number, sumType: string): void => {
+  const gameOverHandler = (score: number, sumType: SumType): void => {
     // IF RESTART, CLEAR SAVEGAME DATA
     if (isRestart) {
       localStorage.removeItem("pausedData");
