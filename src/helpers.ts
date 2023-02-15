@@ -1,4 +1,4 @@
-import { UserData, Sum } from "./models/interfaces";
+import { UserData, Sum, SumType } from "./models/interfaces";
 
 // generates two random # between 1 and 50
 export const generateSum = (sumType: string) => {
@@ -69,7 +69,7 @@ export const updateUserOnGameOver = (
   username: string,
   score: number,
   highscore: number,
-  sumType: string
+  sumType: SumType
 ): void => {
   const retrievedData = JSON.parse(localStorage.getItem("userdata")!);
 
@@ -79,9 +79,10 @@ export const updateUserOnGameOver = (
     if (!user.hasOwnProperty("savegameData")) user.savegameData = {};
     if (!user.hasOwnProperty("scoreHistory")) user.scoreHistory = [];
 
-    // ROLL OLD SCOREHISTORY (ADD SUMTYPE PROPERTY)
+    // ROLL OLD SCORE HISTORY (ADD / UPDATE SUMTYPE PROPERTY)
     user.scoreHistory.forEach((scoreItem) => {
       if (!scoreItem.sumType) scoreItem.sumType = "";
+      if (scoreItem.sumType === "random") scoreItem.sumType = "mix";
     });
 
     // ****** DEVELOPMENT ONLY: RESET TEST SCORE HISTORY ******
