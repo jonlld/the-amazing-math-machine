@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserData } from "../../models/interfaces";
+import { UserData, SumType } from "../../models/interfaces";
 
 interface GameOverProps {
   score: number;
@@ -7,6 +7,16 @@ interface GameOverProps {
   onPlayAgain: () => void;
   onChoose: () => void;
   userStats: UserData | null;
+}
+
+// 'random' is legacy - see rollforward in helpers.js
+interface NumTypes {
+  add: number;
+  subtract: number;
+  multiply: number;
+  mix: number;
+  "": number;
+  random: number;
 }
 
 const GameOverWindow = ({
@@ -21,17 +31,34 @@ const GameOverWindow = ({
   let numGames;
   let aveScore;
   let aveScoreMsg;
+  let numTypesLookup: NumTypes = {
+    "": 0,
+    add: 0,
+    subtract: 0,
+    multiply: 0,
+    mix: 0,
+    random: 0,
+  };
 
   // UPDATE AVE SCORE & NUM GAMES
   if (userStats) {
-    numGames = userStats?.scoreHistory.length;
-    const allScoresSum = userStats?.scoreHistory.reduce(
+    numGames = userStats.scoreHistory.length;
+    const allScoresSum = userStats.scoreHistory.reduce(
       (acc, curr) => (acc += curr.score),
       0
     );
     aveScore = Math.round(allScoresSum / numGames);
 
     aveScoreMsg = aveScore > 2000 ? "how cool is that!?" : "keep going!";
+
+    // Build lookup for favourite sumType stat
+    userStats.scoreHistory.forEach((scoreItem) => {
+      const sumType = scoreItem.sumType;
+      numTypesLookup[sumType] === 0
+        ? (numTypesLookup[sumType] = 1)
+        : (numTypesLookup[sumType] += 1);
+      console.log(numTypesLookup);
+    });
   }
 
   const playHandler = (): void => {
