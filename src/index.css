@@ -316,9 +316,9 @@ span.machine {
   margin-bottom: 64px;
 }
 
-.game-over--heading.stats {
+/* .game-over--heading.stats {
   color: rgb(125, 248, 123);
-}
+} */
 
 .game-over--score {
   text-transform: uppercase;
