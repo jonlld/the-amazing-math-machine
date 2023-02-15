@@ -20,6 +20,7 @@ const GameOverWindow = ({
 
   let numGames;
   let aveScore;
+  let aveScoreMsg;
 
   // UPDATE AVE SCORE & NUM GAMES
   if (userStats) {
@@ -29,6 +30,8 @@ const GameOverWindow = ({
       0
     );
     aveScore = Math.round(allScoresSum / numGames);
+
+    aveScoreMsg = aveScore > 2000 ? "how cool is that!?" : "keep going!";
   }
 
   const playHandler = (): void => {
@@ -71,8 +74,8 @@ const GameOverWindow = ({
               in total!
             </p>
             <p className="game-over--score">
-              Your <span>average score</span> is <span>{aveScore}</span>, how
-              cool is that!
+              Your <span>average score</span> is <span>{aveScore}</span>,{" "}
+              {aveScoreMsg}
             </p>
           </div>
         )}
