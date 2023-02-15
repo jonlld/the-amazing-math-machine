@@ -9,14 +9,12 @@ interface GameOverProps {
   userStats: UserData | null;
 }
 
-// 'random' is legacy - see rollforward in helpers.js
 interface NumTypes {
   add: number;
   subtract: number;
   multiply: number;
   mix: number;
   "": number;
-  random: number;
 }
 
 const GameOverWindow = ({
@@ -37,7 +35,6 @@ const GameOverWindow = ({
     subtract: 0,
     multiply: 0,
     mix: 0,
-    random: 0,
   };
 
   // UPDATE AVE SCORE & NUM GAMES
@@ -57,7 +54,6 @@ const GameOverWindow = ({
       numTypesLookup[sumType] === 0
         ? (numTypesLookup[sumType] = 1)
         : (numTypesLookup[sumType] += 1);
-      console.log(numTypesLookup);
     });
   }
 

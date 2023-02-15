@@ -79,10 +79,9 @@ export const updateUserOnGameOver = (
     if (!user.hasOwnProperty("savegameData")) user.savegameData = {};
     if (!user.hasOwnProperty("scoreHistory")) user.scoreHistory = [];
 
-    // ROLL OLD SCORE HISTORY (ADD / UPDATE SUMTYPE PROPERTY)
+    // ROLL OLD SCORE HISTORY (ADD SUMTYPE PROPERTY)
     user.scoreHistory.forEach((scoreItem) => {
       if (!scoreItem.sumType) scoreItem.sumType = "";
-      if (scoreItem.sumType === "random") scoreItem.sumType = "mix";
     });
 
     // ****** DEVELOPMENT ONLY: RESET TEST SCORE HISTORY ******
@@ -117,8 +116,6 @@ export const updateUserOnGameOver = (
 
   // STORE UPDATED DATA
   localStorage.setItem("userdata", JSON.stringify(retrievedData));
-  console.log("data stored on game over");
-  console.log(retrievedData);
 };
 
 // Sort
