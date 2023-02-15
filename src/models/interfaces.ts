@@ -7,8 +7,8 @@ export interface UserData {
   scoreHistory: ScoreItem[];
 }
 
-// 'random' is legacy - see rollforward in helpers.js
-export type SumType = "" | "add" | "subtract" | "multiply" | "mix" | "random";
+// note, legacy SumType had 'random' instead of 'mix' - may need to adjust
+export type SumType = "" | "add" | "subtract" | "multiply" | "mix";
 
 // TODO Implement game modes
 export interface ScoreItem {
