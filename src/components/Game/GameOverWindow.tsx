@@ -9,6 +9,7 @@ interface GameOverProps {
   userStats: UserData | null;
 }
 
+// note legacy stored data may have 'random' key (now 'mix')
 interface NumTypes {
   add: number;
   subtract: number;
@@ -55,6 +56,8 @@ const GameOverWindow = ({
         ? (numTypesLookup[sumType] = 1)
         : (numTypesLookup[sumType] += 1);
     });
+
+    // TODO Add favourite sum type(s) message to stats
   }
 
   const playHandler = (): void => {
