@@ -59,7 +59,11 @@ const GameOverWindow = ({
         : (numTypesLookup[sumType] += 1);
     });
 
-    scoreHistory = userStats.scoreHistory;
+    // Clone for reverse, clarify why
+    let cloneScoreHistory = userStats.scoreHistory.map((obj) => {
+      return { ...obj };
+    });
+    scoreHistory = cloneScoreHistory.reverse();
   }
 
   const playHandler = (): void => {
@@ -74,9 +78,13 @@ const GameOverWindow = ({
     setisViewHistory((prev) => !prev);
   };
 
+  const copyScoreHistory = scoreHistory?.slice();
+  const reversedHistory = copyScoreHistory?.reverse();
+  console.log(reversedHistory);
+
   return (
-    <section className="game-over__container">
-      <div className="game-over__data-container">
+    <section className="game-over__main-container">
+      <div className="game-over__stats-container">
         {!isViewHistory && (
           <div className="fade-in-slide-up">
             <h1 className="game-over__heading">Game Over!</h1>
@@ -104,29 +112,29 @@ const GameOverWindow = ({
         )}
         {isViewHistory && (
           <div className="fade-in-slide-up history__container">
-            <div className=" history-header__container">
-              {/* Header Row */}
+            <div className="history-header__container">
               {["Score", "Game Type", "Date"].map((header) => {
                 return (
                   <div className="history-header">{header.toUpperCase()}</div>
                 );
               })}
             </div>
-            {/* Data Rows */}
-            {scoreHistory?.map((scoreItem) => {
-              return <ScoreGrid scoreItem={scoreItem} />;
-            })}
+            <div className="history-item__container">
+              {scoreHistory?.map((scoreItem) => {
+                return <ScoreGrid scoreItem={scoreItem} />;
+              })}
+            </div>
           </div>
         )}
       </div>
       <div className="game-over__buttons-container">
-        <button className="btn btn__play-again" onClick={playHandler}>
+        <button className="btn btn--play-again" onClick={playHandler}>
           Play Again
         </button>
-        <button className="btn btn__choose-type" onClick={chooseHandler}>
+        <button className="btn btn--choose-type" onClick={chooseHandler}>
           Choose Game Type
         </button>
-        <button className="btn btn__toggle-stats" onClick={statsHandler}>
+        <button className="btn btn--toggle-stats" onClick={statsHandler}>
           Toggle History
         </button>
       </div>

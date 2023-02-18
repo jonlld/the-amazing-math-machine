@@ -5,7 +5,7 @@ interface Props {
 }
 
 const ScoreGrid = ({ scoreItem }: Props): JSX.Element => {
-  let { difficulty, gameMode, sumType, date, score } = scoreItem;
+  let { sumType, date, score } = scoreItem;
   let formattedScore = score.toString().padStart(2, "0");
 
   return (

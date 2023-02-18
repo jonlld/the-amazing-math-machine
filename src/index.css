@@ -293,7 +293,7 @@ span.machine {
 
 /* *********** GAME - GAME OVER WINDOW *********** */
 
-.game-over__container {
+.game-over__main-container {
   /* border: 1px solid #eee; */
   height: 100%;
   padding-top: 64px;
@@ -303,8 +303,9 @@ span.machine {
   animation: fade-in-slide-up;
 }
 
-.game-over__data-container {
-  overflow: scroll;
+.game-over__stats-container {
+  /* height: 90%; */
+  /* overflow: scroll; */
 }
 
 .game-over__buttons-container {
@@ -344,6 +345,12 @@ span.machine {
   color: rgb(208, 94, 113);
 }
 
+.history-item__container {
+  height: 400px;
+  overflow: scroll;
+}
+
+/* ScoreGrid Component */
 .score-container {
   /* background-color: #444; */
   display: grid;
@@ -403,25 +410,23 @@ span.machine {
   background-color: rgb(250, 202, 210);
 }
 
-.btn__play-again {
+.btn--play-again {
   /* margin-right: 48px; */
   background-color: rgb(206, 236, 161);
 }
 
-.btn__play-again:hover {
+.btn--play-again:hover {
   background-color: rgb(232, 246, 210);
 }
 
-/* .btn__choose-type {
-  margin-right: 48px;
-} */
+/* .btn--choose-type {} */
 
-.btn__toggle-stats {
+.btn--toggle-stats {
   /* margin-right: 48px; */
   background-color: rgb(254, 242, 117);
 }
 
-.btn__toggle-stats:hover {
+.btn--toggle-stats:hover {
   background-color: rgb(245, 239, 175);
 }
 
