@@ -84,49 +84,47 @@ const GameOverWindow = ({
 
   return (
     <section className="game-over__main-container">
-      <div className="game-over__stats-container">
-        {!isViewHistory && (
-          <div className="fade-in-slide-up">
-            <h1 className="game-over__heading">Game Over!</h1>
+      {!isViewHistory && (
+        <div className="fade-in-slide-up stats-container">
+          <h1 className="game-over__heading">Game Over!</h1>
+          <p className="game-over__stat">
+            Your <span>score</span> was <span>{score}.</span>
+            {score > 0 ? "Great job!" : "Better luck next time!"}
+          </p>
+          {highscore > 0 && (
             <p className="game-over__stat">
-              Your <span>score</span> was <span>{score}.</span>
-              {score > 0 ? "Great job!" : "Better luck next time!"}
+              Your <span>highscore</span> is <span>{highscore}!</span>
             </p>
-            {highscore > 0 && (
-              <p className="game-over__stat">
-                Your <span>highscore</span> is <span>{highscore}!</span>
-              </p>
-            )}
-            <p className="game-over__stat">
-              You have{" "}
-              <span>
-                played {numGames} {numGames === 1 ? "game" : "games"}
-              </span>{" "}
-              in total!
-            </p>
-            <p className="game-over__stat">
-              Your <span>average score</span> is <span>{aveScore}</span>,{" "}
-              {aveScoreMsg}
-            </p>
+          )}
+          <p className="game-over__stat">
+            You have{" "}
+            <span>
+              played {numGames} {numGames === 1 ? "game" : "games"}
+            </span>{" "}
+            in total!
+          </p>
+          <p className="game-over__stat">
+            Your <span>average score</span> is <span>{aveScore}</span>,{" "}
+            {aveScoreMsg}
+          </p>
+        </div>
+      )}
+      {isViewHistory && (
+        <div className="fade-in-slide-up history__container">
+          <div className="history-header__container">
+            {["Score", "Game Type", "Date"].map((header) => {
+              return (
+                <div className="history-header">{header.toUpperCase()}</div>
+              );
+            })}
           </div>
-        )}
-        {isViewHistory && (
-          <div className="fade-in-slide-up history__container">
-            <div className="history-header__container">
-              {["Score", "Game Type", "Date"].map((header) => {
-                return (
-                  <div className="history-header">{header.toUpperCase()}</div>
-                );
-              })}
-            </div>
-            <div className="history-item__container">
-              {scoreHistory?.map((scoreItem) => {
-                return <ScoreGrid scoreItem={scoreItem} />;
-              })}
-            </div>
+          <div className="history-item__container">
+            {scoreHistory?.map((scoreItem) => {
+              return <ScoreGrid scoreItem={scoreItem} />;
+            })}
           </div>
-        )}
-      </div>
+        </div>
+      )}
       <div className="game-over__buttons-container">
         <button className="btn btn--play-again" onClick={playHandler}>
           Play Again
@@ -134,8 +132,8 @@ const GameOverWindow = ({
         <button className="btn btn--choose-type" onClick={chooseHandler}>
           Choose Game Type
         </button>
-        <button className="btn btn--toggle-stats" onClick={statsHandler}>
-          Toggle History
+        <button className="btn btn--toggle-scores" onClick={statsHandler}>
+          Toggle Scores
         </button>
       </div>
     </section>

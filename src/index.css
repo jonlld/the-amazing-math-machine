@@ -293,20 +293,21 @@ span.machine {
 
 /* *********** GAME - GAME OVER WINDOW *********** */
 
+/* GAME OVER CONTAINER */
+
 .game-over__main-container {
   /* border: 1px solid #eee; */
   height: 100%;
-  padding-top: 64px;
+  width: 100%;
+  padding: 4rem 6rem;
   display: grid;
-  grid-template-columns: 75vh 25vh;
+  grid-template-columns: auto 30%;
+  justify-items: center;
   gap: 50px;
   animation: fade-in-slide-up;
 }
 
-.game-over__stats-container {
-  /* height: 90%; */
-  /* overflow: scroll; */
-}
+/* STATS VIEW */
 
 .game-over__buttons-container {
   display: flex;
@@ -318,21 +319,26 @@ span.machine {
   text-transform: uppercase;
   font-size: 36px;
   color: rgb(208, 94, 113);
-
-  margin-bottom: 32px;
+  margin-bottom: 3.5rem;
 }
 
 .game-over__stat {
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
-/* HISTORY */
+.game-over__stat span {
+  font-size: 1.5rem;
+}
+
+/* SCORE HISTORY VIEW */
+
+.history__container {
+}
 
 .history-header__container {
   display: grid;
-  grid-template-columns: 150px 200px 200px;
-  /* background-color: orangered; */
+  grid-template-columns: 30% 50% 20%;
   column-gap: 1rem;
   row-gap: 1rem;
   margin-bottom: 1.5rem;
@@ -340,8 +346,8 @@ span.machine {
 
 .history-header {
   display: inline-block;
+  font-size: 1.5rem;
   padding: 0.5rem;
-  /* background-color: #ccc; */
   color: rgb(208, 94, 113);
 }
 
@@ -350,12 +356,11 @@ span.machine {
   overflow: scroll;
 }
 
-/* ScoreGrid Component */
+/* ScoreGrid Items */
 .score-container {
-  /* background-color: #444; */
   display: grid;
   padding: 0.5rem;
-  grid-template-columns: 150px 200px 200px;
+  grid-template-columns: 30% 50% 20%;
   column-gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -421,12 +426,12 @@ span.machine {
 
 /* .btn--choose-type {} */
 
-.btn--toggle-stats {
+.btn--toggle-scores {
   /* margin-right: 48px; */
   background-color: rgb(254, 242, 117);
 }
 
-.btn--toggle-stats:hover {
+.btn--toggle-scores:hover {
   background-color: rgb(245, 239, 175);
 }
 
