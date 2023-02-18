@@ -296,7 +296,7 @@ span.machine {
 .game-over--container {
   /* border: 1px solid #eee; */
   height: 100%;
-  padding: 64px;
+  padding-top: 64px;
   display: grid;
   grid-template-columns: 70vh 30vh;
   gap: 100px;
@@ -309,20 +309,24 @@ span.machine {
   gap: 24px;
 }
 
-.game-over--heading {
+.game-over__messages {
+  font-size: 1rem;
+}
+
+.game-over__heading {
   text-transform: uppercase;
   font-size: 36px;
   color: rgb(208, 94, 113);
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 
 /* .game-over--heading.stats {
   color: rgb(125, 248, 123);
 } */
 
-.game-over--score {
+.game-over__stat {
   text-transform: uppercase;
-  margin-bottom: 64px;
+  margin-bottom: 1.5rem;
 }
 
 /* *********** UI CLASSES *********** */

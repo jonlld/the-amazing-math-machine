@@ -25,7 +25,7 @@ const GameOverWindow = ({
   onChoose,
   userStats,
 }: GameOverProps): JSX.Element => {
-  const [isViewStats, setIsViewStats] = useState<boolean>(false);
+  const [isViewHistory, setisViewHistory] = useState<boolean>(false);
 
   let numGames;
   let aveScore;
@@ -69,40 +69,40 @@ const GameOverWindow = ({
   };
 
   const statsHandler = (): void => {
-    setIsViewStats((prev) => !prev);
+    setisViewHistory((prev) => !prev);
   };
 
   return (
     <section className="game-over--container fade-in-slide-up">
-      <div>
-        {!isViewStats && (
+      <div className="game-over__messages">
+        {!isViewHistory && (
           <div className="fade-in-slide-up">
-            <h1 className="game-over--heading">Game Over!</h1>
-            <p className="game-over--score">
+            <h1 className="game-over__heading">Game Over!</h1>
+            <p className="game-over__stat">
               Your <span>score</span> was <span>{score}.</span>
               {score > 0 ? "Great job!" : "Better luck next time!"}
             </p>
             {highscore > 0 && (
-              <p className="game-over--score">
+              <p className="game-over__stat">
                 Your <span>highscore</span> is <span>{highscore}!</span>
               </p>
             )}
-          </div>
-        )}
-        {isViewStats && (
-          <div className="fade-in-slide-up">
-            <h1 className="game-over--heading stats">Stats:</h1>
-            <p className="game-over--score">
+            <p className="game-over__stat">
               You have{" "}
               <span>
                 played {numGames} {numGames === 1 ? "game" : "games"}
               </span>{" "}
               in total!
             </p>
-            <p className="game-over--score">
+            <p className="game-over__stat">
               Your <span>average score</span> is <span>{aveScore}</span>,{" "}
               {aveScoreMsg}
             </p>
+          </div>
+        )}
+        {isViewHistory && (
+          <div className="fade-in-slide-up">
+            <h1 className="game-over--heading stats">Placeholder:</h1>
           </div>
         )}
       </div>
@@ -114,7 +114,7 @@ const GameOverWindow = ({
           Choose Game Type
         </button>
         <button className="btn btn__toggle-stats" onClick={statsHandler}>
-          Toggle Stats
+          Toggle History
         </button>
       </div>
     </section>
