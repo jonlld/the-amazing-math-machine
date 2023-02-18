@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ScoreHistoryItem from "./ScoreHistoryItem";
+import ScoreGrid from "./ScoreHistoryItem";
 import { UserData, SumType } from "../../models/interfaces";
 
 interface GameOverProps {
@@ -75,8 +75,8 @@ const GameOverWindow = ({
   };
 
   return (
-    <section className="game-over--container fade-in-slide-up">
-      <div className="game-over__messages">
+    <section className="game-over__container">
+      <div className="game-over__data-container">
         {!isViewHistory && (
           <div className="fade-in-slide-up">
             <h1 className="game-over__heading">Game Over!</h1>
@@ -103,15 +103,23 @@ const GameOverWindow = ({
           </div>
         )}
         {isViewHistory && (
-          <div className="fade-in-slide-up">
-            <h1 className="game-over__heading">All Scores:</h1>
+          <div className="fade-in-slide-up history__container">
+            <div className=" history-header__container">
+              {/* Header Row */}
+              {["Score", "Game Type", "Date"].map((header) => {
+                return (
+                  <div className="history-header">{header.toUpperCase()}</div>
+                );
+              })}
+            </div>
+            {/* Data Rows */}
             {scoreHistory?.map((scoreItem) => {
-              return <ScoreHistoryItem scoreItem={scoreItem} />;
+              return <ScoreGrid scoreItem={scoreItem} />;
             })}
           </div>
         )}
       </div>
-      <div className="game-over--button-container">
+      <div className="game-over__buttons-container">
         <button className="btn btn__play-again" onClick={playHandler}>
           Play Again
         </button>
