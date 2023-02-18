@@ -356,7 +356,7 @@ span.machine {
 
 .history-item__container {
   height: 400px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /* ScoreGrid Items */
