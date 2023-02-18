@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ScoreGrid from "./ScoreHistoryItem";
+import ScoreGrid from "./ScoreGrid";
 import { UserData, SumType } from "../../models/interfaces";
 
 interface GameOverProps {
@@ -85,7 +85,7 @@ const GameOverWindow = ({
   return (
     <section className="game-over__main-container">
       {!isViewHistory && (
-        <div className="fade-in-slide-up stats-container">
+        <div className="fade-in-slide-up stats__container">
           <h1 className="game-over__heading">Game Over!</h1>
           <p className="game-over__stat">
             Your <span>score</span> was <span>{score}.</span>
@@ -112,7 +112,7 @@ const GameOverWindow = ({
       {isViewHistory && (
         <div className="fade-in-slide-up history__container">
           <div className="history-header__container">
-            {["Score", "Game Type", "Date"].map((header) => {
+            {["Date", "Game", "Score!"].map((header) => {
               return (
                 <div className="history-header">{header.toUpperCase()}</div>
               );
