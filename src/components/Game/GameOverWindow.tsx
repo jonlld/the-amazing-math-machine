@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ScoreHistoryItem from "./ScoreHistoryItem";
 import { UserData, SumType } from "../../models/interfaces";
 
 interface GameOverProps {
@@ -37,6 +38,7 @@ const GameOverWindow = ({
     multiply: 0,
     mix: 0,
   };
+  let scoreHistory;
 
   // UPDATE AVE SCORE & NUM GAMES
   if (userStats) {
@@ -57,7 +59,7 @@ const GameOverWindow = ({
         : (numTypesLookup[sumType] += 1);
     });
 
-    // TODO Add favourite sum type(s) message to stats
+    scoreHistory = userStats.scoreHistory;
   }
 
   const playHandler = (): void => {
@@ -102,7 +104,10 @@ const GameOverWindow = ({
         )}
         {isViewHistory && (
           <div className="fade-in-slide-up">
-            <h1 className="game-over--heading stats">Placeholder:</h1>
+            <h1 className="game-over__heading">All Scores:</h1>
+            {scoreHistory?.map((scoreItem) => {
+              return <ScoreHistoryItem scoreItem={scoreItem} />;
+            })}
           </div>
         )}
       </div>
