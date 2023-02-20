@@ -5,6 +5,8 @@ interface Props {
 }
 
 const ScoreHistory = ({ history }: Props): JSX.Element => {
+  let id = 0;
+
   return (
     <div className="fade-in-slide-up history__container">
       {Object.keys(history[0]).map((key) => {
@@ -16,7 +18,7 @@ const ScoreHistory = ({ history }: Props): JSX.Element => {
       })}
       {history.map((score) =>
         Object.values(score).map((value, index) => (
-          <div key={index} className="history__item">
+          <div key={++id} className="history__item">
             {value}
           </div>
         ))
