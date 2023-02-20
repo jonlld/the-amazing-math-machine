@@ -38,6 +38,7 @@ const GameOverWindow = ({
     mix: 0,
   };
   let scoreHistory;
+  let scoreHistoryForTable;
 
   // UPDATE AVE SCORE & NUM GAMES
   if (userStats) {
@@ -58,11 +59,17 @@ const GameOverWindow = ({
         : (numTypesLookup[sumType] += 1);
     });
 
-    // Clone for reverse, clarify why
+    // Make copy to reverse order...
     let cloneScoreHistory = userStats.scoreHistory.map((obj) => {
       return { ...obj };
     });
     scoreHistory = cloneScoreHistory.reverse();
+
+    // Extract stats used in table to map through
+    scoreHistoryForTable = scoreHistory.map((scoreObj) => {
+      const { date, sumType: mode, score } = scoreObj;
+      return { date, mode, score };
+    });
   }
 
   const playHandler = (): void => {
@@ -108,13 +115,15 @@ const GameOverWindow = ({
           </p>
         </div>
       )}
-      {isViewHistory && scoreHistory && (
+      {isViewHistory && scoreHistoryForTable && (
         <div className="fade-in-slide-up history__container">
-          {["DATE", "MODE", "SCORE"].map((key) => {
+          {Object.keys(scoreHistoryForTable[0]).map((key) => {
             return <div className="history-header">{key}</div>;
           })}
-          {scoreHistory.map((score) =>
-            Object.values(score).map((value) => <div>{value}</div>)
+          {scoreHistoryForTable.map((score) =>
+            Object.values(score).map((value) => (
+              <div className="history__item">{value}</div>
+            ))
           )}
         </div>
       )}
