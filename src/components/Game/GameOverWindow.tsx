@@ -29,12 +29,12 @@ const GameOverWindow = ({
 }: GameOverProps): JSX.Element => {
   const [isViewHistory, setisViewHistory] = useState<boolean>(false);
 
-  // Stats Using
+  // Stats - Using
   let numGames = 0;
   let aveScore = 0;
   let aveScoreMsg = "";
 
-  // TODO Stats To Use
+  // Stats - To Use
   let numTypesLookup: NumTypes = {
     "": 0,
     add: 0,
@@ -43,7 +43,7 @@ const GameOverWindow = ({
     mix: 0,
   };
 
-  // History
+  // Score History - All and Table
   let scoreHistory;
   let scoreHistoryForTable;
 
@@ -58,6 +58,7 @@ const GameOverWindow = ({
 
     aveScoreMsg = aveScore > 2000 ? "how cool is that!?" : "keep going!";
 
+    // TODO - USE THIS?
     // Build lookup for favourite sumType stat
     userStats.scoreHistory.forEach((scoreItem) => {
       const sumType = scoreItem.sumType;
@@ -66,19 +67,20 @@ const GameOverWindow = ({
         : (numTypesLookup[sumType] += 1);
     });
 
-    // Make copy to reverse order...
+    // Copy to reverse
     let cloneScoreHistory = userStats.scoreHistory.map((obj) => {
       return { ...obj };
     });
     scoreHistory = cloneScoreHistory.reverse();
 
-    // Extract stats used in table to map through
+    // Update table-specific stats
     scoreHistoryForTable = scoreHistory.map((scoreObj) => {
       const { date, sumType: mode, score } = scoreObj;
       return { date, mode, score };
     });
   }
 
+  // HANDLE BUTTONS
   const playHandler = (): void => {
     onPlayAgain();
   };
@@ -90,10 +92,6 @@ const GameOverWindow = ({
   const statsHandler = (): void => {
     setisViewHistory((prev) => !prev);
   };
-
-  const copyScoreHistory = scoreHistory?.slice();
-  const reversedHistory = copyScoreHistory?.reverse();
-  console.log(reversedHistory);
 
   return (
     <section className="fade-in-slide-up game-over__main-container">
