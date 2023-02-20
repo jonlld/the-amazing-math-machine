@@ -304,7 +304,6 @@ span.machine {
   grid-template-columns: auto 30%;
   justify-items: center;
   gap: 50px;
-  animation: fade-in-slide-up;
 }
 
 /* STATS VIEW */
@@ -339,12 +338,11 @@ span.machine {
 /* SCORE HISTORY VIEW */
 
 .history__container {
-  /* border: 1px solid #eee; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  overflow: auto;
   column-gap: 1rem;
   row-gap: 1rem;
+  overflow: auto;
 }
 
 .history-header {

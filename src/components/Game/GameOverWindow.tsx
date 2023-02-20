@@ -89,7 +89,7 @@ const GameOverWindow = ({
   console.log(reversedHistory);
 
   return (
-    <section className="game-over__main-container">
+    <section className="fade-in-slide-up game-over__main-container">
       {!isViewHistory && (
         <div className="fade-in-slide-up stats__container">
           <h1 className="game-over__heading">Game Over!</h1>
