@@ -314,6 +314,12 @@ span.machine {
   width: 100%;
 }
 
+.history__container {
+  /* border: 1px solid #eee; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .game-over__buttons-container {
   display: flex;
   flex-direction: column;
@@ -338,14 +344,14 @@ span.machine {
 
 /* SCORE HISTORY VIEW */
 
-.history-header__container {
+/* .history-header__container {
   display: grid;
   width: 100%;
   grid-template-columns: 30% 30% auto;
   column-gap: 1.5rem;
   row-gap: 1rem;
   margin-bottom: 1.5rem;
-}
+} */
 
 .history-header {
   display: inline-block;
@@ -354,10 +360,10 @@ span.machine {
   color: rgb(208, 94, 113);
 }
 
-.history-item__container {
+/* .history-item__container {
   height: 400px;
   overflow: auto;
-}
+} */
 
 /* ScoreGrid Items */
 .score-container {
