@@ -19,6 +19,12 @@ export interface ScoreItem {
   score: number;
 }
 
+export interface ScoreItemTable {
+  date: string;
+  mode: SumType;
+  score: number;
+}
+
 export interface PausedGameData {
   username: string;
   pausedType: SumType;

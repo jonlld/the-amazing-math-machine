@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { UserData, SumType } from "../../models/interfaces";
+import ScoreStats from "./ScoreStats";
+import ScoreHistory from "./ScoreHistory";
+import { UserData, SumType, ScoreItemTable } from "../../models/interfaces";
 
 interface GameOverProps {
   score: number;
@@ -27,9 +29,12 @@ const GameOverWindow = ({
 }: GameOverProps): JSX.Element => {
   const [isViewHistory, setisViewHistory] = useState<boolean>(false);
 
-  let numGames;
-  let aveScore;
-  let aveScoreMsg;
+  // Stats Using
+  let numGames = 0;
+  let aveScore = 0;
+  let aveScoreMsg = "";
+
+  // TODO Stats To Use
   let numTypesLookup: NumTypes = {
     "": 0,
     add: 0,
@@ -37,6 +42,8 @@ const GameOverWindow = ({
     multiply: 0,
     mix: 0,
   };
+
+  // History
   let scoreHistory;
   let scoreHistoryForTable;
 
@@ -91,41 +98,16 @@ const GameOverWindow = ({
   return (
     <section className="fade-in-slide-up game-over__main-container">
       {!isViewHistory && (
-        <div className="fade-in-slide-up stats__container">
-          <h1 className="game-over__heading">Game Over!</h1>
-          <p className="game-over__stat">
-            Your <span>score</span> was <span>{score}.</span>
-            {score > 0 ? "Great job!" : "Better luck next time!"}
-          </p>
-          {highscore > 0 && (
-            <p className="game-over__stat">
-              Your <span>highscore</span> is <span>{highscore}!</span>
-            </p>
-          )}
-          <p className="game-over__stat">
-            You have{" "}
-            <span>
-              played {numGames} {numGames === 1 ? "game" : "games"}
-            </span>{" "}
-            in total!
-          </p>
-          <p className="game-over__stat">
-            Your <span>average score</span> is <span>{aveScore}</span>,{" "}
-            {aveScoreMsg}
-          </p>
-        </div>
+        <ScoreStats
+          score={score}
+          highscore={highscore}
+          numGames={numGames}
+          aveScore={aveScore}
+          aveScoreMsg={aveScoreMsg}
+        />
       )}
       {isViewHistory && scoreHistoryForTable && (
-        <div className="fade-in-slide-up history__container">
-          {Object.keys(scoreHistoryForTable[0]).map((key) => {
-            return <div className="history-header">{key}</div>;
-          })}
-          {scoreHistoryForTable.map((score) =>
-            Object.values(score).map((value) => (
-              <div className="history__item">{value}</div>
-            ))
-          )}
-        </div>
+        <ScoreHistory history={scoreHistoryForTable} />
       )}
       <div className="game-over__buttons-container">
         <button className="btn btn--play-again" onClick={playHandler}>
