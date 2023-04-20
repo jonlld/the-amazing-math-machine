@@ -141,7 +141,7 @@ function App(): JSX.Element {
   };
 
   return (
-    <ScoreContext.Provider value={highscore}>
+    <ScoreContext.Provider value={{ highscore }}>
       {isLoggedIn ? (
         <Game
           onLogOut={logOut}

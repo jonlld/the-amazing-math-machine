@@ -45,7 +45,7 @@ function Game({
   const [sum, setSum] = useState<Sum>(sumDefault);
 
   // context
-  const highscore = useContext(ScoreContext);
+  const ctx = useContext(ScoreContext);
 
   // INITIALISE RESTARTED GAME
   useEffect(() => {
@@ -102,7 +102,7 @@ function Game({
       username,
       pausedType: sumType,
       pausedScore: score,
-      pausedHighScore: highscore,
+      pausedHighScore: ctx.highscore,
       pausedStrikes: strikes,
       pausedIsCorrect: isCorrect,
       pausedMessage: message,

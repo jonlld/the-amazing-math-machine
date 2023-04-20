@@ -8,7 +8,7 @@ interface ScoreProps {
 }
 
 function ScoreWindow({ isCorrect, message, score }: ScoreProps): JSX.Element {
-  const highscore = useContext(ScoreContext);
+  const ctx = useContext(ScoreContext);
   let classes = "";
 
   // Animation class from message props
@@ -25,7 +25,7 @@ function ScoreWindow({ isCorrect, message, score }: ScoreProps): JSX.Element {
       </div>
       <div className="score--container scores">
         <p>{score > 0 && `Your score is ${score}`}</p>
-        <p>{highscore > 0 && `Your highscore is ${highscore}`}</p>
+        <p>{ctx.highscore > 0 && `Your highscore is ${ctx.highscore}`}</p>
       </div>
     </section>
   );

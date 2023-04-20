@@ -14,7 +14,7 @@ const ScoreStats = ({
   aveScore,
   aveScoreMsg,
 }: Props): JSX.Element => {
-  const highscore = useContext(ScoreContext);
+  const ctx = useContext(ScoreContext);
 
   return (
     <div className="fade-in-slide-up stats__container">
@@ -23,9 +23,9 @@ const ScoreStats = ({
         Your <span>score</span> was <span>{score}.</span>
         {score > 0 ? "Great job!" : "Better luck next time!"}
       </p>
-      {highscore > 0 && (
+      {ctx.highscore > 0 && (
         <p className="game-over__stat">
-          Your <span>highscore</span> is <span>{highscore}!</span>
+          Your <span>ctx.highscore</span> is <span>{ctx.highscore}!</span>
         </p>
       )}
       <p className="game-over__stat">
