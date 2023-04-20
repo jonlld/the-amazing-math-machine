@@ -1,6 +1,8 @@
+import { useContext } from "react";
+import ScoreContext from "../../context/score-context";
+
 interface Props {
   score: number;
-  highscore: number;
   numGames: number;
   aveScore: number;
   aveScoreMsg: string;
@@ -8,11 +10,12 @@ interface Props {
 
 const ScoreStats = ({
   score,
-  highscore,
   numGames,
   aveScore,
   aveScoreMsg,
 }: Props): JSX.Element => {
+  const highscore = useContext(ScoreContext);
+
   return (
     <div className="fade-in-slide-up stats__container">
       <h1 className="game-over__heading">Game Over!</h1>

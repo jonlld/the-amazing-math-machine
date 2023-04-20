@@ -5,7 +5,6 @@ import { UserData, SumType, ScoreItemTable } from "../../models/interfaces";
 
 interface GameOverProps {
   score: number;
-  highscore: number;
   onPlayAgain: () => void;
   onChoose: () => void;
   userStats: UserData | null;
@@ -22,7 +21,6 @@ interface NumTypes {
 
 const GameOverWindow = ({
   score,
-  highscore,
   onPlayAgain,
   onChoose,
   userStats,
@@ -98,7 +96,6 @@ const GameOverWindow = ({
       {!isViewHistory && (
         <ScoreStats
           score={score}
-          highscore={highscore}
           numGames={numGames}
           aveScore={aveScore}
           aveScoreMsg={aveScoreMsg}

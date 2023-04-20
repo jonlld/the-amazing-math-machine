@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ChooseGameWindow from "./GameChooseWindow";
 import GameOverWindow from "./GameOverWindow";
 import SumWindow from "./SumWindow";
@@ -10,10 +10,10 @@ import {
   SumType,
 } from "../../models/interfaces";
 import { generateSum, checkAnswer } from "../../helpers";
+import ScoreContext from "../../context/score-context";
 
 interface GameProps {
   username: string;
-  highscore: number;
   isRestart: boolean;
   pauseData: PausedGameData | null;
   userStats: UserData | null;
@@ -29,7 +29,6 @@ const sumDefault: Sum = {
 
 function Game({
   username,
-  highscore,
   isRestart,
   pauseData,
   userStats,
@@ -44,6 +43,9 @@ function Game({
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
   const [sumType, setSumType] = useState<SumType>("");
   const [sum, setSum] = useState<Sum>(sumDefault);
+
+  // context
+  const highscore = useContext(ScoreContext);
 
   // INITIALISE RESTARTED GAME
   useEffect(() => {
@@ -185,7 +187,6 @@ function Game({
         {!isPlaying && isGameOver && (
           <GameOverWindow
             score={score}
-            highscore={highscore}
             onPlayAgain={playAgainHandler}
             onChoose={chooseHandler}
             userStats={userStats}
@@ -201,7 +202,6 @@ function Game({
             message={message}
             isCorrect={isCorrect}
             score={score}
-            highscore={highscore}
           />
         )}
       </main>

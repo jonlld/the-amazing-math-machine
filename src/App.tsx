@@ -8,6 +8,8 @@ import {
   updateUserOnGameOver,
   sortUsersByScore,
 } from "./helpers";
+// context test
+import ScoreContext from "./context/score-context";
 
 function App(): JSX.Element {
   const [isPaused, setIsPaused] = useState<boolean>(false);
@@ -139,12 +141,11 @@ function App(): JSX.Element {
   };
 
   return (
-    <Fragment>
+    <ScoreContext.Provider value={highscore}>
       {isLoggedIn ? (
         <Game
           onLogOut={logOut}
           username={username}
-          highscore={highscore}
           onGameOver={gameOverHandler}
           isRestart={isRestart}
           pauseData={pauseGameData}
@@ -159,7 +160,7 @@ function App(): JSX.Element {
           pauseData={pauseGameData}
         />
       )}
-    </Fragment>
+    </ScoreContext.Provider>
   );
 }
 

@@ -1,16 +1,14 @@
+import { useContext } from "react";
+import ScoreContext from "../../context/score-context";
+
 interface ScoreProps {
   isCorrect: boolean;
   message: string;
   score: number;
-  highscore: number;
 }
 
-function ScoreWindow({
-  isCorrect,
-  message,
-  score,
-  highscore,
-}: ScoreProps): JSX.Element {
+function ScoreWindow({ isCorrect, message, score }: ScoreProps): JSX.Element {
+  const highscore = useContext(ScoreContext);
   let classes = "";
 
   // Animation class from message props
