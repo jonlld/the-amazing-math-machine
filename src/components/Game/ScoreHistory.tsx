@@ -17,7 +17,7 @@ const ScoreHistory = ({ history }: Props): JSX.Element => {
         );
       })}
       {history.map((score) =>
-        Object.values(score).map((value, index) => (
+        Object.values(score).map((value) => (
           <div key={++id} className="history__item">
             {value}
           </div>
