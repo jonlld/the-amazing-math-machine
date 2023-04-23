@@ -25,7 +25,7 @@ const ScoreStats = ({
       </p>
       {ctx.highscore > 0 && (
         <p className="game-over__stat">
-          Your <span>ctx.highscore</span> is <span>{ctx.highscore}!</span>
+          Your <span>highscore</span> is <span>{ctx.highscore}!</span>
         </p>
       )}
       <p className="game-over__stat">
